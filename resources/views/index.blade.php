@@ -167,6 +167,7 @@
                                     <li ><a href="/what-we-do">What we do</a></li>
                                         <li ><a href="/buy">Buy</a></li>
                                         <li ><a href="/rent">Rent</a></li>
+                                        <li ><a href="/loginForm">Sell</a></li>
                                         <li><a href="/contact">Contact Us</a></li>
                                         
                                     </ul>              
