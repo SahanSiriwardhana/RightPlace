@@ -55,7 +55,19 @@
 ====================================================================
 
  ***/
+ .list-group{
+	border-radius: 0px
+}
+.sub-list-group{
+	margin: 10px;
+	
+}
+.list-group-item{
 
+}
+.list-group-item:hover , .list-group-item:active{
+	border-left: 3px solid #0074D9;
+}
 body {
 	
 	font-size:14px;
@@ -1135,6 +1147,16 @@ img{
 .properties-box{
 	position: relative;
 	padding: 30px 40px 10px;
+	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.10);
+	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.10);
+	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.10);
+	-o-box-shadow: 0 0 20px rgba(0,0,0,0.10);
+	box-shadow: 0 0 20px rgba(0,0,0,0.10);
+	margin-bottom: 40px;
+}
+.properties-box1{
+	position: relative;
+
 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.10);
 	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.10);
 	-ms-box-shadow: 0 0 20px rgba(0,0,0,0.10);

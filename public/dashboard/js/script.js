@@ -19,9 +19,9 @@
 
 		//Hide Form
 		$('.hidden-bar .cross-icon').on('click', function(e) {
-			e.preventDefault();
-			$('body').removeClass('side-content-visible');
-			$(".main-header .nav-toggler .toggler-btn").removeClass('active');
+			// e.preventDefault();
+			// $('body').removeClass('side-content-visible');
+			// $(".main-header .nav-toggler .toggler-btn").removeClass('active');
 		});
 	}
 

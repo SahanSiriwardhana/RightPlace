@@ -132,7 +132,7 @@
                             <li><a href="#"><i class="la la-facebook-f"></i></a></li>
                             <li><a href="#"><i class="la la-twitter"></i></a></li>
                             <li><a href="#"><i class="la la-linkedin"></i></a></li>
-                           <li><button onclick="" class="btn-box theme-btn btn-style-four btn-1">Post Your Add</button></li>
+                           <li><button onclick="location.href='/dashboard/add-type';" class="btn-box theme-btn btn-style-four btn-1">Post Your Add</button></li>
 
                         </ul>
                     

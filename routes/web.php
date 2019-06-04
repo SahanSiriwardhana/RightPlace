@@ -35,6 +35,41 @@ Route::get('/property-detail', function () {
     return view('property-detail');
 });
 
-Route::get('/dashboard/add-post', function () {
-    return view('admin/submit-property');
+Route::get('/dashboard/portion_rooms', function () {
+    return view('admin/portion_rooms');
+});
+
+Route::get('/dashboard/add-type', function () {
+    return view('admin/add-type');
+});
+
+Route::get('/dashboard/sell', function () {
+    return view('admin/sell-catgory');
+});
+
+Route::get('/dashboard/rent', function () {
+    return view('admin/rent-category');
+});
+
+Route::get('/dashboard/land', function () {
+    return view('admin/land');
+});
+Route::get('/dashboard/house', function () {
+    return view('admin/house');
+});
+
+Route::get('/dashboard/apartment', function () {
+    return view('admin/apartment');
+});
+
+Route::get('/dashboard/holiday-short', function () {
+    return view('admin/holiday_short_tearm');
+});
+
+Route::get('/dashboard/commercial', function () {
+    return view('admin/commercial');
+});
+
+Route::get('/dashboard/my-add', function () {
+    return view('admin/my-add');
 });
