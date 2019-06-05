@@ -162,108 +162,29 @@
 
 
     <div id="login-box"> 
-            <div class="card " style="background:rgb(42, 42, 43) ; ">
-                    <div class="card-body text-center">
-                      <p class="card-text" style="color:white ; font-family: Verdana,Geneva,sans-serif;   font-size:18px">Login / Register</p>
-                    </div>
-            </div>
-            <div class="container" style="margin-top:18px">
-                    
-                    <nav>
-                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <a class="nav-item nav-link active " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Login</a>
-                                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Register</a>
-                            </div>
-                        </nav>
 
-            
-         
+        <div class="card ">
+            <div class="card-body ">
+              <p class="card-text" style=" font-family: Verdana,Geneva,sans-serif;   font-size:18px"><b>Forgot</b> Password?</p>
+              <p class="card-text" style=" font-family: Verdana,Geneva,sans-serif;   font-size:14px">We will send a link on your registered email to reset your password.</p>
+              @if(session('error'))
+            <div style="color: red">{{session('error')}}</div>
+              @endif
 
-                        <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" style="padding-bottom:5% ; " aria-labelledby="nav-home-tab">
-                                        <div class="row container" style="padding-top:5% ; "> 
-                                            <div class="col-md-6"><a href="{{route('fblogin')}}"><button class=" social-signin facebook " style="width:100%"><i class="fa fa-facebook"></i>&nbsp; Log in with facebook</button></a></div>
-                                            <div class="col-md-6"><a href="{{route('googleLogin')}}"><button  class="social-signin google" style="width:100%"><i class="fa fa-google"></i>&nbsp; Log in with Google+</button></a></div>
-                                           
-                                            
-                                        </div>
-                                        <hr>
-                                       
-                                        <div class="container col-md-12 "> 
-                                        <form action="{{route('signin')}}" method="POST" >
-                                                <div class="form-group">
-                                            <input class="w3-input w3-border" type="email" name="email" placeholder="E-mail" required>
-                                                </div>
-                                            <div class="form-group">
-                                            <input class="w3-input w3-border" type="password" name="password" placeholder="Password" required>
-                                            </div>
-                                            <div class="form-check form-group">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                                            </div>
-                                            <div align="left"><a href='resetPwForm'}><small ><u>Forgot Password?</u></small></a></div>
-                                            <button type="submit" style="margin-left:54% ;width:46%" class="btn btn-warning btn-lg">Login</button>
-
-                                            {{csrf_field()}}
-                                            
-                                            <div align="right"><small >By login you agree to Terms-Conditions and Privacy-Policy</small></div>
-                                        </form>
-
-                                    </div>
-                                  
-                                    
-                                    </div>
-                                    <div class="tab-pane fade show " id="nav-profile" role="tabpanel" style="padding-bottom:5% ; " aria-labelledby="nav-profile-tab">
-                                        <div class="form container">
-
-                                                {{-- set view for display validation errors --}}
-                                                {{-- @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif --}}
-                                        <form action="{{route('signup')}}" method="POST" id="Regform">
-                                            <br>
-                                        <div class="form-group">
-                                        <input class="w3-input w3-border" type="text" name="name" placeholder="Name" />
-                                        
-                                         
-                                        </div>
-
-                                         <div class="form-group">
-                                        <input class="w3-input w3-border" type="text" name="email" placeholder="E-mail" />
-                                        {{-- {!! $errors->first('email', '<span class="text-danger">:message</span>') !!}
-                                        </div> --}}
-                                       
-                                        </div>
-
-                                        <div class="form-group">
-                                        <input class="w3-input w3-border" type="password" id="password" name="password" placeholder="Password" />
-                                        <span class="text-danger">{{ $errors->first('password') }}</span>
-                                        {{-- {!! $errors->first('password', '<span class="text-danger">:message</span>') !!} --}}
-
-                                        </div>
-
-                                        <div class="form-group">
-                                        <input class="w3-input w3-border" type="password" id="cpassword" name="cpassword" placeholder="Retype password" /> 
-                                        <span class="text-danger">{{ $errors->first('cpassword') }}</span>
-                                        {{-- {!! $errors->first('cpassword', '<span class="text-danger">:message</span>') !!} --}}
-                                        </div>
-
-                                        <button type="submit" style="margin-left:54% ;width:46%" class="btn btn-warning btn-lg">Register</button>
-                                        <div align="right"><small >By login you agree to Terms-Conditions and Privacy-Policy</small></div>
-                                        {{csrf_field()}}
-                                        </form>
-                                        </div>
-                                    </div>
-                                   
-                        </div>
+              @if(session('success'))
+              <div style="color: red">{{session('success')}}</div>
+                @endif
+              <form action="{{route('resetpw')}}" method="POST" >
+                <div class="form-group" style="padding-top: 5%;padding-bottom: 5%" >
+                        <input class="w3-input w3-border" type="email" name="email" placeholder="E-mail" required>
+                </div>
+                <button type="submit" style="margin-left:70% ;width:30%" class="btn btn-primary btn-sm">send Link</button>
+                {{csrf_field()}}
+              </form>
             </div>
 
+
+    </div>
 
 
 

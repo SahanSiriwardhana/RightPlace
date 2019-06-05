@@ -43,14 +43,34 @@ Route::get('logout',[
 ]);
 
 
-Route::post('register',[
+Route::post('signup',[
     'uses' => 'UserController@RegisterUser',
     'as'=>'signup'
 ]);
 
-Route::post('login',[
+Route::post('signin',[
     'uses' => 'UserController@LoginUser',
     'as'=>'signin'
+]);
+//password reset
+
+Route::get('/resetPwForm', function () {
+    return view('resetPasswordForm');
+});
+
+Route::post('resetpw',[
+    'uses' => 'UserController@ResetPassword',
+    'as'=>'resetpw'
+]);
+// Auth::routes();
+Route::get('password/reset/{token?}','UserController@showResetForm');
+// Route::post('password/email','Auth\ResetPasswordController@sendResetLinkEmail');
+// Route::post('password/reset','Auth\ResetPasswordController@reset');
+
+
+Route::post('resetpwfromEmail',[
+    'uses' => 'UserController@resetpwfromEmail',
+    'as'=>'resetpwfromEmail'
 ]);
 
 Route::get('login/google',['uses'=> 'UserController@redirectToProvider','as'=>'googleLogin']);
@@ -59,7 +79,7 @@ Route::get('login/google/callback', 'UserController@handleProviderCallback');
 
 Route::get('login/facebook',['uses'=> 'UserController@redirectToProviderFacebook','as'=>'fblogin']);
 Route::get('login/facebook/callback', 'UserController@handleProviderCallbackFacebook');
-
+Route::get('login/facebook',['uses'=> 'UserController@redirectToProviderFacebook','as'=>'fblogin']);
 
 Route::get('my-ads',['uses'=>'UserController@getMyAds','as'=>'myAds'])->middleware('auth');
 
