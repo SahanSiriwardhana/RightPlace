@@ -41,7 +41,7 @@ Route::get('logout',[
     'uses' => 'UserController@LogOut',
     'as'=>'logout'
 ]);
-
+    
 
 Route::post('signup',[
     'uses' => 'UserController@RegisterUser',
