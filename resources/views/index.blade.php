@@ -122,16 +122,58 @@
   opacity: 1;
 }
     </style>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(window).on('load',function(){
             document.getElementById("myForm").style.display = "block";
         });
-    </script>
+    </script> --}}
 </head>
 
 <body>
+        {{-- <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/564f634590d1bced690e0633/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script> --}}
+
+        <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+
+
+
+
+
+
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5cfa01ecb534676f32adc53c/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+
+
+    $( document ).ready(function() {
+        Tawk_API.toggle();
+    });
+
+    })();
+
+    
+
+</script>
+
+
+    <!--End of Tawk.to Script-->
   <!-- The Modal -->
-  <button class="open-button btn-danger" onclick="openForm()">Contact Us</button>
+  {{-- <button class="open-button btn-danger" onclick="openForm()">Contact Us</button> --}}
 
   <div class="chat-popup" id="myForm">
     <form action="/action_page.php" class="form-container">
@@ -290,7 +332,7 @@
                         <video playsinline autoplay muted loop id="myVideo" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120">
                             <source src="Free Animated Videos For Real Estate Agents.mp4" type="video/mp4">
                             Your browser does not support HTML5 video.
-                          </video>
+                        </video>
                         
                     </li>
                   

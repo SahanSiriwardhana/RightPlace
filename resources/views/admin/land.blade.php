@@ -119,7 +119,35 @@
 									</li>
 								</a>
 								  </ul>
-								<a href="#" class="list-group-item list-group-item-action">Third item</a>
+								<a href="#" class="list-group-item list-group-item-action">Admin Operations</a>
+								<ul class="list-group sub-list-group">
+									<a href="#">
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+									 Upload home video
+									  <span class="badge badge-primary badge-pill">14</span>
+									</li>
+								</a>
+								<a href="#">
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+									  Upload Featured Project Images
+									  <span class="badge badge-primary badge-pill">2</span>
+									</li>
+								</a>
+								<a href="#">
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+									 Approve ADs 
+									  <span class="badge badge-primary badge-pill">1</span>
+									</li>
+								</a>
+
+								<a href="#">
+									<li class="list-group-item d-flex justify-content-between align-items-center">
+									 All Users 
+									  <span class="badge badge-primary badge-pill">1</span>
+									</li>
+								</a>
+								  </ul>
+								
 							  </div> 
 						</div>
 	                    <div class="column col-lg-8">
@@ -258,11 +286,69 @@
 			                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
 			                                    	<button type="submit" class="theme-btn btn-style-one"> Submit Property</button>
 			                                    </div>
+											</div>
+											
+
+											<div class="title"><h3>Video Upload Test View</h3></div>
+			                                <div class="row">
+			                                	<div class="col-lg-2 padding" style="text-align: center;margin-top: 5%">Video 1</div>
+
+												<div class="col-lg-8" id="popoverData1" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
+													<div class="row">
+														<!-- Form Group -->
+														<div class="form-group col-lg-12">
+															<div id="myDropZone" class="dropzone dropzone-design">
+																<div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-2">
+													<button type="submit" class="theme-btn btn-style-one" style="margin-top: 25%">Upload</button>
+												</div>
+											</div>
+											
+											<div class="row">
+			                                	<div class="col-lg-2 padding" style="text-align: center;margin-top: 5%">Video 2</div>
+
+												<div class="col-lg-8" id="popoverData1" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
+													<div class="row">
+														<!-- Form Group -->
+														<div class="form-group col-lg-12">
+															<div id="myDropZone" class="dropzone dropzone-design">
+																<div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-2">
+													<button type="submit" class="theme-btn btn-style-one" style="margin-top: 25%">Upload</button>
+												</div>
+											</div>
+											
+											<div class="row">
+			                                	<div class="col-lg-2 padding" style="text-align: center;margin-top: 5%">Video 3</div>
+
+												<div class="col-lg-8" id="popoverData1" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
+													<div class="row">
+														<!-- Form Group -->
+														<div class="form-group col-lg-12">
+															<div id="myDropZone" class="dropzone dropzone-design">
+																<div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-lg-2">
+													<button type="submit" class="theme-btn btn-style-one" style="margin-top: 25%">Upload</button>
+												</div>
 			                                </div>
-			                            </form>
+										</form>
+										
 			                        </div>
 	                    		</div><p>* are required</p>
-	                    	</div>
+							</div>
+							{{-- ================ --}}
 						</div>
 						
 					</div>
