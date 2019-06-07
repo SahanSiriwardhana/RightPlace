@@ -29,12 +29,18 @@
 }
 .btn1{
     cursor:pointer;
+    -webkit-transition: border 0.5s ease-in ,color 0.5s ease-in ;
+  -moz-transition: border 0.5s ease-in ,color 0.5s ease-in ;
+  -o-transition: border 0.5s ease-in ,color 0.5s ease-in ;
+  transition: border 0.5s ease-in ,color 0.5s ease-in ;
 }
 .btn1:hover  { 
 
- background-color: black;
+
+  border:1px solid #0074D9;
  color: #0074D9;
- 
+ filter: contrast(150%);
+
   }
    
 </style>
@@ -65,7 +71,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="images/resource/thumb-1.jpg" alt="avatar" class="thumb">My Account</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="dashboard.html">My Account</a>
-                            <a class="dropdown-item" href="messages.html">My ads</a>
+                            <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
                          
                             <a class="dropdown-item" href="../index-2.html">Logout</a>
                         </div>
@@ -125,38 +131,50 @@
                  </div>
                  <div class="row ">
                         <div class="col-sm-3">
+                          <a href="/dashboard/land-sale">
                           <div class="card text-center btn1">
                             <div class="card-body">
+                                <img src="images/resource/5.png" alt="avatar" class="" width="100px">
                               <h5 class="card-title ">Land</h5>
                               
                              
                             </div>
                           </div>
+                        </a>
                         </div>
                         <div class="col-sm-3">
+                            <a href="/dashboard/house-sale">
                           <div class="card text-center btn1">
                             <div class="card-body">
+                                <img src="images/resource/15.png" alt="avatar" class="" width="100px">
                               <h5 class="card-title">House</h5>
                               
                             
                             </div>
                           </div>
+                            </a>
                         </div>
                         <div class="col-sm-3">
+                            <a href="/dashboard/apartment-sale">
                                 <div class="card text-center btn1">
                                   <div class="card-body">
+                                      <img src="images/resource/8.png" alt="avatar" class="" width="100px">
                                     <h5 class="card-title">Aprtment</h5>
                                   
                                   </div>
                                 </div>
+                            </a>
                               </div>
                               <div class="col-sm-3">
+                                  <a href="/dashboard/commercial-sale">
                                 <div class="card text-center btn1">
                                   <div class="card-body">
+                                      <img src="images/resource/13.png" alt="avatar" class="" width="100px">
                                     <h5 class="card-title">Commercial Property</h5>
                                    
                                   </div>
                                 </div>
+                                  </a>
                               </div>
                       </div>
 				</div>

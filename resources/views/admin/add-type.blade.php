@@ -24,8 +24,16 @@
 .list-group{
 	border-radius: 0px
 }
+
 #prop:hover{
     background-color: white;
+}
+.topNav{
+
+}
+.topNav:hover{
+    background-color: black;
+    
 }
 </style>
 </head>
@@ -51,11 +59,12 @@
             <!-- Upper Right-->
             <div class="upper-right">
                 <ul class="clearfix">
+                  
                     <li class="dropdown option-box">
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="images/resource/thumb-1.jpg" alt="avatar" class="thumb">My Account</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="dashboard.html">My Account</a>
-                            <a class="dropdown-item" href="messages.html">My ads</a>
+                            <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
                          
                             <a class="dropdown-item" href="../index-2.html">Logout</a>
                         </div>
@@ -90,11 +99,11 @@
                     <div class="d-flex justify-content-center bg-secondary mb-3 text-center">
                             <div class="p-2 col-lg-4">
                                 <a href="/dashboard/sell" class="prop">
-                                    <div class="card bg-primary topNav" id="">
+                                    <div class="card bg-light topNav" id="">
                                             <div class="card-body">
                                               <h4 class="card-title" ><i class="fas fa-home fa-3x" style="color:#0074D9"></i></h4>
                                               
-                                              <h4 style="color:white" id="heka">Sell Your Property</h4>
+                                              <h4 style="color:black" id="heka">Sell Your Property</h4>
                                              
                                             </div>
                                     </div>
@@ -102,11 +111,11 @@
                             </div>
                             <div class="p-2 col-lg-4">
                                 <a href="/dashboard/rent">
-                                    <div class="card bg-primary topNav2">
+                                    <div class="card bg-light topNav2">
                                             <div class="card-body">
                                                   <h4 class="card-title"><i class="far fa-money-bill-alt fa-3x" style="color:#0074D9"></i></h4>
                                         
-                                                  <h4 style="color:white" id="heka2">Rent Your Property</h4>
+                                                  <h4 style="color:black" id="heka2">Rent Your Property</h4>
                                             </div>
                                           </div>
                                         </a>
@@ -145,24 +154,24 @@ $(document).ready(function () {
 var delay = 1000;
     $('.topNav').hover(function () {
         
-        $(this).removeClass('bg-primary');
-            $(this).addClass('bg-light');
-            $('#heka').css("color","black");
-        }, function () {
-            $(this).removeClass('bg-light');
+        $(this).removeClass('bg-light');
             $(this).addClass('bg-primary');
             $('#heka').css("color","white");
+        }, function () {
+            $(this).removeClass('bg-primary');
+            $(this).addClass('bg-light');
+            $('#heka').css("color","black");
         }
         );
 
         $('.topNav2').hover(function () {
-        $(this).removeClass('bg-primary');
-            $(this).addClass('bg-light');
-            $('#heka2').css("color","black");
-        }, function () {
-            $(this).removeClass('bg-light');
+        $(this).removeClass('bg-light');
             $(this).addClass('bg-primary');
             $('#heka2').css("color","white");
+        }, function () {
+            $(this).removeClass('bg-primary');
+            $(this).addClass('bg-light');
+            $('#heka2').css("color","black");
         });
     });
     

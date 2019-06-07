@@ -66,7 +66,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="images/resource/thumb-1.jpg" alt="avatar" class="thumb">My Account</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="dashboard.html">My Account</a>
-                            <a class="dropdown-item" href="messages.html">My ads</a>
+                            <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
                          
                             <a class="dropdown-item" href="../index-2.html">Logout</a>
                         </div>

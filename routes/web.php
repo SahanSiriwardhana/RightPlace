@@ -35,7 +35,7 @@ Route::get('/property-detail', function () {
     return view('property-detail');
 });
 
-Route::get('/dashboard/portion_rooms', function () {
+Route::get('/dashboard/portion-rooms-rent', function () {
     return view('admin/portion_rooms');
 });
 
@@ -51,25 +51,46 @@ Route::get('/dashboard/rent', function () {
     return view('admin/rent-category');
 });
 
-Route::get('/dashboard/land', function () {
-    return view('admin/land');
-});
-Route::get('/dashboard/house', function () {
+Route::get('/dashboard/land-rent', 'LandController@index');
+
+Route::get('/dashboard/house-rent', function () {
     return view('admin/house');
 });
 
-Route::get('/dashboard/apartment', function () {
+Route::get('/dashboard/apartment-rent', function () {
     return view('admin/apartment');
 });
 
-Route::get('/dashboard/holiday-short', function () {
+Route::get('/dashboard/holiday-short-rent', function () {
     return view('admin/holiday_short_tearm');
 });
 
-Route::get('/dashboard/commercial', function () {
+Route::get('/dashboard/commercial-rent', function () {
     return view('admin/commercial');
 });
 
 Route::get('/dashboard/my-add', function () {
     return view('admin/my-add');
+});
+
+
+//-------sale-----------------
+Route::get('/dashboard/land-sale', function () {
+    return view('admin/house-sale');
+});
+
+Route::get('/dashboard/house-sale', function () {
+    return view('admin/house-sale');
+});
+
+Route::get('/dashboard/apartment-sale', function () {
+    return view('admin/apartment-sale');
+});
+
+Route::get('/dashboard/commercial-sale', function () {
+    return view('admin/commercial-sale');
+});
+
+Route::get('/dashboard/video-upload', function () {
+    return view('admin/video-upload');
 });

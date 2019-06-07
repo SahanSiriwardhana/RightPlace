@@ -29,31 +29,9 @@
 	                </div>
 					<div class="row">
 					<div class="col-lg-3">
-					<div class="list-group properties-box1">
-								<a href="#" class="list-group-item list-group-item-action">My Account</a>
-								<a href="#" class="list-group-item list-group-item-action act">My Ads</a>
-								<ul class="list-group sub-list-group">
-									<a href="#">
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-									 Published Ads
-									  <span class="badge badge-primary badge-pill">14</span>
-									</li>
-								</a>
-								<a href="#">
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-									  Pending Ads
-									  <span class="badge badge-primary badge-pill">2</span>
-									</li>
-								</a>
-								<a href="#">
-									<li class="list-group-item d-flex justify-content-between align-items-center">
-									 Canceled Ads 
-									  <span class="badge badge-primary badge-pill">1</span>
-									</li>
-								</a>
-								  </ul>
-								<a href="#" class="list-group-item list-group-item-action">Third item</a>
-							  </div> 
+							@component('admin.layout.side-nav')
+								
+							@endcomponent
 					</div>
 	                    <div class="column col-lg-9">
 	                    	<div class="properties-box">

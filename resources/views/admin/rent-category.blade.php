@@ -35,6 +35,7 @@
 
  border:1px solid #0074D9;
  color: #0074D9;
+ filter: contrast(160%);
   }
 </style>
 </head>
@@ -125,9 +126,10 @@
                  <div class="row ">
 
                         <div class="col-sm-3">
-                            <a href="/dashboard/land">
+                            <a href="/dashboard/land-rent">
                           <div class="card text-center btn1">
                             <div class="card-body">
+                                <img src="images/resource/5.png" alt="avatar" class="" width="100px">
                               <h5 class="card-title ">Land</h5>
                               
                              
@@ -136,9 +138,10 @@
                           </a>
                         </div>
                         <div class="col-sm-3">
-                            <a href="/dashboard/house">
+                            <a href="/dashboard/house-rent">
                           <div class="card text-center btn1">
                             <div class="card-body">
+                                <img src="images/resource/15.png" alt="avatar" class="" width="100px">
                               <h5 class="card-title">House</h5>
                               
                             
@@ -147,9 +150,10 @@
                           </a>
                         </div>
                         <div class="col-sm-3">
-                            <a href="/dashboard/apartment">
+                            <a href="/dashboard/apartment-rent">
                                 <div class="card text-center btn1">
                                   <div class="card-body">
+                                      <img src="images/resource/8.png" alt="avatar" class="" width="100px">
                                     <h5 class="card-title">Apartment</h5>
                                   
                                   </div>
@@ -157,9 +161,10 @@
                             </a>
                               </div>
                               <div class="col-sm-3">
-                                <a href="/dashboard/portion_rooms">
+                                <a href="/dashboard/portion-rooms-rent">
                                 <div class="card text-center btn1">
                                   <div class="card-body">
+                                      <img src="images/resource/9.png" alt="avatar" class="" width="100px">
                                     <h5 class="card-title">Portion & Rooms</h5>
                                    
                                   </div>
@@ -167,9 +172,10 @@
                                 </a>
                               </div>
                               <div class="col-sm-3">
-                                  <a href="/dashboard/holiday-short">
+                                  <a href="/dashboard/holiday-short-rent">
                                     <div class="card text-center btn1">
                                       <div class="card-body">
+                                          <img src="images/resource/1.png" alt="avatar" class="" width="100px">
                                         <h5 class="card-title">Holiday and Short Term Rental</h5>
                                       
                                       </div>
@@ -177,9 +183,10 @@
                                     </a>
                               </div>
                                   <div class="col-sm-3">
-                                      <a href="/dashboard/commercial">
+                                      <a href="/dashboard/commercial-rent">
                                     <div class="card text-center btn1">
                                       <div class="card-body">
+                                          <img src="images/resource/13.png" alt="avatar" class="" width="100px">
                                         <h5 class="card-title">Commercial Property</h5>
                                        
                                       </div>

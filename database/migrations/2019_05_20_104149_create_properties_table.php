@@ -13,9 +13,24 @@ class CreatePropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('lands', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->string('title');
+            $table->string('city');
+            $table->string('town');
+            $table->string('add_status')->default('pending');//-----publish , pending, cancled
+            $table->integer('type');//----sell or rent
+            $table->boolean('negotiable')->default(0);
+            $table->string('item_type');//----agriculture,commercial,residential,other
+            $table->integer('land_size');
+            $table->string('land_size_type');
+            $table->double('rent_per_month', 8, 2);
+            $table->string('address');
+            $table->text('description');
+            $table->string('phone');
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 
