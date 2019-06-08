@@ -444,11 +444,12 @@ img{
 	position: relative;
 	width:100%;
 	z-index: 9999;
+	
 }
 
 .main-header .header-top{
 	position: relative;
-	background-color: #b1b1b1;
+	background-color: #f4f4f5;
 }
 
 .main-header .top-left{
@@ -458,7 +459,7 @@ img{
 
 .main-header .top-left .contact-list{
 	position: relative;
-	padding: 25px 0;
+	padding: 8px 0;
 }
 
 .main-header .top-left .contact-list li{
@@ -501,7 +502,7 @@ img{
 .main-header .top-right{
 	position: relative;
 	float: right;
-	padding:12px 0;
+	padding:0 0;
 }
 
 .social-icon-one{
@@ -524,7 +525,7 @@ img{
 	display: block;
 	font-size: 30px;
 	line-height: 25px;
-	color: #e8e8e8;
+	color: #a7a7a7;
 	vertical-align: bottom;
 	-webkit-transition: all 300ms ease;
 	-moz-transition: all 300ms ease;
@@ -553,10 +554,10 @@ img{
 }
 
 .main-header .header-lower .main-box{
-	background: #f9f9f9;
-	background: -moz-linear-gradient(top, #f9f9f9 0%, #e5e5e5 100%);
-	background: -webkit-linear-gradient(top, #f9f9f9 0%,#e5e5e5 100%);
-	background: linear-gradient(to bottom, #f9f9f9 0%,#e5e5e5 100%);
+	background: #ffffff;
+	background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 100%);
+	background: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 100%);
+	background: linear-gradient(to bottom, #ffffff 0%,#ffffff 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#e5e5e5',GradientType=0 );
 }
 
@@ -1002,7 +1003,7 @@ img{
 .header-style-one .header-lower .logo-box:before{
 	position: absolute;
 	right: 0;
-	width: 1000%;
+	width: 100%;
 	height: 100%;
 	background-color: #92c800;
 	content: "";
@@ -1353,7 +1354,7 @@ img{
 
 .header-style-three .header-lower .outer-box .btn-box a{
 	line-height: 30px;
-	padding: 15px 30px;
+	padding: 10px 20px;
 }
 
 .header-style-three .search-box-btn{
@@ -9923,7 +9924,7 @@ a.ui-button:active, .ui-button:active,
 
 .main-footer .footer-logo .image img{
 	display: inline-block;
-	max-width: 100%;
+	max-width: 70%;
 	height: auto;
 }
 

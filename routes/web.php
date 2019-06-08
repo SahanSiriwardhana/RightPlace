@@ -31,6 +31,60 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/loginForm', function () {
+    return view('login');
+});
+
+
+
+Route::get('logout',[
+    'uses' => 'UserController@LogOut',
+    'as'=>'logout'
+]);
+    
+
+Route::post('signup',[
+    'uses' => 'UserController@RegisterUser',
+    'as'=>'signup'
+]);
+
+Route::post('signin',[
+    'uses' => 'UserController@LoginUser',
+    'as'=>'signin'
+]);
+//password reset
+
+Route::get('/resetPwForm', function () {
+    return view('resetPasswordForm');
+});
+
+Route::post('resetpw',[
+    'uses' => 'UserController@ResetPassword',
+    'as'=>'resetpw'
+]);
+// Auth::routes();
+Route::get('password/reset/{token?}','UserController@showResetForm');
+// Route::post('password/email','Auth\ResetPasswordController@sendResetLinkEmail');
+// Route::post('password/reset','Auth\ResetPasswordController@reset');
+
+
+Route::post('resetpwfromEmail',[
+    'uses' => 'UserController@resetpwfromEmail',
+    'as'=>'resetpwfromEmail'
+]);
+
+Route::get('login/google',['uses'=> 'UserController@redirectToProvider','as'=>'googleLogin']);
+Route::get('login/google/callback', 'UserController@handleProviderCallback');
+
+
+Route::get('login/facebook',['uses'=> 'UserController@redirectToProviderFacebook','as'=>'fblogin']);
+Route::get('login/facebook/callback', 'UserController@handleProviderCallbackFacebook');
+Route::get('login/facebook',['uses'=> 'UserController@redirectToProviderFacebook','as'=>'fblogin']);
+
+Route::get('my-ads',['uses'=>'UserController@getMyAds','as'=>'myAds'])->middleware('auth');
+
+
+
 Route::get('/property-detail', function () {
     return view('property-detail');
 });
@@ -93,4 +147,21 @@ Route::get('/dashboard/commercial-sale', function () {
 
 Route::get('/dashboard/video-upload', function () {
     return view('admin/video-upload');
+});
+
+//------advice-----------------
+Route::get('/buyers-advice', function () {
+    return view('buyers-advice');
+});
+
+Route::get('/renter-advice', function () {
+    return view('renter-advice');
+});
+
+Route::get('/seller-advice', function () {
+    return view('seller-advice');
+});
+
+Route::get('/landlord-advice', function () {
+    return view('landlord-advice');
 });

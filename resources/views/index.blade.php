@@ -19,95 +19,186 @@
 <link id="theme-color-file" href="css/color-themes/blue-theme.css" rel="stylesheet">
 
 
-<link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
+<link rel="icon" href="{{ asset('images/rightplace_ico.png') }}" type="image/x-icon">
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+<script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+</script>
 <style>
     hr {height:2px; border:none; color:#0074D9; background-color:#0074D9;margin-top: 5%}
     .modal-dialog, .modal-content{
         border-radius: 0px;
         border: 2px solid #0074D9;
     }
-    #myVideo {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%; 
-      min-height: 100%;
-      object-fit: cover;
-      overflow: hidden;
+    .myVideo {
       position: absolute;
+      top:0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      
     }
+    .myVideo video{
+        min-width: 100%;
+        min-height: 100%;
+    }
+.open-button {
+  background-color: #0074D9;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+  z-index: 100000000000;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 100000000000;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea  {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
     </style>
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(window).on('load',function(){
-            $('#myModal').modal('show');
+            document.getElementById("myForm").style.display = "block";
         });
-    </script>
+    </script> --}}
 </head>
 
 <body>
+        {{-- <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/564f634590d1bced690e0633/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script> --}}
+
+        <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+
+
+
+
+
+
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5cfa01ecb534676f32adc53c/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+
+
+    $( document ).ready(function() {
+        Tawk_API.toggle();
+    });
+
+    })();
+
+    
+
+</script>
+
+
+    <!--End of Tawk.to Script-->
   <!-- The Modal -->
-  <div class="modal fade " id="myModal">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
+  {{-- <button class="open-button btn-danger" onclick="openForm()">Contact Us</button> --}}
+
+  <div class="chat-popup" id="myForm">
+    <form action="/action_page.php" class="form-container">
+      <h2>We are here to advice you..</h2>
       
-        <!-- Modal Header -->
-        <div class="modal-header" style="background-color: #0074D9">
-          <h4 class="modal-title">
-            <div class="title "><h3 style="color: black">Basic Info</h3></div>
-          </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body property-search-form ">
-            
-        <!-- Property Search Form -->
-       
-            <form method="post" action="http://expert-themes.com/html/willies//">
-                <div class="row no-gutters">
-                    <!-- Form Group -->
-                    <div class="form-group">
-                        <label>Name :</label>
-			            <input type="text" name="text" placeholder="Name" required>
-                    </div>
+      <label for = "name">Name</label>
+      <input type = "text" class = "form-control" placeholder = "Enter your Name"/>
 
-                    <!-- Form Group -->
-                    <div class="form-group">
-                        <label>Contact Number :</label>
-			            <input type="text" name="text" placeholder="Contact Number" required>
-                    </div>
+      <label for = "name">Email</label>
+      <input type = "text" class = "form-control" placeholder = "Enter your Email"/>
 
-                    <!-- Form Group -->
-                    <div class="form-group">
-                        <label>Email :</label>
-			            <input type="text" name="text" placeholder="Email" required>
-                    </div>
+      <label for = "name">Contact Number</label>
+      <input type = "text" class = "form-control" placeholder = "Enter your phone number"/>
 
-
-                    <!-- Form Group -->
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea name="message" id="" required></textarea>
-			           
-                    </div>
-                    <!-- Form Group -->
-                    <div class="form-group">
-                        <button type="submit" class="theme-btn btn-style-one">Submit</button>
-                    </div>
-                </div>
-            </form>
-     
-        </div>
-        
-        
-      </div>
-    </div>
+      <label for="msg"><b>Message</b></label>
+      <textarea placeholder="Type message.." name="msg" required></textarea>
+  
+      <button type="submit" class="btn">Send</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
   </div>
+  
+
 
 <div class="page-wrapper">
     <!-- Preloader -->
@@ -121,15 +212,15 @@
                 <div class="inner-container clearfix">
                     <div class="top-left">
                         <ul class="contact-list clearfix">
-                            <li><i class="la la-phone"></i> 071 6206312</li>
-                            <li><i class="la la-home"></i> 256 Interior the good, New York</li>
+                            <li><i class="la la-phone"></i> (+94)70 399 8877</li>
+                            <li><i class="la la-map-marker"></i> 51/1, Colombo Road, 10290 Boralesgomuwa, Sri Lanka</li>
                             <li><i class="la la-envelope-o"></i><a href="#">Supportyou@Interiores.com</a></li>
                         </ul>
                     </div>
                     <div class="top-right">
                    
                         <ul class="social-icon-one clearfix">
-                            <li><a href="#"><i class="la la-facebook-f"></i></a></li>
+                            <li><a href="https://www.facebook.com/rightplace.lk/"><i class="la la-facebook-f"></i></a></li>
                             <li><a href="#"><i class="la la-twitter"></i></a></li>
                             <li><a href="#"><i class="la la-linkedin"></i></a></li>
                            <li><button onclick="location.href='/dashboard/add-type';" class="btn-box theme-btn btn-style-four btn-1">Post Your Add</button></li>
@@ -149,7 +240,7 @@
                 <div class="auto-container">
                     <div class="inner-container clearfix">
                         <div class="logo-box">
-                            <div class="logo"><a href="/"><img src="images/ed-logo.png" alt="" title=""></a></div>
+                            <div class="logo"><a href="/"><img src="images/logo_right.png" alt="" title=""></a></div>
                         </div>
 
                         <div class="nav-outer">
@@ -167,6 +258,14 @@
                                     <li ><a href="/what-we-do">What we do</a></li>
                                         <li ><a href="/buy">Buy</a></li>
                                         <li ><a href="/rent">Rent</a></li>
+                                        <li class="dropdown"><a href="#">Property Advice</a>
+                                            <ul>
+                                                <li><a href="/buyers-advice">Buyer Advice</a></li>
+                                                <li><a href="/seller-advice">Seller Advice</a></li>
+                                                <li><a href="/landlord-advice">Landlord Advice</a></li>
+                                                <li><a href="/renter-advice">Renter Advice</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="/contact">Contact Us</a></li>
                                         
                                     </ul>              
@@ -206,7 +305,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="/" title=""><img src="images/ed-logo.png" alt="" title=""></a>
+                    <a href="/" title=""><img src="images/logo_right.png" alt="" title=""></a>
                 </div>
                 <!--Right Col-->
                 <div class="pull-right">
@@ -218,9 +317,17 @@
                                         <li ><a href="/what-we-do">What we do</a></li>
                                         <li ><a href="/buy">Buy</a></li>
                                         <li ><a href="/rent">Rent</a></li>
+                                        <li class="dropdown"><a href="#">Property Advice</a>
+                                            <ul>
+                                                <li><a href="/buyers-advice">Buyer Advice</a></li>
+                                                <li><a href="/seller-advice">Seller Advice</a></li>
+                                                <li><a href="/landlord-advice">Landlord Advice</a></li>
+                                                <li><a href="/renter-advice">Renter Advice</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="/contact">Contact Us</a></li>
                                 <li>
-                                    <div class="btn-box" style="padding-top: 5px"><a href="/dashboard/add-post" class="theme-btn btn-style-four">Post Your Add</a></div>
+                                    <div class="btn-box" style="padding-top: 5px"><a  href="/dashboard/add-type" class="theme-btn btn-style-four">Post Your Add</a></div>
                                 </li>
                             </ul>              
                         </div>
@@ -238,12 +345,12 @@
                     <!-- Slide 1 -->
                     <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1689" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/main-slider/image-2.jpg" data-title="Slide Title" data-transition="parallaxvertical">
                         
-                       
-                        <video playsinline autoplay muted loop id="myVideo" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120">
+                       <div class="myVideo">
+                        <video playsinline autoplay muted loop id="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120">
                             <source src="Free Animated Videos For Real Estate Agents.mp4" type="video/mp4">
                             Your browser does not support HTML5 video.
-                          </video>
-                        
+                        </video>
+                    </div>
                     </li>
                   
                    
@@ -585,14 +692,14 @@
                             <h2>WHAT WE DO</h2>
                         </div>
 
-                        <div class="text"><strong>WILLIES REAL ESTATE</strong> is the best place for elit, sed do eiusmod tempor dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et lorna aliquatd minimam, quis nostrud exercitation oris nisi ut aliquip ex ea. </div>
+                        <div class="text"><strong>RightPlace.lk</strong> services are delivered by people who combine entrepreneurial spirit and a deep understanding of specialist property sectors with the highest standards of client care. Through our advice, our property management capabilities, property valuation expertise and the transactional services we provide, we help our clients to fulfil their real estate needs – whatever and wherever they are. </div>
 
                         <div class="row features">
                             <!-- Feature Block -->
                             <div class="feature-block col-lg-6 col-md-6 col-sm-12">
                                 <div class="inner-box">
                                     <span class="icon flaticon-house-1"></span>
-                                    <h4><a href="about.html">Buy Property</a></h4>
+                                    <h4><a href="/what-we-do">Buy Property</a></h4>
                                     <div class="text">We have the best properties Sale, Buy, and Rent Dealers.</div>
                                 </div>
                             </div>
@@ -601,7 +708,7 @@
                             <div class="feature-block col-lg-6 col-md-6 col-sm-12">
                                 <div class="inner-box">
                                     <span class="icon flaticon-rent"></span>
-                                    <h4><a href="about.html">REnt Property</a></h4>
+                                    <h4><a href="/what-we-do">REnt Property</a></h4>
                                     <div class="text">We have the best properties Sale, Buy, and Rent Dealers.</div>
                                 </div>
                             </div>
@@ -610,7 +717,7 @@
                             <div class="feature-block col-lg-6 col-md-6 col-sm-12">
                                 <div class="inner-box">
                                     <span class="icon flaticon-house-5"></span>
-                                    <h4><a href="about.html">Real Estate Kit</a></h4>
+                                    <h4><a href="/what-we-do">Real Estate Kit</a></h4>
                                     <div class="text">We have the best properties Sale, Buy, and Rent Dealers.</div>
                                 </div>
                             </div>
@@ -619,7 +726,7 @@
                             <div class="feature-block col-lg-6 col-md-6 col-sm-12">
                                 <div class="inner-box">
                                     <span class="icon flaticon-apartment"></span>
-                                    <h4><a href="about.html">Sale Property</a></h4>
+                                    <h4><a href="/what-we-do">Sale Property</a></h4>
                                     <div class="text">We have the best properties Sale, Buy, and Rent Dealers.</div>
                                 </div>
                             </div>
@@ -738,7 +845,7 @@
 
                 <!-- Button Column -->
                 <div class="button-column">
-                    <a href="admin/submit-property.html" class="theme-btn btn-style-three">SUBMIT PROPERTY</a>
+                    <a href="/dashboard/add-type" class="theme-btn btn-style-three">SUBMIT PROPERTY</a>
                     <a href="/buy" class="theme-btn btn-style-one">BROWSE PROPERTY</a>
                 </div>
             </div>
@@ -757,14 +864,10 @@
             <div class="sponsors-outer">
                 <!--Sponsors Carousel-->
                 <ul class="sponsors-carousel owl-carousel owl-theme">
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/297EFC38-9419-463C-A216-EEFF11BA2FAE.jpeg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/sample 1.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/use-logo.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/Trustus.jpg" alt=""></a></figure></li>
                 </ul>
             </div>
         </div>
@@ -774,15 +877,16 @@
     <!-- News Section -->
     <!--End News Section -->
 
+   
     <!-- Main Footer -->
-    <footer class="main-footer" style="background-image: url(images/background/3.jpg);">
+    <footer class="main-footer style-three">
         <div class="auto-container">
             <div class="upper-box">
                 <div class="row">
                     <!-- Upper column -->
                     <div class="upper-column col-lg-3 col-md-12 col-sm-12">
                         <div class="footer-logo">
-                            <figure class="image"><a href="/"><img src="images/ed-logo.png" alt=""></a></figure>
+                            <figure class="image"><a href="/"><img src="images/png2.png" alt=""></a></figure>
                         </div>
                     </div>
 
@@ -792,7 +896,7 @@
                             <form method="post" action="http://expert-themes.com/html/willies/blog.html">
                                 <div class="form-group">
                                     <input type="email" name="email" value="" placeholder="Enter Your Email" required="">
-                                    <button type="submit" class="theme-btn btn-style-four">Submit</button>
+                                    <button type="submit" class="theme-btn btn-style-four"><i class="icon la la-paper-plane"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -805,8 +909,7 @@
                                 <li><a href="#"><i class="la la-facebook"></i></a></li>
                                 <li><a href="#"><i class="la la-twitter"></i></a></li>
                                 <li><a href="#"><i class="la la-google-plus"></i></a></li>
-                                <li><a href="#"><i class="la la-dribbble"></i></a></li>
-                                <li><a href="#"><i class="la la-pinterest-p"></i></a></li>
+                            
                             </ul>
                         </div>
                     </div>
@@ -817,7 +920,7 @@
             <div class="widgets-section">
                 <div class="row">
                     <!--Big Column-->
-                    <div class="big-column col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                    <div class="big-column col-xl-4 col-lg-12 col-md-12 col-sm-12">
                         <div class="row">
                             <!--Footer Column-->
                             <div class="footer-column col-lg-12 col-md-12 col-sm-12">
@@ -825,15 +928,17 @@
                                     <h2 class="widget-title">Get in Touch</h2>
                                     <div class="widget-content">
                                         <ul class="contact-list">
-                                            <li><span class="la la-map-marker"></span> 360 Harvest St, North Subract, <br>London. United States Of Amrica.</li>
-                                            <li><span class="la la-phone"></span>3695-548555 - 254-6589856</li>
+                                            <li><span class="la la-map-marker"></span> 51/1, Colombo Road, <br>
+                                                10290 Boralesgomuwa, Sri Lanka</li>
+                                            <li><span class="la la-phone"></span> (+94)70 399 8877</li>
                                             <li><span class="la la-envelope"></span><a href="#">info@benaa.com</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             
-                                     
+                            <!--Footer Column-->
+                                   
                         </div>
                     </div>
 
@@ -867,9 +972,9 @@
                                     <h2 class="widget-title">USEFUL LINKS</h2>
                                     <div class="widget-content">
                                         <ul class="list clearfix">
-                                            <li><a href="properties.html">Rental Builidngs</a></li>
-                                            <li><a href="properties.html">Browe all Categories</a></li>
-                                            <li><a href="properties.html">Mortagages Rates</a></li>
+                                            
+                                                <li><a href="/rent">Rent</a></li>
+                                                <li><a href="/buy">Buy</a></li>
                                             <li><a href="properties.html">Terms of use</a></li>
                                             <li><a href="properties.html">Privacy Policy</a></li>
                                         </ul>
@@ -888,27 +993,15 @@
                 <!--Scroll to top-->
                 <div class="scroll-to-top scroll-to-target" data-target="html"><span class="la la-angle-double-up"></span></div>
 
-                <div class="inner-container clearfix">
-                    <div class="footer-nav">
-                        <ul class="clearfix">
-                                        <li ><a href="/what-we-do">What we do</a></li>
-                                        <li ><a href="/buy">Buy</a></li>
-                                        <li ><a href="/rent">Rent</a></li>
-                                        <li><a href="/contact">Contact Us</a></li>
-                        </ul>
-
-                        
-                    </div>
-                                                                      
+                <div class="inner-container clearfix">                                             
                     <div class="copyright-text">
-                        <p><a href="#">RightPlace.lk</a></p>
+                            <p><a href="/">RightPlace.lk</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-    <!-- End Main Footer -->
-</div>
+    <!-- End Main Footer --></div>
 <!--End pagewrapper-->
 
 

@@ -28,6 +28,7 @@
 	                </div>
 	                <div class="row">
 						<div class="col-lg-3 ">
+
 								@component('admin.layout.side-nav')
 								
 								@endcomponent
@@ -168,11 +169,19 @@
 			                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
 			                                    	<button type="submit" class="theme-btn btn-style-one"> Submit Property</button>
 			                                    </div>
-			                                </div>
-			                            </form>
+											</div>
+											
+
+											
+											
+											
+											
+										</form>
+										
 			                        </div>
 	                    		</div><p>* are required</p>
-	                    	</div>
+							</div>
+							{{-- ================ --}}
 						</div>
 						
 					</div>

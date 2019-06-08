@@ -72,7 +72,7 @@
                         </div>
                     </li>
                     <li class="submit-property">
-                    	<a href="submit-property.html" class="theme-btn btn-style-one">Submit Property <i class="pe-7s-up-arrow"></i></a>
+                    	<a href="/dashboard/add-type" class="theme-btn btn-style-one">Submit Property <i class="pe-7s-up-arrow"></i></a>
                     </li>
                    
                 </ul>
