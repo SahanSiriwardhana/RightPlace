@@ -91,7 +91,7 @@
   border: none;
   background: #f1f1f1;
   resize: none;
-  min-height: 200px;
+  min-height: 100px;
 }
 
 
@@ -119,6 +119,8 @@
   background-color: red;
 }
 
+
+
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
@@ -145,7 +147,7 @@
         </script> --}}
 
         <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 
 
@@ -170,33 +172,61 @@
 
     
 
+</script> --}}
+<script type="text/javascript">
+    $(window).on('load',function(){
+        document.getElementById("myForm").style.display = "block";
+    });
 </script>
+
+<button class="open-button btn-primary col-md-2" onclick="openForm()">Contact Us</button>
+
+<div class="chat-popup" id="myForm" >
+  <form action="{{route('popupsubmit')}}" class="form-container" method="POST">
+      <button type="button" class="close" data-dismiss="alert" onclick="closeForm()" aria-label="Close">
+          <span aria-hidden="true">×</span>
+      </button>
+      <br>
+        
+    <h3>We are here to<br>advice you..</h3>
+    @if(session()->has('successFullySentEmail'))
+    <br>
+    <div class="alert alert-success">
+        {{session()->get('successFullySentEmail')}}
+    </div>
+      <br>
+    <p></p>
+  <p><a href=""> Resend massage </a></p>  
+    @else
+    
+   
+    <input  type = "text" name="name" class = "form-control" style="margin-top: 8px" placeholder = "Enter your Name"/>
+
+
+    <input type = "text" name="email" class = "form-control" style="margin-top: 8px" placeholder = "Enter your Email"/>
+
+
+    <input type = "text" name="phone" class = "form-control" style="margin-top: 8px" placeholder = "Enter your phone number"/>
+
+    
+    <textarea placeholder="Type message.." style="margin-top: 8px" name="msg" required></textarea>
+
+    <button type="submit" style="margin-top: 8px" class="btn">Send</button>
+
+    @endif
+      
+
+
+    {{csrf_field()}}
+    {{-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> --}}
+  </form>
+</div>
 
 
     <!--End of Tawk.to Script-->
   <!-- The Modal -->
   {{-- <button class="open-button btn-danger" onclick="openForm()">Contact Us</button> --}}
 
-  <div class="chat-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
-      <h2>We are here to advice you..</h2>
-      
-      <label for = "name">Name</label>
-      <input type = "text" class = "form-control" placeholder = "Enter your Name"/>
-
-      <label for = "name">Email</label>
-      <input type = "text" class = "form-control" placeholder = "Enter your Email"/>
-
-      <label for = "name">Contact Number</label>
-      <input type = "text" class = "form-control" placeholder = "Enter your phone number"/>
-
-      <label for="msg"><b>Message</b></label>
-      <textarea placeholder="Type message.." name="msg" required></textarea>
-  
-      <button type="submit" class="btn">Send</button>
-      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-    </form>
-  </div>
   
 
 

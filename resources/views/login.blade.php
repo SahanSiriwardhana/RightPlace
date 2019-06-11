@@ -194,8 +194,8 @@
                         <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" style="padding-bottom:5% ; " aria-labelledby="nav-home-tab">
                                         <div class="row container" style="padding-top:5% ; "> 
-                                            <div class="col-md-6"><a href="{{route('fblogin')}}"><button class=" social-signin facebook " style="width:100%"><i class="fa fa-facebook"></i>&nbsp; Log in with facebook</button></a></div>
-                                            <div class="col-md-6"><a href="{{route('googleLogin')}}"><button  class="social-signin google" style="width:100%"><i class="fa fa-google"></i>&nbsp; Log in with Google+</button></a></div>
+                                            <div class="col-md-6"><a href="{{route('fblogin')}}"><button class=" social-signin facebook " style="width:100%"><i class="fa fa-facebook"></i>&nbsp; facebook</button></a></div>
+                                            <div class="col-md-6"><a href="{{route('googleLogin')}}"><button  class="social-signin google" style="width:100%"><i class="fa fa-google"></i>&nbsp; Google+</button></a></div>
                                            
                                             
                                         </div>

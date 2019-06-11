@@ -62,6 +62,12 @@ Route::post('resetpw',[
     'uses' => 'UserController@ResetPassword',
     'as'=>'resetpw'
 ]);
+
+
+Route::post('popupsubmit',[
+    'uses' => 'UserController@ContactFormSubmit',
+    'as'=>'popupsubmit'
+]);
 // Auth::routes();
 Route::get('password/reset/{token?}','UserController@showResetForm');
 // Route::post('password/email','Auth\ResetPasswordController@sendResetLinkEmail');
@@ -130,7 +136,7 @@ Route::get('/dashboard/my-add', function () {
 
 //-------sale-----------------
 Route::get('/dashboard/land-sale', function () {
-    return view('admin/house-sale');
+    return view('admin/land-sale');
 });
 
 Route::get('/dashboard/house-sale', function () {

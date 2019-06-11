@@ -13,13 +13,13 @@
 	                <div class="dashboard-header clearfix">
 	                    <div class="row">
 							<div class="col-md-6 col-sm-12"><h4>Submit Property</h4><br>
-							<h5>Sale -> House</h5>
+							<h5>Sale -> Land</h5>
 							</div>
 	                        <div class="col-md-6 col-sm-12">
 	                            <div class="breadcrumb-nav">
 	                                <ul>
 	                                  
-	                                    <li><a href="/dashboard/rent">Back to category</a></li>
+	                                    <li><a href="/dashboard/sell">Back to category</a></li>
 	                                   
 	                                </ul>
 	                            </div>
@@ -98,47 +98,16 @@
 
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
-			                                        <label>Item Condition*</label>
+			                                        <label>Item Type*</label>
 			                                        <select class="custom-select-box"  >
-		                                                <option>Item Condition</option>
-		                                                <option>Brand New</option>
-		                                                <option>Used</option>
-		                                                
+		                                                <option>Item Type</option>
+		                                                <option>Agricultural</option>
+		                                                <option>Commercial</option>
+		                                                <option>Residential</option>
+		                                                <option>Other</option>
 		                                            </select>
 			                                    </div>
-                                                <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                                        <label>Beds*</label>
-                                                        <select class="custom-select-box"  >
-                                                            <option>Beds</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                            <option>10+</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                                            <label>Baths*</label>
-                                                            <select class="custom-select-box"  >
-                                                                    <option>Baths</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                    <option>9</option>
-                                                                    <option>10+</option>
-                                                                
-                                                            </select>
-                                                        </div>
+
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                                 <label>Land Size *</label>
@@ -154,13 +123,7 @@
 		                                                <option>Acres</option>
 		                                                
 		                                            </select>
-                                                </div>
-                                                  <!-- Form Group -->
-			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                                        <label>House Size*</label>
-                                                            <input type="text" name="text" placeholder="House Size (sqft)" required>
-                                                        
-                                                        </div>
+			                                    </div>
 												<div class="form-group col-lg-6 col-md-6 col-sm-12">
 			                                        <label>Rent per month *</label>
 													<input type="text" name="text" placeholder="Pick a good price (LKR)" required>

@@ -19,7 +19,7 @@
 	                            <div class="breadcrumb-nav">
 	                                <ul>
 	                                  
-	                                    <li><a href="/dashboard/rent">Back to category</a></li>
+	                                    <li><a href="/dashboard/sell">Back to category</a></li>
 	                                   
 	                                </ul>
 	                            </div>

@@ -90,8 +90,23 @@ class UserController extends Controller
 
     }
 
+    public function ContactFormSubmit(Request $request){
+        $user = $request->all();
 
-
+        $this->sendEmailFromPopup($user);
+        return  redirect()->back()->with(['successFullySentEmail' =>'Our Agents will contact you soon']);;
+    }
+//Popup form
+public function sendEmailFromPopup($user){
+    Mail::send(
+        'popupMailBody',
+        ['user'=>$user],
+        function($message) use ($user){
+            $message->to('rightplaceteam@gmail.com');
+            $message->subject("Requested a advice from ",$user["name"]);
+        }
+    );
+}
 
 
 //facebook
@@ -99,6 +114,8 @@ public function redirectToProviderFacebook()
 {
     return Socialite::driver('facebook')->redirect();
 }
+
+
 
 public function handleProviderCallbackFacebook()
 {

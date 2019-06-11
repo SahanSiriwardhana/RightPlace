@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-       // Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
+        Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -176,7 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
       
-      //  Laravel\Socialite\SocialiteServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
