@@ -20,7 +20,7 @@ class CreatePropertiesTable extends Migration
             $table->string('city');
             $table->string('town');
             $table->string('add_status')->default('pending');//-----publish , pending, cancled
-            $table->integer('type');//----sell or rent
+            $table->integer('type');//----sell=1 or rent=2
             $table->boolean('negotiable')->default(0);
             $table->string('item_type');//----agriculture,commercial,residential,other
             $table->integer('land_size');

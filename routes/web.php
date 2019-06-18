@@ -111,7 +111,9 @@ Route::get('/dashboard/rent', function () {
     return view('admin/rent-category');
 });
 
+//----------land rent--------------------
 Route::get('/dashboard/land-rent', 'LandController@index');
+
 
 Route::get('/dashboard/house-rent', function () {
     return view('admin/house');
@@ -135,9 +137,8 @@ Route::get('/dashboard/my-add', function () {
 
 
 //-------sale-----------------
-Route::get('/dashboard/land-sale', function () {
-    return view('admin/land-sale');
-});
+Route::get('/dashboard/land-sale', 'LandSaleController@index');
+Route::post('/save-land-sale','LandSaleController@store' );
 
 Route::get('/dashboard/house-sale', function () {
     return view('admin/house-sale');
@@ -171,3 +172,6 @@ Route::get('/seller-advice', function () {
 Route::get('/landlord-advice', function () {
     return view('landlord-advice');
 });
+
+//------------------fetch data from city-----------
+Route::post('loadCity/fetch', 'CityController@fetchCity')->name('loadCity.fetch');

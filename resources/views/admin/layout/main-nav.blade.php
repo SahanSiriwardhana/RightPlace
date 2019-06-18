@@ -13,6 +13,7 @@
 <link id="theme-color-file" href="css/blue-theme.css" rel="stylesheet">
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -26,8 +27,7 @@
 }
 .sub-list-group{
 	margin: 10px;
-	
-}
+	}
 .list-group-item{
 
 }
@@ -37,7 +37,29 @@
 .act{
 	border-left: 3px solid #0074D9;
 }
+.popover{
+    border: 2px dotted #0074D9;
+    background: #a7f3f9;
+    width: 150px;
+    border-radius: 5px;
+}
+.arrow{
+   
+}
+.popover-header{
+    color: black;
+    font-weight: 1600;
+    background-color: #a7f3f9;
+    text-align: center;
+    text-transform: none;
+    font-size: 11px;
+}
+.popover-body{
+  
+    text-align: center;
+color: black;
 
+}
 </style>
 </head>
 
@@ -92,12 +114,188 @@
     <script src="js/appear.js"></script>
     <script src="js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
     <script>
+   
         $(document).ready(function() {
-        $('#js-example-basic-single').select2();
+        $('#js-example-basic-single').select2({
+            placeholder: 'Select Your City'
+        });
+        $('#loadcity').select2();
     });
-    $('#popoverData').popover();
+    $('.popoverDat').popover();
     $('#popoverData1').popover();
+
+        $(document).ready(function(){
+            $('#js-example-basic-single').change(function(){
+                $('#loadcity').val();
+                var value=$("#js-example-basic-single").val();
+                //alert(value);
+                $.ajax({
+                    url:"{{ route('loadCity.fetch') }}",
+                    method:"POST",
+                    data:{
+                        "_token": "{{ csrf_token() }}",
+                        "district": value
+                        },
+                    success: function(data){
+                        $('#loadcity').find('option')
+                                        .remove()
+                                        .end()
+                                        .append(data); 
+                    }
+                });
+            });
+        });
+
+        function countChar(val) {
+        var len = val.value.length;
+        if (len >= 5000) {
+          val.value = val.value.substring(0, 5000);
+        } else {
+          $('#charNum').text(5000 - len +' characters allowed');
+        }
+      };
+
+      function countChar2(val) {
+        var len = val.value.length;
+        if (len >= 50) {
+          val.value = val.value.substring(0, 50);
+        } else {
+          $('#charNum2').text(50 - len +' characters allowed');
+        }
+      };
+
+        $(document).ready(function(){
+
+            // Disable AutoDiscover
+            Dropzone.autoDiscover = false;
+
+        // Set Dropzone Options
+            Dropzone.options.myDropZone1 = {
+                autoProcessQueue: false,
+                uploadMultiple: true,
+                parallelUploads: 20,
+                maxFiles: 5,
+                addRemoveLinks: true,
+                acceptedFiles: "image/*",
+                maxFilesize: 2,
+                addRemoveLinks: true,
+                dictDefaultMessage: "Drop your files here!",
+            }
+            var url1 = $('#formData').attr('action');
+            // Initialize Dropzone
+            var myDropzone = new Dropzone("#myDropZone1", {url: url1});
+
+            // Initialize Submit Button
+            var submitButton = document.querySelector("#submit");
+
+
+    // Submit Button Event on click
+    submitButton.addEventListener("click", function(e) {
+        e.preventDefault();
+    // Serialize Form
+        var form = $('#formData').serialize();
+
+        // if dropzone has files processqueue and submit formdata with dropzone
+        if (myDropzone.getQueuedFiles().length > 0) {
+                    myDropzone.processQueue();
+            } else {
+        //-------post the all data without image-----------------
+        $.ajax({
+            type: 'post',
+    // First, validate form
+            url: url1,
+            data: form,
+            dataType:"json",
+            success: function(data){
+                //check the validatins
+                if(data.error.length>0){
+                        var error_html='';
+                        for (var index = 0; index < data.error.length; index++) {
+                            error_html+=data.error[index]+'<br/>';
+                            
+                        }
+                        $('#result').html(error_html);
+                                                    Swal.fire({
+                            title: 'Error!',
+                            html: error_html,
+                            type: 'error',
+                            confirmButtonText: 'Cool'
+                            })
+                    }else{
+                        // if dropzone has no files store item without images
+                                         Swal.fire(
+                                        'Good job!',
+                                        'Data Saved!',
+                                        'success'
+                                        )
+                            
+                }
+            },
+            error: function(data){
+        // on validate error show errors (using sweet alert)
+                var result = $.parseJSON(data.responseText);
+                var arr = [];
+                $.each(result, function(key, value) {
+                    arr += value + "\n";
+                });
+                swal({
+                    title: "Error!",
+                    text: arr,
+                    type: "error",
+                    confirmButtonText: "Ok"
+                });
+            }
+        });
+                            }
+        //----------end of ajax post without image
+    });
+
+    //--------end of submit--------------
+
+    // on sending via dropzone append token and form values (using serializeObject jquery Plugin)
+    myDropzone.on("sendingmultiple", function(file, xhr, formData) {
+        formData.append('_token', '{{ csrf_token() }}');
+        // var form = $('#formData')[0]; // You need to use standard javascript object here
+        // var formValues = new FormData(form);
+          var formValues = $('#formData').serializeArray();
+        // $.each(formValues, function(key, value){
+        //     formData.append(key, value);
+        // });
+        for (var i=0; i<formValues.length; i++){
+        formData.append(formValues[i].name, formValues[i].value);
+        }
+           // formData.append('formData',formValues);  
+       
+        //formData=formData+formValues;
+    });
+
+     // on success redirect
+     myDropzone.on("successmultiple", function(){
+        Swal.fire(
+                                        'Good job photo upload!',
+                                        'You clicked the button!',
+                                        'success'
+                                        )
+                                       
+    });
+
+    // on error show errors
+    myDropzone.on("errormultiple", function(file, errorMessage, xhr){
+        var arr = [];
+        $.each(errorMessage, function(key, value) {
+            arr += value + "\n";
+        });
+        swal({
+            title: "Error!",
+            text: arr,
+            type: "error",
+            confirmButtonText: "Ok"
+        });
+    });
+    //-----end of document.ready -----------
+        });
     </script>
     </body>
     
