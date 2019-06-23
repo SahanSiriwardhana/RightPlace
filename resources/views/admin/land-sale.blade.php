@@ -92,9 +92,9 @@
 			                                <div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12">
-			                                        <div id="myDropZone1" class="dropzone dropzone-design" name="" style="height: 200px;">
+			                                        <div id="myDropZone1" class="dropzone dropzone-design" name="" >
 														
-				                                        <div class="dz-default dz-message"><div class="" style="text-align: center;font-size: 40px;">	<i class="fas fa-camera fa-5x"></i></div><span>Drop files here to upload</span></div>
+				                                        <div class="dz-default dz-message"><span>  Image size should be lower than 2MB , Drop files here to upload</span></div>
 				                                    </div>
 			                                    </div>
 											</div>
@@ -150,7 +150,7 @@
 													@enderror
 			                                    </div>
 												<div class="form-group col-lg-6 col-md-6 col-sm-12">
-			                                        <label>Rent per month *</label>
+			                                        <label>Price *</label>
 													<input type="text" name="rentPerMonth" placeholder="Pick a good price (LKR)" required value="{{old('rentPerMonth')}}">
 													@error('rentPerMonth')
 													<div class="alert alert-danger">{{ $message }}</div>

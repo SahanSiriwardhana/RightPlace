@@ -5,21 +5,50 @@
 <meta charset="utf-8">
 <title>RightPlace.lk</title>
 <!-- Stylesheets -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/responsive.css" rel="stylesheet">
+<link href="{{ URL::asset('css/bootstrap.css')}}" rel="stylesheet">
+<link href="{{ URL::asset('css/style.css')}}" rel="stylesheet">
+<link href="{{ URL::asset('css/responsive.css')}}" rel="stylesheet">
 <!--Color Switcher Mockup-->
 <link href="css/color-switcher-design.css" rel="stylesheet">
 <!--Color Themes-->
-<link id="theme-color-file" href="css/color-themes/blue-theme.css" rel="stylesheet">
+<link id="theme-color-file" href="{{ URL::asset('css/color-themes/blue-theme.css')}}" rel="stylesheet">
 
 
-<link rel="icon" href="images/rightplace_ico.png" type="image/x-icon">
+<link rel="icon" href="{{URL::asset('images/rightplace_ico.png')}}" type="image/x-icon">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 <!-- Responsive -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+<style>
+#numberCircle{
+  border-radius: 50%;
+  behavior: url(PIE.htc);
+  /* remove if you don't care about IE8 */
+  width: 30px;
+  height: 30px;
+  padding: -1px;
+  background: #0074D9;
+  border: 2px solid #0074D9;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  text-transform: capitalize;
+}
+.btn-3{
+    font-size: 25px;
+    font-weight: 10;
+    text-transform: capitalize;
+}
+.la-check-circle-o{
+    color: green;
+    font-size: 12px;
+}
+.approveAdd , .approveAddCom , .approveAddHouse , .approveAddApartment , .approveAddRoom , .approveAddHolyday{
+    background-color: red;
+}
+</style>
 </head>
 
 <body>
@@ -64,7 +93,7 @@
                 <div class="auto-container">
                     <div class="inner-container clearfix">
                         <div class="logo-box">
-                            <div class="logo"><a href="/"><img src="images/logo_right.png" alt="" title=""></a></div>
+                            <div class="logo"><a href="/"><img src="{{ URL::asset('images/logo_right.png')}}" alt="" title=""></a></div>
                         </div>
 
                         <div class="nav-outer">
@@ -129,7 +158,7 @@
             <div class="auto-container clearfix">
                 <!--Logo-->
                 <div class="logo pull-left">
-                    <a href="/" title=""><img src="images/logo_right.png" alt="" title=""></a>
+                    <a href="/" title=""><img src="{{ URL::asset('images/logo_right.png')}}" alt="" title=""></a>
                 </div>
                 <!--Right Col-->
                 <div class="pull-right">
@@ -171,7 +200,7 @@
                     <!-- Upper column -->
                     <div class="upper-column col-lg-3 col-md-12 col-sm-12">
                         <div class="footer-logo">
-                            <figure class="image"><a href="/"><img src="images/logo_right.png" alt=""></a></figure>
+                            <figure class="image"><a href="/"><img src="{{ URL::asset('images/logo_right.png')}}" alt=""></a></figure>
                         </div>
                     </div>
 
@@ -292,19 +321,368 @@
 
 
 
-<script src="js/jquery.js"></script> 
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/jquery.fancybox.js"></script>
-<script src="js/owl.js"></script>
-<script src="js/wow.js"></script>
-<script src="js/isotope.js"></script>
-<script src="js/mixitup.js"></script>
-<script src="js/appear.js"></script>
-<script src="js/script.js"></script>
+<script src="{{ URL::asset('js/jquery.js')}}"></script> 
+<script src="{{ URL::asset('js/popper.min.js')}}"></script>
+<script src="{{ URL::asset('js/bootstrap.min.js')}}"></script>
+<script src="{{ URL::asset('js/jquery-ui.js')}}"></script>
+<script src="{{ URL::asset('js/jquery.fancybox.js')}}"></script>
+<script src="{{ URL::asset('js/owl.js')}}"></script>
+<script src="{{ URL::asset('js/wow.js')}}"></script>
+<script src="{{ URL::asset('js/isotope.js')}}"></script>
+<script src="{{ URL::asset('js/mixitup.js')}}"></script>
+<script src="{{ URL::asset('js/appear.js')}}"></script>
+<script src="{{ URL::asset('js/script.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <!-- Color Setting -->
-<script src="js/color-settings.js"></script>
+<script src="{{ URL::asset('js/color-settings.js')}}"></script>
+<script>
+    $(document).ready(function(){
+        // $('#dist').select2();
+        // $('#town').select2();
+        // $('#price').select2();
+        $('.custom-select-box2').selectmenu();
+        //-----------ad type
+        $('.custom-select-box2').on('selectmenuchange', function() {
+            var adType=$(this).val();
+            var token = $(this).data("token");
+            window.location.href = "/buy/"+adType;
+           
+        });
+        
+        //-----district---------------------
+		$('#dist').on('selectmenuchange', function() {
+            
+           var district=$(this).val();
+           window.location.href='/buy/district/'+district
+        });
+
+        //-------------town----------------
+            $('#town').on('selectmenuchange', function() {
+                var town=$(this).val();
+                window.location.href='/buy/town/'+town 
+            });
+        
+        //-------------price----------------
+            $('#price').on('selectmenuchange', function() {
+            var price=$(this).val();
+            window.location.href='/buy/price/'+price
+            });
+        
+	
+    //-----------ad type rent
+    $('#adType2').on('selectmenuchange', function() {
+            var adType=$(this).val();
+            var token = $(this).data("token");
+            window.location.href = "/rent/"+adType;
+           
+        });
+        
+        //-----district rent---------------------
+		$('#dist2').on('selectmenuchange', function() {
+            
+           var district=$(this).val();
+           window.location.href='/rent/district/'+district
+        });
+
+        //-------------town rent----------------
+            $('#town2').on('selectmenuchange', function() {
+                var town=$(this).val();
+                window.location.href='/rent/town/'+town 
+            });
+        
+        //-------------price rent----------------
+            $('#price2').on('selectmenuchange', function() {
+            var price=$(this).val();
+            window.location.href='/rent/price/'+price
+            });
+        
+        
+       
+
+        
+        
+});
+    
+    $(document).ready(function(){
+       
+       
+        //----function to land-------------
+        $(document).on('click', '.approveAdd', function(){
+
+
+                var id = $(this).data("id");
+                var token = $(this).data("token");
+                Swal.fire({
+                title: 'Are you sure?',
+                text: "You want to approve this add!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Approve!'
+                }).then((result) => {
+                if (result.value) {
+                // alert(token);
+                $.ajax({
+                        url: "/ad-approve/"+id,
+                        type: 'get',
+                        dataType: "JSON",
+                        data: {
+                            "id": id,
+                            "_method": 'get',
+                            "_token": token,
+                        },
+                        success: function (data){
+                            console.log(data);
+                            Swal.fire(
+                'Sucess!',
+                'Ad has been approved',
+                'success'
+                )
+                    
+                $('.approveAdd').hide();  
+                        }
+                    });
+
+                    console.log("It failed");
+
+                }
+                })
+                //alert(token);
+   
+        });
+        //-------end of function land
+
+        //--function to commercial prop
+        $(document).on('click', '.approveAddCom', function(){
+
+
+var id = $(this).data("id");
+var token = $(this).data("token");
+Swal.fire({
+title: 'Are you sure?',
+text: "You want to approve this add!",
+type: 'warning',
+showCancelButton: true,
+confirmButtonColor: '#3085d6',
+cancelButtonColor: '#d33',
+confirmButtonText: 'Yes, Approve!'
+}).then((result) => {
+if (result.value) {
+// alert(token);
+$.ajax({
+        url: "/ad-approve-com/"+id,
+        type: 'get',
+        dataType: "JSON",
+        data: {
+            "id": id,
+            "_method": 'get',
+            "_token": token,
+        },
+        success: function (data){
+            console.log(data);
+            Swal.fire(
+'Sucess!',
+'Ad has been approved',
+'success'
+)
+$('.approveAddCom').hide();
+            
+        }
+    });
+
+    console.log("It failed");
+
+}
+})
+});
+//--------------end of function commercial prop
+
+
+
+//-------------fuction to approve home------approveAddHouse
+$(document).on('click', '.approveAddHouse', function(){
+
+
+var id = $(this).data("id");
+var token = $(this).data("token");
+Swal.fire({
+title: 'Are you sure?',
+text: "You want to approve this add!",
+type: 'warning',
+showCancelButton: true,
+confirmButtonColor: '#3085d6',
+cancelButtonColor: '#d33',
+confirmButtonText: 'Yes, Approve!'
+}).then((result) => {
+if (result.value) {
+// alert(token);
+$.ajax({
+        url: "/ad-approve-house/"+id,
+        type: 'get',
+        dataType: "JSON",
+        data: {
+            "id": id,
+            "_method": 'get',
+            "_token": token,
+        },
+        success: function (data){
+            console.log(data);
+            Swal.fire(
+'Sucess!',
+'Ad has been approved',
+'success'
+)
+$('.approveAddHouse').hide();
+            
+        }
+    });
+
+    console.log("It failed");
+
+}
+})
+});
+
+//----------------end of house approve function---------
+
+
+//------------approve Apartment function approveAddApartment
+$(document).on('click', '.approveAddApartment', function(){
+
+
+var id = $(this).data("id");
+var token = $(this).data("token");
+Swal.fire({
+title: 'Are you sure?',
+text: "You want to approve this add!",
+type: 'warning',
+showCancelButton: true,
+confirmButtonColor: '#3085d6',
+cancelButtonColor: '#d33',
+confirmButtonText: 'Yes, Approve!'
+}).then((result) => {
+if (result.value) {
+// alert(token);
+$.ajax({
+        url: "/ad-approve-apartment/"+id,
+        type: 'get',
+        dataType: "JSON",
+        data: {
+            "id": id,
+            "_method": 'get',
+            "_token": token,
+        },
+        success: function (data){
+            console.log(data);
+            Swal.fire(
+'Sucess!',
+'Ad has been approved',
+'success'
+)
+$('.approveAddApartment').hide();
+            
+        }
+    });
+
+    console.log("It failed");
+
+}
+})
+});
+//-------------------------------------------
+
+//----------approveAdd Room function
+$(document).on('click', '.approveAddRoom', function(){
+
+
+var id = $(this).data("id");
+var token = $(this).data("token");
+Swal.fire({
+title: 'Are you sure?',
+text: "You want to approve this add!",
+type: 'warning',
+showCancelButton: true,
+confirmButtonColor: '#3085d6',
+cancelButtonColor: '#d33',
+confirmButtonText: 'Yes, Approve!'
+}).then((result) => {
+if (result.value) {
+// alert(token);
+$.ajax({
+        url: "/ad-approve-room/"+id,
+        type: 'get',
+        dataType: "JSON",
+        data: {
+            "id": id,
+            "_method": 'get',
+            "_token": token,
+        },
+        success: function (data){
+            console.log(data);
+            Swal.fire(
+'Sucess!',
+'Ad has been approved',
+'success'
+)
+$('.approveAddRoom').hide();
+            
+        }
+    });
+
+    console.log("It failed");
+
+}
+})
+});
+//--------------------------------------------
+
+//------------approveAdd Holyday rental function 
+$(document).on('click', '.approveAddHolyday', function(){
+
+
+var id = $(this).data("id");
+var token = $(this).data("token");
+Swal.fire({
+title: 'Are you sure?',
+text: "You want to approve this add!",
+type: 'warning',
+showCancelButton: true,
+confirmButtonColor: '#3085d6',
+cancelButtonColor: '#d33',
+confirmButtonText: 'Yes, Approve!'
+}).then((result) => {
+if (result.value) {
+// alert(token);
+$.ajax({
+        url: "/ad-approve-holyday/"+id,
+        type: 'get',
+        dataType: "JSON",
+        data: {
+            "id": id,
+            "_method": 'get',
+            "_token": token,
+        },
+        success: function (data){
+            console.log(data);
+            Swal.fire(
+'Sucess!',
+'Ad has been approved',
+'success'
+)
+$('.approveAddRoom').hide();
+            
+        }
+    });
+
+    console.log("It failed");
+
+}
+})
+});
+    });
+</script>
 </body>
 
 </html>

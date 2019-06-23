@@ -1184,11 +1184,21 @@ img{
 
 /*=== Property Block ===*/
 
-.property-block{
-	position: relative;
-	margin-bottom: 40px;
+.prop{
+
 }
 
+.property-block{
+	box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+	position: relative;
+	margin-bottom: 0px;
+	padding: 10px;
+}
+.property-block:hover{
+	
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 .property-block .inner-box{
 	position: relative;
 }
@@ -1214,7 +1224,7 @@ img{
 .property-block .content-box{
 	position: relative;
 	float: left;
-	max-width: 320px;
+	max-width: 350px;
 	width: 100%;
 }
 
@@ -1223,10 +1233,14 @@ img{
 	display: block;
 	font-size: 18px;
 	line-height: 1.2em;
-	color: #222222;
+	color: #838383;
 	font-weight: 500;
 	margin-bottom: 10px;
 }
+.property-block h3:hover{
+	color: #000000;
+}
+
 
 .property-block .location{
 	position: relative;
@@ -1238,10 +1252,21 @@ img{
 	margin-bottom: 10px;
 }
 
-.property-block .location i{
+.property-block .location .la-map-marker{
 	float: left;
-	color: #0074D9;
-	font-size: 20px;
+	
+	line-height: 24px;
+	margin-right: 4px;
+}
+.property-block .location .la-clock-o{
+	
+	
+	line-height: 24px;
+	margin-right: 4px;
+}
+.property-block .location .la-tag{
+	
+	
 	line-height: 24px;
 	margin-right: 4px;
 }

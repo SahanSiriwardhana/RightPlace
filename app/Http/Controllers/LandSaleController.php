@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input as Input;
 use Illuminate\Http\Request;
+use DB;
 use App\Land;
 use App\District;
+use App\City;
+use App\User;
+use App\House;
 
 class LandSaleController extends Controller
 {
@@ -19,7 +23,7 @@ class LandSaleController extends Controller
     {
        $district=new District();
        $data=District::all(); 
-       return view('admin/land-sale')->with('districts',$data);;
+       return view('admin/land-sale')->with('districts',$data);
     }
 
     /**
@@ -51,7 +55,7 @@ class LandSaleController extends Controller
             'rentPerMonth'=>'required|numeric',
             'detailInfo'=>'required|max:5000',
             'phone'=>'required|numeric|regex:/^[0-9]{10}$/',
-          
+            'file[0]'=>'image|max:2048',
         ]);
 
         $error_array=array();
@@ -80,7 +84,7 @@ class LandSaleController extends Controller
             $land->town=$request->town;
             $land->title=$request->addTitle;
             $land->add_status="pending";
-            $land->type=1;
+            $land->type=1;//sale
             $land->negotiable=$request->negotiable;
             $land->item_type=$request->itemType;
             $land->land_size=$request->landSize;
@@ -93,7 +97,7 @@ class LandSaleController extends Controller
             if($request->hasFile('file')){
             for($j=0;$j<sizeof($file);$j++){
             $k=$j+1;
-            $land->{'image'.$k}=$imageName[0];
+            $land->{'image'.$k}=$imageName[$j];
             }
         }
             $land->save(); 
@@ -117,8 +121,23 @@ class LandSaleController extends Controller
     public function show($id)
     {
         //
+        $district=District::all(); 
+        $city=City::all();
+        $land=Land::find($id);
+        $user=User::find($land->user_id);
+        $resentLand=DB::table('lands')->where('add_status', '=', 'published')->orderBy('updated_at', 'desc')->limit(4)->get();
+        return view('property-detail',['land'=>$land,'districts'=>$district,'cities'=>$city,'user'=>$user,'resentLands'=>$resentLand]);
+
     }
 
+    public function approve($id){
+        DB::table('lands')
+            ->where('id', $id)
+            ->update(['add_status' => 'published']);
+            return response()->json([
+                'success' => 'Record has been deleted successfully!'
+            ]);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -151,5 +170,8 @@ class LandSaleController extends Controller
     public function destroy($id)
     {
         //
+        $house=Land::find($id);
+        $house->delete();
+        return redirect()->back()->with('success', 'Property has been deleted..!');
     }
 }

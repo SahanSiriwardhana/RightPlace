@@ -37,77 +37,81 @@
 	                    	<div class="properties-box">
 	                    		<div class="inner-container">
 	                    			<div class="property-submit-form">
-			                            <form method="post" action="http://expert-themes.com/html/willies/admin/index.html">
+										<form method="post" action="/save-commercial-rent" enctype="multipart/form-data" id="formData" >
+											{{ csrf_field() }}
 											
 											<div class="title"><h3>Location Info</h3></div>
-											<div class="col-lg-12" id="popoverData" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
-			                                <div class="row">
-			                                	
-												
-			                                    <!-- Form Group -->
-			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-													<label>You City*</label>
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Enter Location Information" data-trigger="hover">
+												<div class="row">
 													
-			                                        <select class="custom-select-box">
-		                                                <option>Select Location</option>
-		                                                <option>New York</option>
-		                                                <option>Los Angeles</option>
-		                                                <option>Chicago</option>
-		                                                <option>Houston</option>
+													
+													<!-- Form Group -->
+													<div class="form-group col-lg-6 col-md-6 col-sm-12">
+														<label>You City*</label>
+														
+														<select class="" name="city" id="js-example-basic-single" required>
+															<option value="">Select Location</option>
+															@foreach ($districts as $district)
+																<option value="{{$district->did}}">{{$district->dname}}</option>
+															@endforeach
+															
+								   
+														</select>
+												
+													</div>
+	
+												  
+	
+													<!-- Form Group -->
+													<div class="form-group col-lg-6 col-md-6 col-sm-12">
+													   <label >Your Town*</label>
+													   <select class="" name="town" id="loadcity" required>
+														<option value="">Select Your town</option>
+														
 													</select>
-											
-			                                    </div>
-
-			                                  
-
-			                                    <!-- Form Group -->
-			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-			                                       <label >Your Town*</label>
-			                                        <select class="custom-select-box">
-			                                            <option>Nothing Select</option>
-			                                            <option>Sale</option>
-			                                        </select>
+													</div>
+													<div class="form-group col-lg-12 col-md-6 col-sm-12">
+														<div class="range-slider-one clearfix">
+															<label>Address</label>
+															<input type="text" name="address" placeholder="Address" value="{{old('address')}}">
+														</div>
+													</div>
 												</div>
-												<div class="form-group col-lg-12 col-md-6 col-sm-12">
-			                                        <div class="range-slider-one clearfix">
-			                                            <label>Address</label>
-			                                         	<input type="text" name="text" placeholder="Address" required>
-			                                        </div>
 												</div>
-											</div>
-											</div>
 											
 											<div class="title"><h3>Property Gallery</h3></div>
-											<div class="col-lg-12" id="popoverData1" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
-			                                <div class="row">
-			                                	<!-- Form Group -->
-			                                    <div class="form-group col-lg-12">
-			                                        <div id="myDropZone" class="dropzone dropzone-design">
-				                                        <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
-				                                    </div>
-			                                    </div>
-											</div>
-											</div>
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
+												<div class="row">
+													<!-- Form Group -->
+													<div class="form-group col-lg-12">
+														<div id="myDropZone1" class="dropzone dropzone-design">
+															<div class="dz-default dz-message"><span>Drop files here to upload</span></div>
+														</div>
+													</div>
+												</div>
+												</div>
 											<div class="title"><h3>Basic Info</h3></div>
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
 			                                <div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12 col-md-6 col-sm-12">
 			                                        <label>Title For Your Add*</label>
-													<input type="text" name="text" placeholder="Property Title" required>
+													<input type="text" name="addTitle" placeholder="Property Title" required value="{{old('addTitle')}}" onkeyup="countChar2(this)">
+													<div id="charNum2">50 characters allowed</div>
 			                                    </div>
 
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
 			                                        <label>Item Type*</label>
-			                                        <select class="custom-select-box"  >
-		                                                <option>Item Type</option>
-		                                                <option>Building</option>
-		                                                <option>Factory/Workshop</option>
-		                                                <option>Hotel</option>
-                                                        <option>Resturant</option>
-                                                        <option>Shops</option>
-		                                                <option>Warehouses/Storage</option>
-		                                                <option>Other</option>
+			                                        <select class="custom-select-box"  name="itemType">
+		                                                <option value="">Item Type</option>
+		                                                <option value="Building">Building</option>
+		                                                <option value="Factory/Workshop">Factory/Workshop</option>
+		                                                <option value="Hotel">Hotel</option>
+                                                        <option value="Resturant">Resturant</option>
+                                                        <option value="Shops">Shops</option>
+		                                                <option value="Warehouses/Storage">Warehouses/Storage</option>
+		                                                <option value="Other">Other</option>
 		                                            </select>
 			                                    </div>
 
@@ -115,16 +119,17 @@
                                                   <!-- Form Group -->
                                                   <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                                         <label>Size*</label>
-                                                            <input type="text" name="text" placeholder="Size (sqft)" required>
+															<input type="text" name="size" placeholder="Size (sqft)" required value="{{old('size')}}">
+														
                                                         
                                                         </div>
 												<div class="form-group col-lg-6 col-md-6 col-sm-12">
-			                                        <label>Rent per month *</label>
-													<input type="text" name="text" placeholder="Pick a good price (LKR)" required>
+			                                        <label>Price *</label>
+													<input type="text" name="rentPerMonth" placeholder="Pick a good price (LKR)" required value="{{old('rentPerMonth')}}">
 			                                    </div>
 												<div class="form-group col-lg-3 col-md-6 col-sm-12 " style="padding-top: 40px">
 					                                <div class="check-box">
-					                                    <input type="checkbox" name="negotiable" id="service-1"> 
+					                                    <input type="checkbox" name="negotiable" id="service-1" value="1"> 
 					                                    <label for="service-1">Negotiable</label>
 					                                </div>
 					                            </div>
@@ -137,32 +142,39 @@
 
 			                                   
 			                                </div>
-
+											</div>
 
 			                               
 
 											<div class="title"><h3>Detailed Information</h3></div>
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
 			                                <div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12">
-			                                    	<textarea name="detail" placeholder="Detailed Information*"></textarea>
+													<textarea name="detailInfo" placeholder="Detailed Information*" required value="{{old('detailInfo')}}" onkeyup="countChar(this)"></textarea>
+													<div id="charNum">5000 characters allowed</div>
 			                                    </div>
-			                                </div>
-			                                <div class="title"><h3>Contact Info</h3></div>
+											</div>
+											</div>
+											<div class="title"><h3>Contact Info</h3></div>
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
 			                                <div class="row">
 			                                	
 
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
 			                                        <label>Phone</label>
-			                                        <input type="text" name="phone" placeholder="Phone" required>
+													<input type="text" name="phone" placeholder="Phone" required value="{{old('phone')}}">
+													<div class="" style="color: red">Phone number should be 07XXXXXXXX format (Should be 10 digits)</div>
+												
 			                                    </div>
 
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
-			                                    	<button type="submit" class="theme-btn btn-style-one"> Submit Property</button>
+			                                    	<button type="submit" class="theme-btn btn-style-one"  id="submit"> Submit Property</button>
 			                                    </div>
-			                                </div>
+											</div>
+											</div>
 			                            </form>
 			                        </div>
 	                    		</div><p>* are required</p>

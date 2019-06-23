@@ -37,10 +37,10 @@
 	                    	<div class="properties-box">
 	                    		<div class="inner-container">
 	                    			<div class="property-submit-form">
-			                            <form method="post" action="http://expert-themes.com/html/willies/admin/index.html">
-											
+			                            <form method="post" action="/save-house-rent" enctype="multipart/form-data" id="formData">
+											{{ csrf_field() }}
 											<div class="title"><h3>Location Info</h3></div>
-											<div class="col-lg-12" id="popoverData" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Enter Location Information" data-trigger="hover">
 			                                <div class="row">
 			                                	
 												
@@ -48,12 +48,13 @@
 			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
 													<label>You City*</label>
 													
-			                                        <select class="custom-select-box">
-		                                                <option>Select Location</option>
-		                                                <option>New York</option>
-		                                                <option>Los Angeles</option>
-		                                                <option>Chicago</option>
-		                                                <option>Houston</option>
+													<select class="" name="city" id="js-example-basic-single" required>
+														<option value="">Select Location</option>
+														@foreach ($districts as $district)
+															<option value="{{$district->did}}">{{$district->dname}}</option>
+														@endforeach
+		                                                
+		                       
 													</select>
 											
 			                                    </div>
@@ -63,111 +64,113 @@
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
 			                                       <label >Your Town*</label>
-			                                        <select class="custom-select-box">
-			                                            <option>Nothing Select</option>
-			                                            <option>Sale</option>
-			                                        </select>
+												   <select class="" name="town" id="loadcity" required>
+													<option value="">Select Your town</option>
+													
+												</select>
 												</div>
 												<div class="form-group col-lg-12 col-md-6 col-sm-12">
 			                                        <div class="range-slider-one clearfix">
 			                                            <label>Address</label>
-			                                         	<input type="text" name="text" placeholder="Address" required>
+			                                         	<input type="text" name="address" placeholder="Address" value="{{old('address')}}" >
 			                                        </div>
 												</div>
 											</div>
 											</div>
 											
 											<div class="title"><h3>Property Gallery</h3></div>
-											<div class="col-lg-12" id="popoverData1" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
 			                                <div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12">
-			                                        <div id="myDropZone" class="dropzone dropzone-design">
+													<div id="myDropZone1" class="dropzone dropzone-design" name="">
 				                                        <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
 				                                    </div>
 			                                    </div>
 											</div>
 											</div>
 											<div class="title"><h3>Basic Info</h3></div>
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
 			                                <div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12 col-md-6 col-sm-12">
 			                                        <label>Title For Your Add*</label>
-													<input type="text" name="text" placeholder="Property Title" required>
-			                                    </div>
+													<input type="text" name="addTitle" placeholder="Property Title" value="{{old('addTitle')}}" onkeyup="countChar2(this)">
+													<div id="charNum2">50 characters allowed</div>
+												</div>
 
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
 			                                        <label>Item Condition*</label>
-			                                        <select class="custom-select-box"  >
-		                                                <option>Item Condition</option>
-		                                                <option>Brand New</option>
-		                                                <option>Used</option>
+			                                        <select class="custom-select-box"  name="itemCondition">
+		                                                <option value="">Item Condition</option>
+		                                                <option value="Brand New">Brand New</option>
+		                                                <option value="Used">Used</option>
 		                                                
 		                                            </select>
 			                                    </div>
                                                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                                         <label>Beds*</label>
-                                                        <select class="custom-select-box"  >
-                                                            <option>Beds</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                            <option>10+</option>
+                                                        <select class="custom-select-box"  name="beds" >
+                                                            <option value="">Beds</option>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10*">10+</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                                             <label>Baths*</label>
-                                                            <select class="custom-select-box"  >
-                                                                    <option>Baths</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                    <option>9</option>
-                                                                    <option>10+</option>
+                                                            <select class="custom-select-box"  name="baths">
+                                                                    <option value="">Baths</option>
+                                                                    <option value="1">1</option>
+																	<option value="2">2</option>
+																	<option value="3">3</option>
+																	<option value="4">4</option>
+																	<option value="5">5</option>
+																	<option value="6">6</option>
+																	<option value="7">7</option>
+																	<option value="8">8</option>
+																	<option value="9">9</option>
+																	<option value="10*">10+</option>
                                                                 
                                                             </select>
                                                         </div>
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                                 <label>Land Size *</label>
-													<input type="text" name="text" placeholder="Land Size" required>
+													<input type="text" name="landSize" placeholder="Land Size" required value="{{old('landSize')}}">
 			                                    
                                                 </div>
                                                  <!-- Form Group -->
 			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
 			                                        <label>Unit*</label>
-			                                        <select class="custom-select-box"  >
-		                                                <option>Unit*</option>
-		                                                <option>Perches</option>
-		                                                <option>Acres</option>
-		                                                
-		                                            </select>
+			                                        <select class="custom-select-box" name="unit" >
+		                                                <option value="">Unit*</option>
+		                                                <option value="Perches">Perches</option>
+		                                                <option value="Acres">Acres</option>
+		                                            
+													</select>
                                                 </div>
                                                   <!-- Form Group -->
 			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                                         <label>House Size*</label>
-                                                            <input type="text" name="text" placeholder="House Size (sqft)" required>
+                                                            <input type="text" name="houseSize" placeholder="House Size (sqft)" required value="{{old('houseSize')}}">
                                                         
                                                         </div>
 												<div class="form-group col-lg-6 col-md-6 col-sm-12">
 			                                        <label>Rent per month *</label>
-													<input type="text" name="text" placeholder="Pick a good price (LKR)" required>
+													<input type="text" name="rentPerMonth" placeholder="Pick a good price (LKR)" required value="{{old('rentPerMonth')}}">
 			                                    </div>
 												<div class="form-group col-lg-3 col-md-6 col-sm-12 " style="padding-top: 40px">
 					                                <div class="check-box">
-					                                    <input type="checkbox" name="negotiable" id="service-1"> 
+					                                    <input type="checkbox" name="negotiable" id="service-1" value="1"> 
 					                                    <label for="service-1">Negotiable</label>
 					                                </div>
 					                            </div>
@@ -180,33 +183,40 @@
 
 			                                   
 			                                </div>
-
+											</div>
 
 			                               
 
 			                                
 											<div class="title"><h3>Detailed Information</h3></div>
-			                                <div class="row">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
+											<div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12">
-			                                    	<textarea name="detail" placeholder="Detailed Information*"></textarea>
+			                                    	<textarea name="detailInfo" placeholder="Detailed Information*" required value="{{old('detailInfo')}}" onkeyup="countChar(this)"></textarea>
+													<div id="charNum">5000 characters allowed</div>
 			                                    </div>
-			                                </div>
-			                                <div class="title"><h3>Contact Info</h3></div>
+											</div>
+											</div>
+											<div class="title"><h3>Contact Info</h3></div>
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
 			                                <div class="row">
 			                                	
 
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
 			                                        <label>Phone</label>
-			                                        <input type="text" name="phone" placeholder="Phone" required>
+			                                        <input type="text" name="phone" placeholder="Phone" required value="{{old('phone')}}">
+													<div class="" style="color: red">Phone number should be 07XXXXXXXX format (Should be 10 digits)</div>
+												
 			                                    </div>
 
 			                                    <!-- Form Group -->
 			                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
-			                                    	<button type="submit" class="theme-btn btn-style-one"> Submit Property</button>
+			                                    	<button type="submit" class="theme-btn btn-style-one"  id="submit"> Submit Property</button>
 			                                    </div>
-			                                </div>
+											</div>
+											</div>
 			                            </form>
 			                        </div>
 	                    		</div><p>* are required</p>

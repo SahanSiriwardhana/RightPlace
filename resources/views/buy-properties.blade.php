@@ -2,7 +2,7 @@
 @section('content')
     
     <!--Page Title-->
-    <section class="page-title" style="background-image:url(images/background/16.png);">
+    <section class="page-title" style="background-image:url({{ URL::asset('images/background/16.png')}});">
         <div class="auto-container">
             <div class="inner-container clearfix">
                 <h1>Buy Properties</h1>
@@ -12,6 +12,7 @@
                 </ul>
             </div>
         </div>
+      
     </section>
     <!--End Page Title-->
 
@@ -27,14 +28,31 @@
     
                             <!--search box-->
                             <div class="sidebar-widget sort-by">
-                                <select class="custom-select-box">
-                                    <option>Sort By</option>
-                                    <option>Land</option>
-                                    <option>House</option>
-                                    <option>Apartment</option>
-                                    <option>Apartments</option>
-                                    <option>Commercial Properties</option>
-                                </select>
+                               
+                              
+                                    <div class="form-group">
+                                        <select class="custom-select-box2" id="adType" data-token="{{@csrf_token()}}">
+                                                <option value="">Sort By</option>
+                                                <option value="land" 
+                                                @if ($addCategory=='land')
+                                                    selected
+                                                @endif
+                                                >Land</option>
+                                                <option value="house"  @if ($addCategory=='house')
+                                                selected
+                                            @endif>House</option>
+                                                <option value="apartment"
+                                                @if ($addCategory=='apartment')
+                                                selected
+                                                @endif
+                                                >Apartment</option>
+                                                <option value="commercial_property"
+                                                @if ($addCategory=='commercial_property')
+                                                selected
+                                                @endif
+                                                >Commercial Properties</option>
+                                        </select>
+                                    </div>
                             </div>
     
                             <!-- Categories -->
@@ -42,16 +60,15 @@
                                 <div class="sidebar-title"><h2>Search Properties</h2></div>
                                 <!-- Property Search Form -->
                                 <div class="property-search-form style-three">
-                                    <form method="post" action="http://expert-themes.com/html/willies/index.html">
+                                    <form method="post" action="">
                                         <div class="row no-gutters">
                                             <!-- Form Group -->
                                             <div class="form-group">
-                                                <select class="custom-select-box">
-                                                    <option>Location</option>
-                                                    <option>New York</option>
-                                                    <option>Los Angeles</option>
-                                                    <option>Chicago</option>
-                                                    <option>Houston</option>
+                                                <select class="custom-select-box" id="dist">
+                                                    <option value="">Select District</option>
+                                                    @foreach ($districts as $district)
+                                                        <option value="{{$district->did}}">{{$district->dname}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
     
@@ -59,11 +76,11 @@
     
                                             <!-- Form Group -->
                                             <div class="form-group">
-                                                <select class="custom-select-box">
-                                                    <option>Location</option>
-                                                    <option>New York</option>
-                                                    <option>Los Angeles</option>
-                                                    <option>Chicago</option>
+                                                <select class="custom-select-box" id="town">
+                                                    <option value="">Select Town</option>
+                                                    @foreach ($cities as $citie)
+                                                        <option value="{{$citie->cid}}">{{$citie->cname}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
     
@@ -72,23 +89,23 @@
     
                                             <!-- Form Group -->
                                             <div class="form-group">
-                                                <select class="custom-select-box">
-                                                    <option>Price</option>
-                                                    <option>Low to High</option>
-                                                    <option>High to Low</option>
+                                                <select class="custom-select-box" id="price">
+                                                    <option value="">Price</option>
+                                                    <option value="low2high" 
+                                                    @if ($priceCategory=='low2high')
+                                                        selected
+                                                    @endif
+                                                    >Low to High</option>
+                                                    <option value="high2low" 
+                                                    @if ($priceCategory=='high2low')
+                                                        selected
+                                                    @endif
+                                                    >High to Low</option>
                                                     
                                                 </select>
                                             </div>
     
-                                            <!-- Form Group -->
-                                            <div class="form-group">
-                                                <div class="range-slider-one clearfix">
-                                                    <label>Price Filter</label>
-                                                    <div class="price-range-slider"></div>
-                                                    <div class="input"><input type="text" class="price-amount" name="field-name" readonly></div>
-                                                    <div class="title">US Doller</div>
-                                                </div>
-                                            </div>
+                                           
     
     
                                             <!-- Form Group -->
@@ -105,14 +122,11 @@
                             <div class="sidebar-widget categories">
                                 <div class="sidebar-title"><h2>Category Properties</h2></div>
                                 <ul class="cat-list">
-                                    <li><a href="#">Apartments <span>22</span></a></li>
-                                    <li><a href="#">Villas <span>45</span></a></li>
-                                    <li><a href="#">Open Houses <span>62</span></a></li>
-                                    <li><a href="#">Offices <span>70</span></a></li>
-                                    <li><a href="#">Residentals <span>90</span></a></li>
-                                    <li><a href="#">Co-Working <span>65</span></a></li>
-                                    <li><a href="#">Flat <span>48</span></a></li>
-                                    <li><a href="#">Cottage <span>24</span></a></li>
+                                    <li><a href="#">Lands <span>{{$landCount}}</span></a></li>
+                                    <li><a href="#">Houses <span>{{$housesCount}}</span></a></li>
+                                    <li><a href="#">Apartments <span>{{$apartmentsCount}}</span></a></li>
+                                    <li><a href="#">Commercial Properties <span>{{$commercialPropertiesCount}}</span></a></li>
+                                    
                                 </ul>
                             </div>
     
@@ -121,56 +135,53 @@
                                 <div class="sidebar-title"><h2>Recent Properties</h2></div>
                                 <div class="widget-content">
                                     <!-- Post -->
-                                    <article class="post">
-                                        <div class="post-thumb">
-                                            <a href="blog-detail.html">
-                                                <img src="images/resource/property-thumb-1.jpg" alt="">
-                                                <span class="status">Rent</span>
-                                            </a>
-                                        </div>
-                                        <span class="location">Lundon, UK</span>
-                                        <h3><a href="blog-detail.html">Laxury Balles Villa</a></h3>
-                                        <div class="price">$ 760,000</div>
-                                    </article>
-    
+                                  
+                                
+                                    @foreach ($resentLands as $resentLand)
                                     <!-- Post -->
+                                    <a href="/{{$resentLand->tableName}}/{{$resentLand->id}}">
                                     <article class="post">
                                         <div class="post-thumb">
-                                            <a href="blog-detail.html">
-                                                <img src="images/resource/property-thumb-2.jpg" alt="">
-                                                <span class="status">Rent</span>
-                                            </a>
-                                        </div>
-                                        <span class="location">Lundon, UK</span>
-                                        <h3><a href="blog-detail.html">Laxury Balles Villa</a></h3>
-                                        <div class="price">$ 760,000</div>
-                                    </article>
+                                            <a href="/{{$resentLand->tableName}}/{{$resentLand->id}}">
+                                           @if ($resentLand->image1!=null)
+                                           <img src="{{ URL::asset('images.image_uplode/'.$resentLand->image1.'')}}" alt="">
+                                            
+                                            <span class="status">Sale</span>
     
-                                    <!-- Post -->
-                                    <article class="post">
-                                        <div class="post-thumb">
-                                            <a href="blog-detail.html">
-                                                <img src="images/resource/property-thumb-3.jpg" alt="">
-                                                <span class="status hot">hot</span>
-                                            </a>
-                                        </div>
-                                        <span class="location">Lundon, UK</span>
-                                        <h3><a href="blog-detail.html">Laxury Balles Villa</a></h3>
-                                        <div class="price">$ 760,000</div>
-                                    </article>
+                                           
+                                                                                 @else
+                                          <img src="{{ URL::asset('images.image_uplode/land_image.jpg')}}" alt="">
+                                       
+                                            <span class="status">Sale</span>
     
-                                    <!-- Post -->
-                                    <article class="post">
-                                        <div class="post-thumb">
-                                            <a href="blog-detail.html">
-                                                <img src="images/resource/property-thumb-4.jpg" alt="">
-                                                <span class="status">Rent</span>
+                                          
+                                           @endif     
                                             </a>
                                         </div>
-                                        <span class="location">Lundon, UK</span>
-                                        <h3><a href="blog-detail.html">Laxury Balles Villa</a></h3>
-                                        <div class="price">$ 760,000</div>
+                                        <span class="location">@foreach ($cities as $city)
+                                                @if ($city->cid==$resentLand->town)
+                                                    {{$city->cname}}	
+                                                @endif
+                                                @endforeach 
+                                                ,
+                                                @foreach ($districts as $district)
+                                                @if ($district->did==$resentLand->city)
+                                                    {{$district->dname}}	
+                                                @endif
+                                                @endforeach
+                                            </span>
+                                        <h3><a href="/{{$resentLand->tableName}}/{{$resentLand->id}}">{{$resentLand->title}}</a></h3>
+                                        <div class="price">Rs {{$resentLand->rent_per_month}}.00 | {{$resentLand->type}}</div>
                                     </article>
+                                </a>
+                                    @endforeach
+                                   
+    
+                                    
+    
+                                    
+    
+                                  
                                 </div>
                             </div>
     
@@ -191,18 +202,58 @@
 
                             
                         </div>
-
+                        <div id="resultFetch">  
+                                <span class="badge badge-dark" style="font-size: 16px;font-weight: 300;text-transform: capitalize">
+                                @if ($priceCategory=='location')
+                                    @foreach ($districts as $district)
+                                        @if ($district->did==$category)
+                                            {{$district->dname}}
+                                        @endif
+                                    @endforeach
+                                @elseif ($priceCategory=='location1')
+                                     @foreach ($cities as $city)
+                                        @if ($city->cid==$category)
+                                            {{$city->cname}}
+                                        @endif
+                                    @endforeach
+                                @else
+                                    @if ($category=='commercial_property')
+                                        Commercial Property
+                                    @else
+                                    {{$category}}
+                                    @endif
+                                   
+                                @endif
+                                    
+                                </span> 
+                        @foreach ($ads as $add)
+                        
+                       <a href="/{{$add->tableName}}/{{$add->id}}" class="prop">
                         <!-- Property Block -->
                         <div class="property-block-three">
                             <div class="inner-box">
                                 <div class="row clearfix">
                                     <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
                                         <div class="image-box">
-                                            <figure class="image"><img src="images/resource/property-1.jpg" alt=""></figure>
+                                            <figure class="image">
+                                                @if ($add->image1 != null)
+														<img src="/images.image_uplode/{{$add->image1}}" alt="">
+													@else
+														<img src="/images.image_uplode/land_image.jpg" alt="">
+													@endif
+                                            </figure>
                                             <span class="for">FOR SALE</span>
-                                            <span class="featured">FEATURED</span>
+                                            
                                             <ul class="option-box">
-                                                <li><a href="images/resource/property-1.jpg" class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
+                                                <li><a 
+                                                    @if ($add->image1 != null)
+                                                    href="/images.image_uplode/{{$add->image1}}"
+													@else
+                                                    href="/images.image_uplode/land_image.jpg"
+													@endif
+                                                     
+                                                    
+                                                    class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
                                                 <li><a href="#"><i class="la la-heart"></i></a></li>
                                                 <li><a href="#"><i class="la la-retweet"></i></a></li>
                                             </ul>
@@ -214,214 +265,42 @@
 
                                     <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
                                         <div class="lower-content">
-                                            <ul class="tags">
-                                                <li><a href="/property-detail">Apartment</a>,</li>
-                                                <li><a href="/property-detail">Bar</a>,</li>
-                                                <li><a href="/property-detail">House</a>,</li>
-                                            </ul>
-                                            <div class="thumb"><img src="images/resource/thumb-5.jpg" alt=""></div>
-                                            <h3><a href="/property-detail">Single House Near Orland Park.</a></h3>
-                                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
+                                            
+                                          
+                                            <h3><a href="/{{$add->tableName}}/{{$add->id}}">{{$add->title}}</a></h3>
+                                            <div class="lucation"><i class="la la-map-marker"></i> @foreach ($cities as $city)
+                                                @if ($city->cid==$add->town)
+                                                    {{$city->cname}}	
+                                                @endif
+                                                 
+                                                @endforeach ,
+                                                @foreach ($districts as $district)
+                                                @if ($district->did==$add->city)
+                                                    {{$district->dname}}	
+                                                @endif
+                                                 
+                                                @endforeach
+                                            
+                                            </div>
                                             <ul class="property-info clearfix">
-                                                <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-                                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
+                                                <li><i class="flaticon-clock-1"></i> {{$add->updated_at}}</li>
+                                                <li><i class="la la-tag la-2x"></i>  {{$add->type}}</li>
+                                                
                                             </ul>
                                             <div class="property-price clearfix">
-                                                <div class="read-more"><a href="/property-detail" class="theme-btn">More Detail</a></div>
-                                                <div class="price">$ 13,65,000</div>
+                                                <div class="read-more"><a href="/{{$add->tableName}}/{{$add->id}}" class="theme-btn">More Detail</a></div>
+                                                <div class="price">Rs {{$add->rent_per_month}}.00</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Property Block -->
-                        <div class="property-block-three">
-                            <div class="inner-box">
-                                <div class="row clearfix">
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/property-2.jpg" alt=""></figure>
-                                            <span class="for">FOR SALE</span>
-                                            <span class="featured">FEATURED</span>
-                                            <ul class="option-box">
-                                                <li><a href="images/resource/property-2.jpg" class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
-                                                <li><a href="#"><i class="la la-heart"></i></a></li>
-                                                <li><a href="#"><i class="la la-retweet"></i></a></li>
-                                            </ul>
-                                            <ul class="info clearfix">
-                                                <li><a href="#"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="lower-content">
-                                            <ul class="tags">
-                                                <li><a href="/property-detail">Apartment</a>,</li>
-                                                <li><a href="/property-detail">Bar</a>,</li>
-                                                <li><a href="/property-detail">House</a>,</li>
-                                            </ul>
-                                            <div class="thumb"><img src="images/resource/thumb-6.jpg" alt=""></div>
-                                            <h3><a href="/property-detail">Apartment Morden 1243, W No.</a></h3>
-                                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                                            <ul class="property-info clearfix">
-                                                <li><i class="flaticon-dimension"></i> 506 Sq-Ft</li>
-                                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                                            </ul>
-                                            <div class="property-price clearfix">
-                                                <div class="read-more"><a href="/property-detail" class="theme-btn">More Detail</a></div>
-                                                <div class="price">$ 13,65,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    </a>
+                        @endforeach
                         </div>
-
-                        <!-- Property Block -->
-                        <div class="property-block-three">
-                            <div class="inner-box">
-                                <div class="row clearfix">
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/property-3.jpg" alt=""></figure>
-                                            <span class="for">FOR SALE</span>
-                                            <span class="featured">FEATURED</span>
-                                            <ul class="option-box">
-                                                <li><a href="images/resource/property-3.jpg" class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
-                                                <li><a href="#"><i class="la la-heart"></i></a></li>
-                                                <li><a href="#"><i class="la la-retweet"></i></a></li>
-                                            </ul>
-                                            <ul class="info clearfix">
-                                                <li><a href="#"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="lower-content">
-                                            <ul class="tags">
-                                                <li><a href="/property-detail">Apartment</a>,</li>
-                                                <li><a href="/property-detail">Bar</a>,</li>
-                                                <li><a href="/property-detail">House</a>,</li>
-                                            </ul>
-                                            <div class="thumb"><img src="images/resource/thumb-7.jpg" alt=""></div>
-                                            <h3><a href="/property-detail">Great Home for Single fmaily.</a></h3>
-                                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                                            <ul class="property-info clearfix">
-                                                <li><i class="flaticon-dimension"></i> 506 Sq-Ft</li>
-                                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                                            </ul>
-                                            <div class="property-price clearfix">
-                                                <div class="read-more"><a href="/property-detail" class="theme-btn">More Detail</a></div>
-                                                <div class="price">$ 13,65,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Property Block -->
-                        <div class="property-block-three">
-                            <div class="inner-box">
-                                <div class="row clearfix">
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/property-4.jpg" alt=""></figure>
-                                            <span class="for">FOR SALE</span>
-                                            <span class="featured">FEATURED</span>
-                                            <ul class="option-box">
-                                                <li><a href="images/resource/property-4.jpg" class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
-                                                <li><a href="#"><i class="la la-heart"></i></a></li>
-                                                <li><a href="#"><i class="la la-retweet"></i></a></li>
-                                            </ul>
-                                            <ul class="info clearfix">
-                                                <li><a href="#"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="lower-content">
-                                            <ul class="tags">
-                                                <li><a href="/property-detail">Apartment</a>,</li>
-                                                <li><a href="/property-detail">Bar</a>,</li>
-                                                <li><a href="/property-detail">House</a>,</li>
-                                            </ul>
-                                            <div class="thumb"><img src="images/resource/thumb-8.jpg" alt=""></div>
-                                            <h3><a href="/property-detail">Single House Near Orland Park.</a></h3>
-                                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                                            <ul class="property-info clearfix">
-                                                <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-                                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                                            </ul>
-                                            <div class="property-price clearfix">
-                                                <div class="read-more"><a href="/property-detail" class="theme-btn">More Detail</a></div>
-                                                <div class="price">$ 13,65,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Property Block -->
-                        <div class="property-block-three">
-                            <div class="inner-box">
-                                <div class="row clearfix">
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="images/resource/property-5.jpg" alt=""></figure>
-                                            <span class="for">FOR SALE</span>
-                                            <span class="featured">FEATURED</span>
-                                            <ul class="option-box">
-                                                <li><a href="images/resource/property-5.jpg" class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
-                                                <li><a href="#"><i class="la la-heart"></i></a></li>
-                                                <li><a href="#"><i class="la la-retweet"></i></a></li>
-                                            </ul>
-                                            <ul class="info clearfix">
-                                                <li><a href="#"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="lower-content">
-                                            <ul class="tags">
-                                                <li><a href="/property-detail">Apartment</a>,</li>
-                                                <li><a href="/property-detail">Bar</a>,</li>
-                                                <li><a href="/property-detail">House</a>,</li>
-                                            </ul>
-                                            <div class="thumb"><img src="images/resource/thumb-9.jpg" alt=""></div>
-                                            <h3><a href="/property-detail">Apartment Morden 1243, W No.</a></h3>
-                                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                                            <ul class="property-info clearfix">
-                                                <li><i class="flaticon-dimension"></i> 506 Sq-Ft</li>
-                                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                                            </ul>
-                                            <div class="property-price clearfix">
-                                                <div class="read-more"><a href="/property-detail" class="theme-btn">More Detail</a></div>
-                                                <div class="price">$ 13,65,000</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                       
+                       
                        
                         
                         <!-- Pagination -->

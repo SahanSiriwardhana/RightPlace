@@ -21,14 +21,18 @@ class CreatePropertiesTable extends Migration
             $table->string('town');
             $table->string('add_status')->default('pending');//-----publish , pending, cancled
             $table->integer('type');//----sell=1 or rent=2
-            $table->boolean('negotiable')->default(0);
+            $table->boolean('negotiable')->nullable();
             $table->string('item_type');//----agriculture,commercial,residential,other
             $table->integer('land_size');
-            $table->string('land_size_type');
+            $table->string('land_size_type');//---perches or Acrce
             $table->double('rent_per_month', 8, 2);
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->text('description');
             $table->string('phone');
+            $table->string('image1')->nullable();
+            $table->string('image2')->nullable();
+            $table->string('image3')->nullable();
+            $table->string('image4')->nullable();
             $table->timestamps();
             $table->rememberToken();
         });
@@ -41,6 +45,6 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('properties');
+       // Schema::dropIfExists('properties');
     }
 }

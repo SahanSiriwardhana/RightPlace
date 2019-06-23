@@ -19,13 +19,18 @@ Route::get('/what-we-do', function () {
     return view('about');
 });
 
-Route::get('/buy', function () {
-    return view('buy-properties');
-});
+Route::get('/buy', 'BuyController@index');
+Route::get('/buy/{id}' ,'BuyController@loadProperty');
+Route::get('/buy/district/{id}' ,'BuyController@loadDistrict');
+Route::get('/buy/town/{id}' ,'BuyController@loadTown');
+Route::get('/buy/price/{id}' ,'BuyController@loadPrice');
 
-Route::get('/rent', function () {
-    return view('rent-properties');
-});
+
+Route::get('/rent', 'RentController@index');
+Route::get('/rent/{id}' ,'RentController@loadProperty');
+Route::get('/rent/district/{id}' ,'RentController@loadDistrict');
+Route::get('/rent/town/{id}' ,'RentController@loadTown');
+Route::get('/rent/price/{id}' ,'RentController@loadPrice');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -95,9 +100,7 @@ Route::get('/property-detail', function () {
     return view('property-detail');
 });
 
-Route::get('/dashboard/portion-rooms-rent', function () {
-    return view('admin/portion_rooms');
-});
+
 
 Route::get('/dashboard/add-type', function () {
     return view('admin/add-type');
@@ -111,50 +114,77 @@ Route::get('/dashboard/rent', function () {
     return view('admin/rent-category');
 });
 
-//----------land rent--------------------
-Route::get('/dashboard/land-rent', 'LandController@index');
+//----------rent--------------------
+Route::get('/dashboard/land-rent', 'LandRentController@index');
+Route::post('/save-land-rent','LandRentController@store' );
 
 
-Route::get('/dashboard/house-rent', function () {
-    return view('admin/house');
-});
+Route::get('/dashboard/house-rent', 'HouseRentController@index');
+Route::post('/save-house-rent','HouseRentController@store' );
 
-Route::get('/dashboard/apartment-rent', function () {
-    return view('admin/apartment');
-});
+Route::get('/dashboard/apartment-rent', 'ApartmenetRentController@index');
+Route::post('/save-apartment-rent','ApartmenetRentController@store' );
 
-Route::get('/dashboard/holiday-short-rent', function () {
-    return view('admin/holiday_short_tearm');
-});
+Route::get('/dashboard/holiday-short-rent', 'HolydayRentalController@index');
+Route::post('/save-holyday-rental','HolydayRentalController@store' );
+Route::get('/holyday_rentals/{id}','HolydayRentalController@show');
+Route::get('/ad-approve-holyday/{id}','HolydayRentalController@approve');
+Route::get('/holyday_rentals_delete/{id}','HolydayRentalController@destroy');
 
-Route::get('/dashboard/commercial-rent', function () {
-    return view('admin/commercial');
-});
+Route::get('/dashboard/commercial-rent', 'CommercialPropertyRentController@index');
+Route::post('/save-commercial-rent','CommercialPropertyRentController@store' );
 
-Route::get('/dashboard/my-add', function () {
-    return view('admin/my-add');
-});
+Route::get('/dashboard/portion-rooms-rent', 'RoomController@index');
+Route::post('/save-room-rent','RoomController@store' );
+Route::get('/rooms/{id}','RoomController@show');
+Route::get('/ad-approve-room/{id}','RoomController@approve');
+Route::get('/rooms_delete/{id}','RoomController@destroy');
+
+Route::get('/dashboard/my-add', 'ShowAddController@my_add');
+Route::get('/dashboard/published-add', 'ShowAddController@publishAds');
+Route::get('/dashboard/pending-add', 'ShowAddController@pendingAds');
+Route::get('/dashboard/approve-panel', 'ShowAddController@approveAd');
+
 
 
 //-------sale-----------------
 Route::get('/dashboard/land-sale', 'LandSaleController@index');
 Route::post('/save-land-sale','LandSaleController@store' );
+Route::get('/lands/{id}','LandSaleController@show');
+Route::get('/ad-approve/{id}','LandSaleController@approve');
+Route::get('/lands_delete/{id}','LandSaleController@destroy');
 
-Route::get('/dashboard/house-sale', function () {
-    return view('admin/house-sale');
-});
+Route::get('/dashboard/house-sale', 'HouseSaleController@index');
+Route::post('/save-house-sale','HouseSaleController@store' );
+Route::get('/houses/{id}','HouseSaleController@show');
+Route::get('/ad-approve-house/{id}','HouseSaleController@approve');
+Route::get('/houses_delete/{id}','HouseSaleController@destroy');
 
-Route::get('/dashboard/apartment-sale', function () {
-    return view('admin/apartment-sale');
-});
 
-Route::get('/dashboard/commercial-sale', function () {
-    return view('admin/commercial-sale');
-});
+Route::get('/dashboard/apartment-sale', 'ApartmenetSaleController@index');
+Route::post('/save-apartment-sale','ApartmenetSaleController@store' );
+Route::get('/apartments/{id}','ApartmenetSaleController@show');
+Route::get('/ad-approve-apartment/{id}','ApartmenetSaleController@approve');
+Route::get('/apartments_delete/{id}','ApartmenetSaleController@destroy');
 
-Route::get('/dashboard/video-upload', function () {
-    return view('admin/video-upload');
-});
+Route::get('/dashboard/commercial-sale', 'CommercialPropertySaleController@index');
+Route::post('/save-commercial-salehouses','CommercialPropertySaleController@store' );
+Route::get('/commercial_properties/{id}','CommercialPropertySaleController@show');
+Route::get('/ad-approve-com/{id}','CommercialPropertySaleController@approve');
+Route::get('/commercial_properties_delete/{id}','CommercialPropertySaleController@destroy');
+
+//------------upload home video--------------------------
+Route::get('/dashboard/video-upload', 'HomeVideoController@index');
+Route::post('/save-video','HomeVideoController@store' );
+Route::get('/video-fetch','HomeVideoController@fetchVideo' );
+Route::delete('/video-delete/{id}', 'HomeVideoController@destroy');
+
+//---------------upload featured project
+Route::get('/dashboard/featured-project-upload', 'FeaturedProjectController@index');
+Route::post('/save-image','FeaturedProjectController@store' );
+Route::get('/image-fetch','FeaturedProjectController@fetchProject' );
+Route::delete('/image-delete/{id}', 'FeaturedProjectController@destroy');
+
 
 //------advice-----------------
 Route::get('/buyers-advice', function () {

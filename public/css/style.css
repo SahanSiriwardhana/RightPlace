@@ -5196,8 +5196,15 @@ a.ui-button:active, .ui-button:active,
 }
 
 .property-block-three{
+	box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.2);
+  	transition: 0.3s;
 	position: relative;
-	margin-bottom: 40px;
+	margin-bottom: 5px;
+	padding: 10px 10px 10px 10px;
+}
+
+.property-block-three:hover{
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .property-block-three .image-box{
@@ -5476,7 +5483,7 @@ a.ui-button:active, .ui-button:active,
 
 .property-block-three .lower-content{
 	position: relative;
-	padding: 50px 0 0;
+	padding: 0px 0 0;
 }
 
 .property-block-three .lower-content .thumb{
@@ -5525,7 +5532,7 @@ a.ui-button:active, .ui-button:active,
 	line-height: 1.2em;
 	color: #222222;
 	font-weight: 700;
-	margin-bottom: 7px;
+	margin-bottom: 0px;
 }
 
 .property-block-three h3 a{
@@ -5564,8 +5571,8 @@ a.ui-button:active, .ui-button:active,
 
 .property-block-three .property-info li{
 	position: relative;
-	float: left;
-	width: 50%;
+	
+	width: 100%;
 	padding-left: 45px;
 	font-size: 14px;
 	line-height: 45px;
@@ -5579,7 +5586,7 @@ a.ui-button:active, .ui-button:active,
 	left: 0;
 	top: 0;
 	font-size: 24px;
-	color: #92c800;
+	color: #777777;
 	line-height: 40px;
 }
 
@@ -5591,18 +5598,14 @@ a.ui-button:active, .ui-button:active,
 	position: absolute;
 	left: 50%;
 	top: 0;
-	margin-left: -10px;
+	margin-left: 0px;
 	height: 40px;
 	width: 20px;
 	content: '';
 	content: "";
 	background-color: #ffffff;
 	z-index: 9;
-	-webkit-transform: skew(-24deg);
-	-moz-transform: skew(-24deg);
-	-ms-transform: skew(-24deg);
-	-o-transform: skew(-24deg);
-	transform: skew(-24deg);
+	
 }
 
 .property-block-three .property-price .read-more{
@@ -5617,7 +5620,7 @@ a.ui-button:active, .ui-button:active,
 	position: relative;
 	display: block;
 	line-height: 20px;
-	padding: 10px 30px;
+	padding: 15px 0px;
 	font-size: 15px;
 	color: #ffffff;
 	text-align: center;
@@ -5638,7 +5641,7 @@ a.ui-button:active, .ui-button:active,
 	line-height: 20px;
 	color: #ffffff;
 	font-weight: 700;
-	padding: 10px 30px;
+	padding: 10px 10px;
 	background-color: #222222;
 	text-align: center;
 	padding-left:55px;

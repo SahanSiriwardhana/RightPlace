@@ -1,4 +1,4 @@
-@extends('admin.layout.main-nav')
+@extends('admin.layout.main-nav2')
 @section('content')
     <!--End Main Header -->
     
@@ -11,20 +11,7 @@
 	        <div class="content-area">
 	            <div class="dashboard-content">
 	                <div class="dashboard-header clearfix">
-	                    <div class="row">
-							<div class="col-md-6 col-sm-12"><h4>Submit Property</h4><br>
-							<h5>Rent -> Apartment</h5>
-							</div>
-	                        <div class="col-md-6 col-sm-12">
-	                            <div class="breadcrumb-nav">
-	                                <ul>
-	                                  
-	                                    <li><a href="/dashboard/rent">Back to category</a></li>
-	                                   
-	                                </ul>
-	                            </div>
-	                        </div>
-	                    </div>
+	                   
 	                </div>
 	                <div class="row">
 						<div class="col-lg-3 ">
@@ -37,156 +24,31 @@
 	                    	<div class="properties-box">
 	                    		<div class="inner-container">
 	                    			<div class="property-submit-form">
-			                            <form method="post" action="http://expert-themes.com/html/willies/admin/index.html">
+			                            <form method="post" action="/save-video" enctype="multipart/form-data" id="imageUpload" >
+											{{ csrf_field() }}
 											
-											<div class="title"><h3>Location Info</h3></div>
-											<div class="col-lg-12" id="popoverData" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
-			                                <div class="row">
-			                                	
-												
-			                                    <!-- Form Group -->
-			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-													<label>You City*</label>
-													
-			                                        <select class="custom-select-box">
-		                                                <option>Select Location</option>
-		                                                <option>New York</option>
-		                                                <option>Los Angeles</option>
-		                                                <option>Chicago</option>
-		                                                <option>Houston</option>
-													</select>
 											
-			                                    </div>
-
-			                                  
-
-			                                    <!-- Form Group -->
-			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-			                                       <label >Your Town*</label>
-			                                        <select class="custom-select-box">
-			                                            <option>Nothing Select</option>
-			                                            <option>Sale</option>
-			                                        </select>
-												</div>
-												<div class="form-group col-lg-12 col-md-6 col-sm-12">
-			                                        <div class="range-slider-one clearfix">
-			                                            <label>Address</label>
-			                                         	<input type="text" name="text" placeholder="Address" required>
-			                                        </div>
-												</div>
-											</div>
-											</div>
-											
-											<div class="title"><h3>Property Gallery</h3></div>
+											<div class="title"><h3>Home Video Gallery</h3></div>
 											<div class="col-lg-12" id="popoverData1" class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
 			                                <div class="row">
+												
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12">
-			                                        <div id="myDropZone" class="dropzone dropzone-design">
+														<p style="color: red;">Upload your video to show slider in Home page .Video size should not be less than 25MB</p>
+			                                        <div id="myDropZone2" class="dropzone dropzone-design">
 				                                        <div class="dz-default dz-message"><span>Drop files here to upload</span></div>
 				                                    </div>
-			                                    </div>
+												</div>
+										
 											</div>
 											</div>
-											<div class="title"><h3>Basic Info</h3></div>
-			                                <div class="row">
-			                                	<!-- Form Group -->
-			                                    <div class="form-group col-lg-12 col-md-6 col-sm-12">
-			                                        <label>Title For Your Add*</label>
-													<input type="text" name="text" placeholder="Property Title" required>
-			                                    </div>
 
-			                                    
-                                                <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                                        <label>Beds*</label>
-                                                        <select class="custom-select-box"  >
-                                                            <option>Beds</option>
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                            <option>3</option>
-                                                            <option>4</option>
-                                                            <option>5</option>
-                                                            <option>6</option>
-                                                            <option>7</option>
-                                                            <option>8</option>
-                                                            <option>9</option>
-                                                            <option>10+</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                                            <label>Baths*</label>
-                                                            <select class="custom-select-box"  >
-                                                                    <option>Baths</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                    <option>4</option>
-                                                                    <option>5</option>
-                                                                    <option>6</option>
-                                                                    <option>7</option>
-                                                                    <option>8</option>
-                                                                    <option>9</option>
-                                                                    <option>10+</option>
-                                                                
-                                                            </select>
-                                                        </div>
-			                                   
-                                               
-                                                  <!-- Form Group -->
-			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                                        <label>House Size*</label>
-                                                            <input type="text" name="text" placeholder="House Size (sqft)" required>
-                                                        
-                                                        </div>
-												<div class="form-group col-lg-6 col-md-6 col-sm-12">
-			                                        <label>Rent per month *</label>
-													<input type="text" name="text" placeholder="Pick a good price (LKR)" required>
-			                                    </div>
-												<div class="form-group col-lg-3 col-md-6 col-sm-12 " style="padding-top: 40px">
-					                                <div class="check-box">
-					                                    <input type="checkbox" name="negotiable" id="service-1"> 
-					                                    <label for="service-1">Negotiable</label>
-					                                </div>
-					                            </div>
-
-			                                   
-
-			                                  
-
-			                                  
-
-			                                   
-			                                </div>
-
-
-			                               
-
-			                                
-											<div class="title"><h3>Detailed Information</h3></div>
-			                                <div class="row">
-			                                	<!-- Form Group -->
-			                                    <div class="form-group col-lg-12">
-			                                    	<textarea name="detail" placeholder="Detailed Information*"></textarea>
-			                                    </div>
-			                                </div>
-			                                <div class="title"><h3>Contact Info</h3></div>
-			                                <div class="row">
-			                                	
-
-			                                    <!-- Form Group -->
-			                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-			                                        <label>Phone</label>
-			                                        <input type="text" name="phone" placeholder="Phone" required>
-			                                    </div>
-
-			                                    <!-- Form Group -->
-			                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
-			                                    	<button type="submit" class="theme-btn btn-style-one"> Submit Property</button>
-			                                    </div>
-			                                </div>
+											<div id="fetchData">
+			                           
+										</div>
 			                            </form>
 			                        </div>
-	                    		</div><p>* are required</p>
+	                    		</div>
 	                    	</div>
 						</div>
 						

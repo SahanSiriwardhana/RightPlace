@@ -18,7 +18,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
-
+<link rel="stylesheet" href="https:////cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 <style>
@@ -60,6 +60,8 @@
 color: black;
 
 }
+
+
 </style>
 </head>
 
@@ -100,9 +102,10 @@ color: black;
                 </ul>
             </div>
         </div>
+       
         <!--End Header Lower-->
     </header>
-    
+      
     @yield('content')
  
     <script src="js/jquery.js"></script> 
@@ -113,11 +116,29 @@ color: black;
     <script src="js/dropzone.js"></script>
     <script src="js/appear.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    
+    @if(session()->has('success'))
     <script>
-   
+  
+            $(document).ready(function() {
+                
+                Swal.fire(
+      'Success!',
+      'You ad has been deleted!',
+      'success'
+    )
+            });
+            </script>
+           <?php session()->forget('success'); ?>
+    @endif
+    <script>
+  
         $(document).ready(function() {
+            
+      
         $('#js-example-basic-single').select2({
             placeholder: 'Select Your City'
         });
@@ -167,6 +188,30 @@ color: black;
       };
 
         $(document).ready(function(){
+           
+            //-----delete function confirmation
+            $('.deleteBtn').click(function(e) {
+                e.preventDefault();
+                var href = $(this).attr('href');
+                Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.value) {
+    window.location.href = href;
+  }
+})       
+            });
+
+
+
+            //-------------------------------------
+           
 
             // Disable AutoDiscover
             Dropzone.autoDiscover = false;
@@ -179,7 +224,7 @@ color: black;
                 maxFiles: 5,
                 addRemoveLinks: true,
                 acceptedFiles: "image/*",
-                maxFilesize: 2,
+                maxFilesize: 3,
                 addRemoveLinks: true,
                 dictDefaultMessage: "Drop your files here!",
             }
@@ -212,11 +257,12 @@ color: black;
                 //check the validatins
                 if(data.error.length>0){
                         var error_html='';
+                       
                         for (var index = 0; index < data.error.length; index++) {
                             error_html+=data.error[index]+'<br/>';
                             
                         }
-                        $('#result').html(error_html);
+                       // $('#result').html(error_html);
                                                     Swal.fire({
                             title: 'Error!',
                             html: error_html,
@@ -272,12 +318,32 @@ color: black;
     });
 
      // on success redirect
-     myDropzone.on("successmultiple", function(){
-        Swal.fire(
-                                        'Good job photo upload!',
-                                        'You clicked the button!',
+     myDropzone.on("success", function(file, response){
+        var data = jQuery.parseJSON(response); 
+       
+       //check the validatins
+       if(data.error.length>0){
+                        var error_html='';
+                        for (var index = 0; index < data.error.length; index++) {
+                            error_html+=data.error[index]+'<br/>';
+                            
+                        }
+                       // $('#result').html(error_html);
+                                                    Swal.fire({
+                            title: 'Error!',
+                            html: error_html,
+                            type: 'error',
+                            confirmButtonText: 'Cool'
+                            })
+                    }else{
+                        // if dropzone has no files store item without images
+                                         Swal.fire(
+                                        'Good job!',
+                                        'Data Saved!',
                                         'success'
                                         )
+                            
+                }
                                        
     });
 
@@ -297,6 +363,11 @@ color: black;
     //-----end of document.ready -----------
         });
     </script>
+   @if(session()->has('success'))
+   <script>
+     
+   </script>
+   @endif
     </body>
     
     <!-- Mirrored from expert-themes.com/html/willies/admin/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 11:31:39 GMT -->
