@@ -98,11 +98,21 @@
 													<div id="charNum2">50 characters allowed</div>
 			                                    </div>
 
-			                                    
+			                                    <div class="form-group col-lg-4 col-md-6 col-sm-12">
+														<label>Item Type*</label>
+														<select class="custom-select-box"  name="itemType">
+															<option value="">Item Type</option>
+															<option value="Luxuary">Luxuary</option>
+															<option value="Studio">Studio</option>
+															<option value="Flats">Flats</option>
+															
+															
+														</select>
+													</div>
                                                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                                        <label>Beds*</label>
+                                                        <label>Bedrooms*</label>
 														<select class="custom-select-box"  name="beds" >
-                                                            <option value="">Beds</option>
+                                                            <option value="">Bedrooms</option>
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
                                                             <option value="3">3</option>
@@ -160,7 +170,46 @@
 			                                </div>
 											</div>
 
-			                               
+											<div class="title"><h3>Features </h3></div>
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
+											<div class="row">
+													<div class="form-group col-lg-3 col-md-6 col-sm-12 ">
+															<div class="check-box">
+																<input type="checkbox" name="electricity" id="service-20" value="1"> 
+																<label for="service-20">Electricity</label>
+															</div>
+														</div>
+		
+														<div class="form-group col-lg-3 col-md-6 col-sm-12 ">
+															<div class="check-box">
+																<input type="checkbox" name="water_supply_from_main_supply" id="service-21" value="1"> 
+																<label for="service-21">Water Supply From Main Supply</label>
+															</div>
+														</div>
+		
+														<div class="form-group col-lg-3 col-md-6 col-sm-12 ">
+															<div class="check-box">
+																<input type="checkbox" name="water_supply_from_well" id="service-22" value="1"> 
+																<label for="service-22">Water Supply from Well</label>
+															</div>
+														</div>
+		
+														<div class="form-group col-lg-3 col-md-6 col-sm-12 ">
+															<div class="check-box">
+																<input type="checkbox" name="seveage_system" id="service-23" value="1"> 
+																<label for="service-23">Sevage System</label>
+															</div>
+														</div>
+		
+														<div class="form-group col-lg-3 col-md-6 col-sm-12 ">
+															<div class="check-box">
+																<input type="checkbox" name="septic_tank" id="service-24" value="1"> 
+																<label for="service-24">Septic Tank</label>
+															</div>
+														</div>
+		
+											</div>
+											</div>
 
 			                                
 											<div class="title"><h3>Detailed Information</h3></div>

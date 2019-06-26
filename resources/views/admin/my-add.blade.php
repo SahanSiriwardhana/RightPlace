@@ -96,7 +96,7 @@
 												</ul>
 											@else
 												<ul class="action-list">
-													<li><a href="/{{$add->tableName}}/{{$add->id}}"><i class="la la-edit"></i> Edit</a></li>
+													<li><a href="/{{$add->tableName}}_edit/{{$add->id}}"><i class="la la-edit"></i> Edit</a></li>
 													<li><a href="/{{$add->tableName}}/{{$add->id}}"><i class="la la-eye"></i> View</a></li>
 													<li><a href="/{{$add->tableName}}_delete/{{$add->id}}" class="deleteBtn"><i class="la la-trash-o"></i> Delete</a></li>
 												</ul>

@@ -53,6 +53,7 @@ class HouseSaleController extends Controller
             'town'=>'required',
             'addTitle'=>'required|max:50',
             'itemCondition'=>'required',
+            'itemType'=>'required',
             'beds'=>'required',
             'baths'=>'required',
             'landSize'=>'bail|required|numeric',
@@ -95,6 +96,13 @@ class HouseSaleController extends Controller
             $house->item_condition =$request->itemCondition;
             $house->land_size=$request->landSize;
             $house->house_size=$request->houseSize;
+            $house->item_type=$request->itemType;
+            //--------features--------------
+            $house->electricity=$request->electricity;
+            $house->water_supply_from_main_supply=$request->water_supply_from_main_supply;
+            $house->water_supply_from_well=$request->water_supply_from_well;
+            $house->seveage_system=$request->seveage_system;
+            $house->septic_tank=$request->septic_tank;
 
             $house->beds=$request->beds;
             $house->baths=$request->baths;

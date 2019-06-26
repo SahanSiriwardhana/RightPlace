@@ -107,13 +107,37 @@
                                                 <span class="badge badge-pill badge-success">Negotiable</span><br>
                                             @endif
                                             <i class="la la-map-signs la-2x"></i>House Size : <span style="color:grey">{{$land->house_size }}</span><br>
-                                           
+                                            <i class="la la-archive la-2x"></i> Item Type :<span style="color:grey"> {{$land->item_type }} </span><br>
                                          
                                             
                                         </h5>
                                 </blockquote>
                             </div>
-    
+                     <!-- Property Features -->
+<div class="property-features">
+        <h4>Features </h4>
+        <ul class="list-style-one">
+            @if ($land->electricity!= null)
+                <li>Electricity</li>    
+            @endif
+            
+            @if ($land->water_supply_from_main_supply!= null)
+                <li>Water Supply From Main Supply</li>   
+            @endif
+
+            @if ($land->water_supply_from_well!= null)
+            <li>Water Supply From Well</li>    
+            @endif
+            @if ($land->seveage_system!= null)
+            <li>Sevage System</li>  
+            @endif
+            @if ($land->septic_tank!= null)
+            <li>Septic Tank</li>   
+            @endif
+           
+            
+        </ul>
+    </div>
                             <div class="lower-content">
                                     <h4>Contact Information</h4>
                                     <div class="row" style="padding-left: 10%">

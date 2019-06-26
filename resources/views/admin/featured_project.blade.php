@@ -42,7 +42,7 @@
 										
 											</div>
 											</div>
-                                            <div class="title"><h3>Image Gallery</h3></div>
+                                            <div class="title"><h3>Uploaded Image</h3></div>
 											<div class="row" id="fetchData">
                                                 
 										</div>

@@ -108,37 +108,70 @@
                             </div>
 
                      
+<!-- Property Features -->
+<div class="property-features">
+        <h4>Features </h4>
+        <ul class="list-style-one">
+            @if ($land->electricity!= null)
+                <li>Electricity</li>    
+            @endif
+            
+            @if ($land->water_supply_from_main_supply!= null)
+                <li>Water Supply From Main Supply</li>   
+            @endif
 
+            @if ($land->water_supply_from_well!= null)
+            <li>Water Supply From Well</li>    
+            @endif
+            @if ($land->seveage_system!= null)
+            <li>Sevage System</li>  
+            @endif
+            @if ($land->septic_tank!= null)
+            <li>Septic Tank</li>   
+            @endif
+           
+            
+        </ul>
+    </div>
                        
                         <!-- Property Features -->
                         <div class="property-features">
                                 <h4>Features (OPTIONAL)</h4>
                                 <ul class="list-style-one">
-                                    @if ($land->air_condition!= null)
-                                        <li>Air Conditioning</li>    
+                                    @if ($land->free_wifi!= null)
+                                        <li>Free WiFi</li>    
                                     @endif
                                     
-                                    @if ($land->alarm_system!= null)
-                                        <li>Alarm System</li>   
+                                    @if ($land->free_parking!= null)
+                                        <li>Free Parking</li>   
                                     @endif
     
-                                    @if ($land->doorman!= null)
-                                    <li>Doorman</li>    
+                                    @if ($land->attached_bahroom!= null)
+                                    <li>Attached Bathroom</li>    
                                     @endif
-                                    @if ($land->fireplace!= null)
-                                    <li>Fireplace</li>  
+                                    @if ($land->hot_water!= null)
+                                    <li>Hot Water</li>  
                                     @endif
-                                    @if ($land->garden!= null)
-                                    <li>Garden</li>   
+                                    @if ($land->ac!= null)
+                                    <li>A/C</li>   
                                     @endif
-                                    @if ($land->heating_system!= null)
-                                    <li>Heating System</li>
+                                    @if ($land->private_balcony!= null)
+                                    <li>Private Balcony</li>
                                     @endif
-                                    @if ($land->high_ceiling!= null)
-                                    <li>High Ceiling</li>  
+                                    @if ($land->beach_natural_view!= null)
+                                    <li>Beach / Natural View</li>  
                                     @endif
-                                    @if ($land->car_parking!= null)
-                                    <li>Car Parking</li>
+                                    @if ($land->bar!= null)
+                                    <li>Bar</li>
+                                    @endif
+                                    @if ($land->swimming_pool!= null)
+                                    <li>Swimming Pool</li>
+                                    @endif
+                                    @if ($land->fitness_center!= null)
+                                    <li>Fitness Center</li>  
+                                    @endif
+                                    @if ($land->outdoor_activities!= null)
+                                    <li>Outdoor Activities</li>
                                     @endif
                                    
                                     

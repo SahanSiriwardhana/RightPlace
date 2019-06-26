@@ -104,14 +104,15 @@
 
 /* Set a style for the submit/send button */
 .form-container .btn {
-  background-color: #4CAF50;
+  background-color: #0074D9;
   color: white;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
   width: 100%;
   margin-bottom:10px;
-  opacity: 0.8;
+  opacity: 1;
+  border-radius: 0;
 }
 
 /* Add a red background color to the cancel button */
@@ -179,16 +180,24 @@
     });
 </script>
 
-<button class="open-button btn-primary col-md-2" onclick="openForm()">Contact Us</button>
+
 
 <div class="chat-popup" id="myForm" >
   <form action="{{route('popupsubmit')}}" class="form-container" method="POST">
-      <button type="button" class="close" data-dismiss="alert" onclick="closeForm()" aria-label="Close">
+    <div class="row" style="background-color: #0074D9;margin-top:-15px;padding-bottom: 5px;"> 
+        <div class="col-md-10">  
+            <h3 style="color: white;padding-top:5px; ">We are here to advice you..</h3>
+        </div>
+        <div class="" style="padding-top:5px;padding-left: 30px">
+        <button type="button" class="close" data-dismiss="alert" onclick="closeForm()" aria-label="Close" style=" display:block;
+        margin-left:  0;
+        margin-right: auto;">
           <span aria-hidden="true">×</span>
-      </button>
-      <br>
+        </button>
+        </div>
         
-    <h3>We are here to<br>advice you..</h3>
+    
+</div>
     @if(session()->has('successFullySentEmail'))
     <br>
     <div class="alert alert-success">
@@ -200,18 +209,18 @@
     @else
     
    
-    <input  type = "text" name="name" class = "form-control" style="margin-top: 8px" placeholder = "Enter your Name"/>
+    <input  type = "text" name="name" class = "form-control" style="margin-top: 8px;border-radius: 0 " placeholder = "Enter your name" required/>
 
 
-    <input type = "text" name="email" class = "form-control" style="margin-top: 8px" placeholder = "Enter your Email"/>
+    <input type = "text" name="email" class = "form-control" style="margin-top: 8px;border-radius: 0" placeholder = "Enter your email" required/>
 
 
-    <input type = "text" name="phone" class = "form-control" style="margin-top: 8px" placeholder = "Enter your phone number"/>
+    <input type = "text" name="phone" class = "form-control" style="margin-top: 8px;border-radius: 0" placeholder = "Enter your phone number" required/>
 
     
-    <textarea placeholder="Type message.." style="margin-top: 8px" name="msg" required></textarea>
+    <textarea placeholder="Type message.." style="margin-top: 8px;border-radius: 0" name="msg" required class="form-control"></textarea>
 
-    <button type="submit" style="margin-top: 8px" class="btn">Send</button>
+    <button type="submit" style="margin-top: 8px;" class="btn" >Send</button>
 
     @endif
       
@@ -243,7 +252,7 @@
                     <div class="top-left">
                         <ul class="contact-list clearfix">
                             <li><i class="la la-phone"></i> (+94)70 399 8877</li>
-                            <li><i class="la la-map-marker"></i> 51/1, Colombo Road, 10290 Boralesgomuwa, Sri Lanka</li>
+                            <li><i class="la la-map-marker"></i> 5/1/1, Colombo Rad, 10290 Boralesgamuwa, Sri Lanka</li>
                             <li><i class="la la-envelope-o"></i><a href="#">Supportyou@Interiores.com</a></li>
                         </ul>
                     </div>
@@ -377,11 +386,13 @@
                         
                        <div class="myVideo">
                         <video playsinline autoplay muted loop id="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120">
-                            <source src="Free Animated Videos For Real Estate Agents.mp4" type="video/mp4">
+                            <source src="video/home_video/Real Estate Promotion Video.mp4" type="video/mp4">
                             Your browser does not support HTML5 video.
                         </video>
                     </div>
                     </li>
+
+                   
                   
                    
                 </ul>
@@ -391,75 +402,31 @@
     <!--End Main Slider-->
 
      <!-- Property Section Two -->
-     <section class="property-section-two">
+     <section class="property-section-two" style="margin-top: -130px;">
     	<div class="auto-container">
     		<div class="sec-title">
-    			<span class="title">FIND NOW YOUR DREEM HOUSE</span>
+    			<span class="title">Find Your Right Place</span>
     			<h2>FEATURED PROJECTS</h2>
     		</div>
 
     		<div class="property-carousel owl-carousel owl-theme">
-    			<!-- New Property -->
+                @foreach ($featuredProjects as $featuredProject)
+                    
+                <!-- New Property -->
     			<div class="new-property">
-		    		<div class="row">
+		    		<div class="row" style="">
 		    			<!-- Content Column -->
-		    			<div class="content-column col-lg-6 col-md-12 col-sm-12">
-		    				<div class="inner-column">
-		    					<span class="status">FOR SALE</span>
-		    					<h3><a href="property-detail.html">Independent Apartment With Modern Design</a></h3>
-		    					<div class="start-from"><span>START FROM</span> $ 356,354</div>
-		    					<div class="lucation"><i class="la la-map-marker"></i>Orland Park, IL 35785, Chicago, United State</div>
-
-		    					<div class="text">Temporibus autem quibusdam et aut officiis debitis is aut rerum necessitatibus saepes eveniet ut etes seo lage voluptates repudiandae sint et molestiae non mes for Creating futures through building pres Creating preservation etes quibusdam.</div>
-
-		    					<ul class="property-info clearfix">
-		                            <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-		                            <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-		                            <li><i class="flaticon-car"></i> 2 Garage</li>
-		                            <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-		                        </ul>
-		    				</div>
-		    			</div>
-
 		    			<!-- Image column -->
-		    			<div class="image-column col-lg-6 col-md-12 col-sm-12">
+		    			<div class="image-column col-lg-12 col-md-12 col-sm-12">
 		    				<div class="inner-column">
-		    					<figure class="image"><a href="images/resource/image-3.jpg" class="lightbox-image" data-fancybox="images"><img src="images/resource/image-3.jpg" alt=""></a></figure>
+		    					<figure class="image"><a href="images/featured_project/{{$featuredProject->image}}" class="lightbox-image" data-fancybox="images"><img src="images/featured_project/{{$featuredProject->image}}" alt="" style="width: 60%"></a></figure>
 		    				</div>
 		    			</div>
 		    		</div>
     			</div>
-
-    			<!-- New Property -->
-    			<div class="new-property">
-		    		<div class="row">
-		    			<!-- Content Column -->
-		    			<div class="content-column col-lg-6 col-md-12 col-sm-12">
-		    				<div class="inner-column">
-		    					<span class="status">FOR SALE</span>
-		    					<h3><a href="property-detail.html">Independent Apartment With Modern Design</a></h3>
-		    					<div class="start-from"><span>START FROM</span> $ 356,354</div>
-		    					<div class="lucation"><i class="la la-map-marker"></i>Orland Park, IL 35785, Chicago, United State</div>
-
-		    					<div class="text">Temporibus autem quibusdam et aut officiis debitis is aut rerum necessitatibus saepes eveniet ut etes seo lage voluptates repudiandae sint et molestiae non mes for Creating futures through building pres Creating preservation etes quibusdam.</div>
-
-		    					<ul class="property-info clearfix">
-		                            <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-		                            <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-		                            <li><i class="flaticon-car"></i> 2 Garage</li>
-		                            <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-		                        </ul>
-		    				</div>
-		    			</div>
-
-		    			<!-- Image column -->
-		    			<div class="image-column col-lg-6 col-md-12 col-sm-12">
-		    				<div class="inner-column">
-		    					<figure class="image"><a href="images/resource/image-3.jpg" class="lightbox-image" data-fancybox="images"><img src="images/resource/image-3.jpg" alt=""></a></figure>
-		    				</div>
-		    			</div>
-		    		</div>
-    			</div>
+                @endforeach
+    			
+                
             </div>
             <hr>
     	</div>
@@ -473,236 +440,73 @@
         <div class="auto-container">
               
             <div class="sec-title">
-                <span class="title">FIND YOUR HOUSE IN YOUR CITY</span>
+                <span class="title">FIND YOUR RIGHT PLACE</span>
                 <h2>FEATURED PROPERTIES</h2>
             </div>
 
             <div class="row">
+                
+                @foreach ($adsResent as $item)
+                    
+               
                 <!-- Property Block -->
                 <div class="property-block col-xl-4 col-lg-6 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="image-box">
-                            <div class="single-item-carousel owl-carousel owl-theme">
-                                <figure class="image"><img src="images/resource/property-1.jpg" alt=""></figure>
-                                <figure class="image"><img src="images/resource/property-2.jpg" alt=""></figure>
-                                <figure class="image"><img src="images/resource/property-3.jpg" alt=""></figure>
-                            </div>
-                            <span class="for">FOR SALE</span>
-                            <span class="featured">FEATURED</span>
-                            <ul class="info clearfix">
-                                <li><a href="properties.html"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                <li><a href="agent-detail.html"><i class="la la-user-secret"></i>Ghaly Morca</a></li>
-                            </ul>
-                        </div>
-                        <div class="lower-content">
-                            <ul class="tags">
-                                <li><a href="property-detail.html">Apartment</a>,</li>
-                                <li><a href="property-detail.html">Bar</a>,</li>
-                                <li><a href="property-detail.html">House</a>,</li>
-                            </ul>
-                            <h3><a href="property-detail.html">Single House Near Orland Park.</a></h3>
-                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                            <ul class="property-info clearfix">
-                                <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                            </ul>
-                            <div class="property-price clearfix">
-                                <div class="read-more"><a href="property-detail.html" class="theme-btn">More Detail</a></div>
-                                <div class="price">$ 13,65,000</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property Block -->
-                <div class="property-block col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/property-2.jpg" alt=""></figure>
-                            <span class="for">FOR SALE</span>
+                            <figure class="image">
+                                    @if ($item->image1 != null)
+                                    <img src="/images.image_uplode/{{$item->image1}}" alt="" style="height: 200px">
+                                @else
+                                    <img src="/images.image_uplode/land_image.jpg" alt="" style="height: 200px">
+                                @endif
+                            </figure>
+                            @if ($item->adType=='1')
+											<span class="for">For Sale</span>
+											@else	
+											<span class="for">For Rent</span>
+											@endif
+                           
                             <span class="featured">FEATURED</span>
                             <ul class="option-box">
                                 <li><a href="images/resource/property-1.jpg" class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
                                 <li><a href="#"><i class="la la-heart"></i></a></li>
                                 <li><a href="#"><i class="la la-retweet"></i></a></li>
                             </ul>
-                            <ul class="info clearfix">
-                                <li><a href="properties.html"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                <li><a href="agent-detail.html"><i class="la la-user-secret"></i>Ghaly Morca</a></li>
-                            </ul>
+                           
                         </div>
                         <div class="lower-content">
                             <ul class="tags">
-                                <li><a href="property-detail.html">Apartment</a>,</li>
-                                <li><a href="property-detail.html">Bar</a>,</li>
-                                <li><a href="property-detail.html">House</a>,</li>
+                                <li><a href="#">{{$item->type}}</a></li>
+                
                             </ul>
-                            <h3><a href="property-detail.html">Apartment Morden 1243, W No.</a></h3>
-                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                            <ul class="property-info clearfix">
-                                <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                            </ul>
+                            <h3><a href="/{{$item->tableName}}/{{$item->id}}">{{$item->title}}</a></h3>
+                            <div class="lucation"><i class="la la-map-marker"></i>
+                            
+                                @foreach ($cities as $city)
+                                @if ($city->cid==$item->town)
+                                    {{$city->cname}}	
+                                @endif
+                                @endforeach 
+                                ,
+                                @foreach ($districts as $district)
+                                @if ($district->did==$item->city)
+                                    {{$district->dname}}	
+                                @endif
+                                @endforeach
+                            </div>
+                            
                             <div class="property-price clearfix">
-                                <div class="read-more"><a href="/property-detail" class="theme-btn">More Detail</a></div>
-                                <div class="price">$ 13,65,000</div>
+                                <div class="read-more"><a href="/{{$item->tableName}}/{{$item->id}}" class="theme-btn">More Detail</a></div>
+                                <div class="price">Rs {{$item->rent_per_month}}</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Property Block -->
-                <div class="property-block col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/property-3.jpg" alt=""></figure>
-                            <span class="for">FOR SALE</span>
-                            <span class="featured">FEATURED</span>
-                            <div class="video-link"><a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" data-fancybox="gallery" data-caption=""><i class="icon la la-play-circle" aria-hidden="true"></i></a></div>
-                            <ul class="info clearfix">
-                                <li><a href="properties.html"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                <li><a href="agent-detail.html"><i class="la la-user-secret"></i>Ghaly Morca</a></li>
-                            </ul>
-                        </div>
-                        <div class="lower-content">
-                            <ul class="tags">
-                                <li><a href="property-detail.html">Apartment</a>,</li>
-                                <li><a href="property-detail.html">Bar</a>,</li>
-                                <li><a href="property-detail.html">House</a>,</li>
-                            </ul>
-                            <h3><a href="property-detail.html">Great Home for Single fmaily</a></h3>
-                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                            <ul class="property-info clearfix">
-                                <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                            </ul>
-                            <div class="property-price clearfix">
-                                <div class="read-more"><a href="/property-detail" class="theme-btn">More Detail</a></div>
-                                <div class="price">$ 13,65,000</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
-            <div class="row">
-                <!-- Property Block -->
-                <div class="property-block col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <div class="single-item-carousel owl-carousel owl-theme">
-                                <figure class="image"><img src="images/resource/property-1.jpg" alt=""></figure>
-                                <figure class="image"><img src="images/resource/property-2.jpg" alt=""></figure>
-                                <figure class="image"><img src="images/resource/property-3.jpg" alt=""></figure>
-                            </div>
-                            <span class="for">FOR SALE</span>
-                            <span class="featured">FEATURED</span>
-                            <ul class="info clearfix">
-                                <li><a href="properties.html"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                <li><a href="agent-detail.html"><i class="la la-user-secret"></i>Ghaly Morca</a></li>
-                            </ul>
-                        </div>
-                        <div class="lower-content">
-                            <ul class="tags">
-                                <li><a href="property-detail.html">Apartment</a>,</li>
-                                <li><a href="property-detail.html">Bar</a>,</li>
-                                <li><a href="property-detail.html">House</a>,</li>
-                            </ul>
-                            <h3><a href="property-detail.html">Single House Near Orland Park.</a></h3>
-                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                            <ul class="property-info clearfix">
-                                <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                            </ul>
-                            <div class="property-price clearfix">
-                                <div class="read-more"><a href="property-detail.html" class="theme-btn">More Detail</a></div>
-                                <div class="price">$ 13,65,000</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property Block -->
-                <div class="property-block col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/property-2.jpg" alt=""></figure>
-                            <span class="for">FOR SALE</span>
-                            <span class="featured">FEATURED</span>
-                            <ul class="option-box">
-                                <li><a href="images/resource/property-1.jpg" class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
-                                <li><a href="#"><i class="la la-heart"></i></a></li>
-                                <li><a href="#"><i class="la la-retweet"></i></a></li>
-                            </ul>
-                            <ul class="info clearfix">
-                                <li><a href="properties.html"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                <li><a href="agent-detail.html"><i class="la la-user-secret"></i>Ghaly Morca</a></li>
-                            </ul>
-                        </div>
-                        <div class="lower-content">
-                            <ul class="tags">
-                                <li><a href="property-detail.html">Apartment</a>,</li>
-                                <li><a href="property-detail.html">Bar</a>,</li>
-                                <li><a href="property-detail.html">House</a>,</li>
-                            </ul>
-                            <h3><a href="property-detail.html">Apartment Morden 1243, W No.</a></h3>
-                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                            <ul class="property-info clearfix">
-                                <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                            </ul>
-                            <div class="property-price clearfix">
-                                <div class="read-more"><a href="property-detail.html" class="theme-btn">More Detail</a></div>
-                                <div class="price">$ 13,65,000</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Property Block -->
-                <div class="property-block col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image-box">
-                            <figure class="image"><img src="images/resource/property-3.jpg" alt=""></figure>
-                            <span class="for">FOR SALE</span>
-                            <span class="featured">FEATURED</span>
-                            <div class="video-link"><a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" data-fancybox="gallery" data-caption=""><i class="icon la la-play-circle" aria-hidden="true"></i></a></div>
-                            <ul class="info clearfix">
-                                <li><a href="properties.html"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                <li><a href="agent-detail.html"><i class="la la-user-secret"></i>Ghaly Morca</a></li>
-                            </ul>
-                        </div>
-                        <div class="lower-content">
-                            <ul class="tags">
-                                <li><a href="property-detail.html">Apartment</a>,</li>
-                                <li><a href="property-detail.html">Bar</a>,</li>
-                                <li><a href="property-detail.html">House</a>,</li>
-                            </ul>
-                            <h3><a href="property-detail.html">Great Home for Single fmaily</a></h3>
-                            <div class="lucation"><i class="la la-map-marker"></i> Orland Park, IL 35785, Chicago, United State</div>
-                            <ul class="property-info clearfix">
-                                <li><i class="flaticon-dimension"></i> 356 Sq-Ft</li>
-                                <li><i class="flaticon-bed"></i> 4 Bedrooms</li>
-                                <li><i class="flaticon-car"></i> 2 Garage</li>
-                                <li><i class="flaticon-bathtub"></i> 3 Bathroom</li>
-                            </ul>
-                            <div class="property-price clearfix">
-                                <div class="read-more"><a href="property-detail.html" class="theme-btn">More Detail</a></div>
-                                <div class="price">$ 13,65,000</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             <div class="load-more-btn text-center">
                 <a href="/buy" class="theme-btn btn-style-two">Load More</a>
             </div>
@@ -718,11 +522,11 @@
                 <div class="info-column col-xl-6 col-lg-12 col-md-12 col-sm-12">
                     <div class="inner-column">
                         <div class="sec-title light">
-                            <span class="title">THE BEST PLACE TO FIND THE HOUSE YOU WANT</span>
+                            <span class="title">The Best Place to Find Your Right Place</span>
                             <h2>WHAT WE DO</h2>
                         </div>
 
-                        <div class="text"><strong>RightPlace.lk</strong> services are delivered by people who combine entrepreneurial spirit and a deep understanding of specialist property sectors with the highest standards of client care. Through our advice, our property management capabilities, property valuation expertise and the transactional services we provide, we help our clients to fulfil their real estate needs – whatever and wherever they are. </div>
+                        <div class="text" style="text-align: justify"><strong>RightPlace.lk</strong> services are delivered by people who combine entrepreneurial spirit and a deep understanding of specialist property sectors with the highest standards of client care. Through our advice, our property management capabilities, property valuation expertise and the transactional services we provide, we help our clients to fulfil their real estate needs – whatever and wherever they are. </div>
 
                         <div class="row features">
                             <!-- Feature Block -->
@@ -784,7 +588,7 @@
     <section class="popular-places-section">
         <div class="auto-container">
             <div class="sec-title">
-                <span class="title">FIND YOUR DREAM HOUSE IN YOUR CITY</span>
+                <span class="title">Brows your Dream Destiny</span>
                 <h2>BEST WAY TO FIND YOUR RIGHT PLACE</h2>
             </div>
     
@@ -795,9 +599,9 @@
                         <figure class="image"><img src="images/gallery/1-1.jpg" alt=""></figure>
                         <div class="info-box">
                            
-                            <h3 class="place"><a href="properties.html">Apartment</a></h3>
-                            <div class="properties"><a href="properties.html">7 Properties</a></div>
-                            <div class="view-all"><a href="properties.html">View All</a></div>
+                            <h3 class="place"><a href="#">Apartment</a></h3>
+                            <div class="properties"><a href="#">7 Properties</a></div>
+                            <div class="view-all"><a href="#">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -808,9 +612,9 @@
                         <figure class="image"><img src="images/gallery/1-2.jpg" alt=""></figure>
                         <div class="info-box">
                             
-                            <h3 class="place"><a href="properties.html">Hotels</a></h3>
-                            <div class="properties"><a href="properties.html">9 Properties</a></div>
-                            <div class="view-all"><a href="properties.html">View All</a></div>
+                            <h3 class="place"><a href="#">Hotels</a></h3>
+                            <div class="properties"><a href="#">9 Properties</a></div>
+                            <div class="view-all"><a href="#">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -821,9 +625,9 @@
                         <figure class="image"><img src="images/gallery/1-3.jpg" alt=""></figure>
                         <div class="info-box">
                             
-                            <h3 class="place"><a href="properties.html">Office Spaces</a></h3>
-                            <div class="properties"><a href="properties.html">5 Properties</a></div>
-                            <div class="view-all"><a href="properties.html">View All</a></div>
+                            <h3 class="place"><a href="#">Office Spaces</a></h3>
+                            <div class="properties"><a href="#">5 Properties</a></div>
+                            <div class="view-all"><a href="#">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -834,9 +638,9 @@
                         <figure class="image"><img src="images/gallery/1-4.jpg" alt=""></figure>
                         <div class="info-box">
                            
-                            <h3 class="place"><a href="properties.html">House in Projects</a></h3>
-                            <div class="properties"><a href="properties.html">12 Properties</a></div>
-                            <div class="view-all"><a href="properties.html">View All</a></div>
+                            <h3 class="place"><a href="#">House in Projects</a></h3>
+                            <div class="properties"><a href="#">12 Properties</a></div>
+                            <div class="view-all"><a href="#">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -848,9 +652,9 @@
                         <figure class="image"><img src="images/gallery/1-5.jpg" alt=""></figure>
                         <div class="info-box">
                             
-                            <h3 class="place"><a href="properties.html">New Development</a></h3>
-                            <div class="properties"><a href="properties.html">6 Properties</a></div>
-                            <div class="view-all"><a href="properties.html">View All</a></div>
+                            <h3 class="place"><a href="#">New Development</a></h3>
+                            <div class="properties"><a href="#">6 Properties</a></div>
+                            <div class="view-all"><a href="#">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -868,8 +672,8 @@
                 <!-- Title Column -->
                 <div class="title-column">
                     <div class="sec-title light">
-                        <span class="title">IN FEW SECONDS WITH WILLES</span>
-                        <h2>BUY OR SALE YOUR HOUSE</h2>
+                        <span class="title">In Few Seconds with Right Place</span>
+                        <h2>Buyor Sale Your Property</h2>
                     </div>
                 </div>
 
@@ -888,8 +692,8 @@
       <section class="clients-section style-three">
         <div class="auto-container">
                 <div class="sec-title">
-                        <span class="title">MEET OUR PROFESSIONALS</span>
-                        <h2>OUR PARTNERS</h2>
+                        <span class="title">Right Place</span>
+                        <h2>Our Strategic Partners</h2>
                     </div>
             <div class="sponsors-outer">
                 <!--Sponsors Carousel-->
@@ -958,8 +762,7 @@
                                     <h2 class="widget-title">Get in Touch</h2>
                                     <div class="widget-content">
                                         <ul class="contact-list">
-                                            <li><span class="la la-map-marker"></span> 51/1, Colombo Road, <br>
-                                                10290 Boralesgomuwa, Sri Lanka</li>
+                                            <li><span class="la la-map-marker"></span> 5/1/1, Colombo Rad, 10290 Boralesgamuwa,<br/> Sri Lanka</li>
                                             <li><span class="la la-phone"></span> (+94)70 399 8877</li>
                                             <li><span class="la la-envelope"></span><a href="#">info@benaa.com</a></li>
                                         </ul>
@@ -978,7 +781,7 @@
                             <div class="footer-column col-xl-8 col-lg-6 col-md-6 col-sm-12">
                                 <!--Footer Column-->
                                 <div class="footer-widget popular-posts">
-                                    <h2 class="widget-title">Popular Posts</h2>
+                                    <h2 class="widget-title">Real Estate News</h2>
                                      <!--Footer Column-->
                                     <div class="widget-content">
                                         <div class="post">
@@ -987,11 +790,7 @@
                                             <span class="date">1 October, 2017</span>
                                         </div>
 
-                                        <div class="post">
-                                            <div class="thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a></div>
-                                            <h4><a href="blog-detail.html">Real Eatate Expo 2018</a></h4>
-                                            <span class="date">10 October, 2017</span>
-                                        </div>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -1005,8 +804,8 @@
                                             
                                                 <li><a href="/rent">Rent</a></li>
                                                 <li><a href="/buy">Buy</a></li>
-                                            <li><a href="properties.html">Terms of use</a></li>
-                                            <li><a href="properties.html">Privacy Policy</a></li>
+                                            <li><a href="#">Terms of use</a></li>
+                                            <li><a href="#">Privacy Policy</a></li>
                                         </ul>
                                     </div>
                                 </div>

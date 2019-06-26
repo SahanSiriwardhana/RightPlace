@@ -3788,12 +3788,12 @@ a.ui-button:active, .ui-button:active,
 
 .new-property .content-column{
 	position: relative;
-	margin-bottom: 40px;
+
 }
 
 .new-property .content-column .inner-column{
 	position: relative;
-	padding: 55px 0 0 40px;
+	padding: 15px 0 0 15px;
 }
 
 .new-property .status{
@@ -3933,11 +3933,11 @@ a.ui-button:active, .ui-button:active,
 
 .new-property .image-column{
 	position: relative;
-	margin-bottom: 50px;
+	margin-bottom: 0px;
 }
 
 .new-property .image-column .inner-column{
-	padding: 65px 50px 0;
+	
 }
 
 .new-property .image{
@@ -3950,7 +3950,7 @@ a.ui-button:active, .ui-button:active,
 	top: 105px;
 	height: 360px;
 	width: 390px;
-	background-image: url(../images/icons/pattern.png);
+	
 	background-repeat: repeat;
 	content: "";
 }
@@ -3962,6 +3962,8 @@ a.ui-button:active, .ui-button:active,
 
 .new-property .image img{
 	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	max-width: 100%;
 	height: auto;
 	border: 10px solid #ffffff;
@@ -9714,7 +9716,7 @@ a.ui-button:active, .ui-button:active,
 
 .contact-section .contact-info-box{
 	position: relative;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 }
 
 .contact-section .contact-info-box:last-child{
@@ -10054,20 +10056,20 @@ a.ui-button:active, .ui-button:active,
 
 .main-footer .contact-list{
 	position: relative;
-	margin-bottom: 30px;
+	margin-bottom: 0px;
 }
 
 .main-footer .contact-list li{
 	position: relative;
 	font-size: 15px;
-	line-height: 36px;
+	line-height: 3-px;
 	color: #ffffff;
 	font-weight: 400;
 	padding-left: 40px;
 }
 
 .main-footer .contact-list li:first-child{
-	margin-bottom: 30px;
+	margin-bottom: 0px;
 }
 
 .main-footer .contact-list li span{ 
@@ -10075,7 +10077,7 @@ a.ui-button:active, .ui-button:active,
 	left: 0;
 	top: 0;
 	font-size:18px;
-	line-height: 36px;
+	line-height: 30px;
 	color: #92c800;
 }
 

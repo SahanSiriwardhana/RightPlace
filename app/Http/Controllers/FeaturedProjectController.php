@@ -28,13 +28,13 @@ class FeaturedProjectController extends Controller
         foreach ($projects as $project){
             
                echo '
-                   <div class="col-md-4">
+                   <div class="col-md-3" style="margin-top:8px">
                       
                        
-                     <img src="/images/featured_project/'.$project->image.'" class="img-responsive">
+                     <img src="/images/featured_project/'.$project->image.'" class="img-thumbnail">
                       
                    
-                       <button type="button" class="btn btn-danger deleteVideo" data-id="'. $project->id.'" data-token="'. csrf_token() .'">Delete</button>
+                       <button type="button" class="btn btn-danger btn-sm deleteVideo" data-id="'. $project->id.'" data-token="'. csrf_token() .'">Delete</button>
                      
                 
                    </div>'

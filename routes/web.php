@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/','indexController@index');
 
 Route::get('/what-we-do', function () {
     return view('about');
@@ -117,28 +115,59 @@ Route::get('/dashboard/rent', function () {
 //----------rent--------------------
 Route::get('/dashboard/land-rent', 'LandRentController@index');
 Route::post('/save-land-rent','LandRentController@store' );
-
+Route::get('/lands_edit/{id}','LandRentController@edit');
+Route::post('/image-fetch-land','LandRentController@fetchImage');
+Route::post('/image-delete-land', 'LandRentController@destroyImage');
+Route::post('/update-image-land','LandRentController@storeUpdateImage' );
+Route::post('/update-land/{id}','LandRentController@update' );
 
 Route::get('/dashboard/house-rent', 'HouseRentController@index');
 Route::post('/save-house-rent','HouseRentController@store' );
+Route::get('/houses_edit/{id}','HouseRentController@edit');
+Route::post('/image-fetch-house','HouseRentController@fetchImage');
+Route::post('/image-delete-house', 'HouseRentController@destroyImage');
+Route::post('/update-image-house','HouseRentController@storeUpdateImage' );
+Route::post('/update-house/{id}','HouseRentController@update' );
 
 Route::get('/dashboard/apartment-rent', 'ApartmenetRentController@index');
 Route::post('/save-apartment-rent','ApartmenetRentController@store' );
+Route::get('/apartments_edit/{id}','ApartmenetRentController@edit');
+Route::post('/image-fetch-apartment','ApartmenetRentController@fetchImage');
+Route::post('/image-delete-apartment', 'ApartmenetRentController@destroyImage');
+Route::post('/update-image-apartment','ApartmenetRentController@storeUpdateImage' );
+Route::post('/update-apartment/{id}','ApartmenetRentController@update' );
 
 Route::get('/dashboard/holiday-short-rent', 'HolydayRentalController@index');
 Route::post('/save-holyday-rental','HolydayRentalController@store' );
 Route::get('/holyday_rentals/{id}','HolydayRentalController@show');
 Route::get('/ad-approve-holyday/{id}','HolydayRentalController@approve');
 Route::get('/holyday_rentals_delete/{id}','HolydayRentalController@destroy');
+Route::get('/holyday_rentals_edit/{id}','HolydayRentalController@edit');
+Route::post('/image-fetch-holyday-rental','HolydayRentalController@fetchImage');
+Route::post('/image-delete-holyday-rental', 'HolydayRentalController@destroyImage');
+Route::post('/update-image-holyday-rental','HolydayRentalController@storeUpdateImage' );
+Route::post('/update-holyday-rental/{id}','HolydayRentalController@update' );
+
 
 Route::get('/dashboard/commercial-rent', 'CommercialPropertyRentController@index');
 Route::post('/save-commercial-rent','CommercialPropertyRentController@store' );
+Route::get('/commercial_properties_edit/{id}','CommercialPropertyRentController@edit');
+Route::post('/image-fetch-commercial-property','CommercialPropertyRentController@fetchImage');
+Route::post('/image-delete-commercial-property', 'CommercialPropertyRentController@destroyImage');
+Route::post('/update-image-commercial-property','CommercialPropertyRentController@storeUpdateImage' );
+Route::post('/update-commercial-property/{id}','CommercialPropertyRentController@update' );
+
 
 Route::get('/dashboard/portion-rooms-rent', 'RoomController@index');
 Route::post('/save-room-rent','RoomController@store' );
 Route::get('/rooms/{id}','RoomController@show');
 Route::get('/ad-approve-room/{id}','RoomController@approve');
 Route::get('/rooms_delete/{id}','RoomController@destroy');
+Route::get('/rooms_edit/{id}','RoomController@edit');
+Route::post('/image-fetch-room','RoomController@fetchImage');
+Route::post('/image-delete-room', 'RoomController@destroyImage');
+Route::post('/update-image-room','RoomController@storeUpdateImage' );
+Route::post('/update-room/{id}','RoomController@update' );
 
 Route::get('/dashboard/my-add', 'ShowAddController@my_add');
 Route::get('/dashboard/published-add', 'ShowAddController@publishAds');
@@ -154,6 +183,7 @@ Route::get('/lands/{id}','LandSaleController@show');
 Route::get('/ad-approve/{id}','LandSaleController@approve');
 Route::get('/lands_delete/{id}','LandSaleController@destroy');
 
+
 Route::get('/dashboard/house-sale', 'HouseSaleController@index');
 Route::post('/save-house-sale','HouseSaleController@store' );
 Route::get('/houses/{id}','HouseSaleController@show');
@@ -168,7 +198,7 @@ Route::get('/ad-approve-apartment/{id}','ApartmenetSaleController@approve');
 Route::get('/apartments_delete/{id}','ApartmenetSaleController@destroy');
 
 Route::get('/dashboard/commercial-sale', 'CommercialPropertySaleController@index');
-Route::post('/save-commercial-salehouses','CommercialPropertySaleController@store' );
+Route::post('/save-commercial-sale','CommercialPropertySaleController@store' );
 Route::get('/commercial_properties/{id}','CommercialPropertySaleController@show');
 Route::get('/ad-approve-com/{id}','CommercialPropertySaleController@approve');
 Route::get('/commercial_properties_delete/{id}','CommercialPropertySaleController@destroy');

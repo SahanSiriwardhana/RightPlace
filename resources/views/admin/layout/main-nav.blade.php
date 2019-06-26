@@ -6,12 +6,12 @@
 <meta charset="utf-8">
 <title>RightPlace.lk | My Property</title>
 <!-- Stylesheets -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-<link href="css/responsive.css" rel="stylesheet">
+<link href="{{ URL::asset('dashboard/css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{ URL::asset('dashboard/css/style.css')}}" rel="stylesheet">
+<link href="{{ URL::asset('dashboard/css/responsive.css')}}" rel="stylesheet">
 <!--Color Themes-->
-<link id="theme-color-file" href="css/blue-theme.css" rel="stylesheet">
-<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+<link id="theme-color-file" href="{{ URL::asset('dashboard/css/blue-theme.css')}}" rel="stylesheet">
+<link rel="shortcut icon" href="{{ URL::asset('dashboard/images/favicon.png')}}" type="image/x-icon">
 <link rel="icon" href="images/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
 <!-- Responsive -->
@@ -80,14 +80,14 @@ color: black;
         <div class="main-box clearfix">
         	<!-- Logo Box -->
             <div class="logo-box">
-                <div class="logo"><a href="/"><img src="images/ed-logo.png" alt="" title=""></a></div>
+                <div class="logo"><a href="/"><img src="{{ URL::asset('dashboard/images/ed-logo.png')}}" alt="" title=""></a></div>
             </div>
 
             <!-- Upper Right-->
             <div class="upper-right">
                 <ul class="clearfix">
                     <li class="dropdown option-box">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="images/resource/thumb-1.jpg" alt="avatar" class="thumb">My Account</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="{{ URL::asset('dashboard/images/resource/thumb-1.jpg')}}" alt="avatar" class="thumb">My Account</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="dashboard.html">My Account</a>
                             <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
@@ -108,14 +108,14 @@ color: black;
       
     @yield('content')
  
-    <script src="js/jquery.js"></script> 
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/wow.js"></script>
-    <script src="js/dropzone.js"></script>
-    <script src="js/appear.js"></script>
-    <script src="js/script.js"></script>
+    <script src="{{ URL::asset('dashboard/js/jquery.js')}}"></script> 
+    <script src="{{ URL::asset('dashboard/js/popper.min.js')}}"></script>
+    <script src="{{ URL::asset('dashboard/js/bootstrap.min.js')}}"></script>
+    <script src="{{ URL::asset('dashboard/js/jquery-ui.js')}}"></script>
+    <script src="{{ URL::asset('dashboard/js/wow.js')}}"></script>
+    <script src="{{ URL::asset('dashboard/js/dropzone.js')}}"></script>
+    <script src="{{ URL::asset('dashboard/js/appear.js')}}"></script>
+    <script src="{{ URL::asset('dashboard/js/script.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
@@ -237,7 +237,7 @@ color: black;
 
 
     // Submit Button Event on click
-    submitButton.addEventListener("click", function(e) {
+    $('#formData').submit( function(e) {
         e.preventDefault();
     // Serialize Form
         var form = $('#formData').serialize();
@@ -276,6 +276,7 @@ color: black;
                                         'Data Saved!',
                                         'success'
                                         )
+                                        $("#formData")[0].reset()
                             
                 }
             },
@@ -333,10 +334,12 @@ color: black;
                             title: 'Error!',
                             html: error_html,
                             type: 'error',
-                            confirmButtonText: 'Cool'
+                            confirmButtonText: 'Ok'
                             })
                     }else{
                         // if dropzone has no files store item without images
+                        myDropzone.removeFile(file);
+                        $("#formData")[0].reset()
                                          Swal.fire(
                                         'Good job!',
                                         'Data Saved!',
@@ -363,11 +366,7 @@ color: black;
     //-----end of document.ready -----------
         });
     </script>
-   @if(session()->has('success'))
-   <script>
-     
-   </script>
-   @endif
+  
     </body>
     
     <!-- Mirrored from expert-themes.com/html/willies/admin/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 11:31:39 GMT -->

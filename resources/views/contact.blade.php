@@ -248,9 +248,9 @@
                         <div class="contact-info-box">
                             <div class="inner-box">
                                 <span class="icon la la-globe"></span>
-                                <h4>Address</h4>
+                                <h4>Office</h4>
                                 <ul>
-                                    <li>51/1, Colombo Road, <br/>10290 Boralesgomuwa, Sri Lanka</li>
+                                    <li>5/1/1, <br>Colombo Road,<br> 10290 Boralesgamuwa,<br> Sri Lanka</li>
                                 </ul> 
                             </div>
                         </div>

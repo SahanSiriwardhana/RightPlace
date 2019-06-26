@@ -258,6 +258,7 @@ myDropzone.on("success", function(file, response){
                                         'Image has uploaded!',
                                         'success'
                                         )
+                                        myDropzone.removeFile(file);
                                         loadData();   
                 }
                                    

@@ -21,7 +21,7 @@ class LandSaleController extends Controller
      */
     public function index()
     {
-       $district=new District();
+       
        $data=District::all(); 
        return view('admin/land-sale')->with('districts',$data);
     }
@@ -89,6 +89,12 @@ class LandSaleController extends Controller
             $land->item_type=$request->itemType;
             $land->land_size=$request->landSize;
             $land->land_size_type=$request->unit;
+                //--------features--------------
+                $land->electricity=$request->electricity;
+                $land->water_supply_from_main_supply=$request->water_supply_from_main_supply;
+                $land->water_supply_from_well=$request->water_supply_from_well;
+                $land->seveage_system=$request->seveage_system;
+                $land->septic_tank=$request->septic_tank;
             $land->rent_per_month=$request->rentPerMonth;
             $land->address=$request->address;
             $land->description=$request->detailInfo;

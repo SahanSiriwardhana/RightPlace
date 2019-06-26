@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input as Input;
 use Illuminate\Http\Request;
+use File;
+use DB;
 use App\CommercialProperty;
 use App\District;
-
+use App\City;
+use App\User;
 class CommercialPropertyRentController extends Controller
 {
     /**
@@ -85,6 +88,12 @@ class CommercialPropertyRentController extends Controller
             $commercialProperty->type=2;//rent
             $commercialProperty->negotiable=$request->negotiable;
             $commercialProperty->item_type=$request->itemType;
+            //--------features--------------
+            $commercialProperty->electricity=$request->electricity;
+            $commercialProperty->water_supply_from_main_supply=$request->water_supply_from_main_supply;
+            $commercialProperty->water_supply_from_well=$request->water_supply_from_well;
+            $commercialProperty->seveage_system=$request->seveage_system;
+            $commercialProperty->septic_tank=$request->septic_tank;
             $commercialProperty->size=$request->size;
             $commercialProperty->rent_per_month=$request->rentPerMonth;
             $commercialProperty->address=$request->address;
@@ -128,6 +137,161 @@ class CommercialPropertyRentController extends Controller
     public function edit($id)
     {
         //
+        $district=District::all(); 
+        $city=City::all();
+        $commercialProperty=CommercialProperty::find($id);
+        $user=User::find($commercialProperty->user_id);
+      
+        return view('admin/commercial-edit',['commercial'=>$commercialProperty,'districts'=>$district,'cities'=>$city,'user'=>$user,'propType'=>'commercial']);
+    }
+
+
+    public function fetchImage(Request $request){
+        $id=$request->get('id');
+        $datas=DB::table('commercial_properties')->select('id','image1','image2','image3','image4')->where('id',$id)->get();
+        $output="";
+        foreach($datas as $data){
+        if($data->image1!=null){
+            $output.='<div class="col-md-3">
+            <img src="/images.image_uplode/'.$data->image1.'" alt="" srcset="" class="img-thumbnail">
+            <button type="button" class="btn btn-danger btn-sm deleteImage" data-id="'. $data->id.'" data-token="'. csrf_token() .'" style="margin-top:5px;" name="image1">Delete</button>
+        </div>';
+        }
+        if($data->image2!=null){
+            $output.='<div class="col-md-3">
+            <img src="/images.image_uplode/'.$data->image2.'" alt="" srcset="" class="img-thumbnail">
+            <button type="button" class="btn btn-danger btn-sm deleteImage" data-id="'. $data->id.'" data-token="'. csrf_token() .'" style="margin-top:5px;" name="image2">Delete</button>
+        </div>';
+        }
+        if($data->image3!=null){
+            $output.='<div class="col-md-3" >
+            <img src="/images.image_uplode/'.$data->image3.'" alt="" srcset="" class="img-thumbnail">
+            <button type="button" class="btn btn-danger btn-sm deleteImage" data-id="'. $data->id.'" data-token="'. csrf_token() .'" style="margin-top:5px;" name="image3">Delete</button>
+        </div>';
+        }
+        if($data->image4!=null){
+            $output.='<div class="col-md-3" >
+            <img src="/images.image_uplode/'.$data->image4.'" alt="" srcset="" class="img-thumbnail">
+            <button type="button" class="btn btn-danger btn-sm deleteImage" data-id="'. $data->id.'" data-token="'. csrf_token() .'" style="margin-top:5px;" name="image4">Delete</button>
+        </div>';
+        }
+    }
+        echo $output;
+    }
+
+
+    public function destroyImage(Request $request){
+        $id= $request->id;
+        $colum=$request->name;
+        $imageName= DB::table('commercial_properties')
+             ->select($colum)
+             ->where('id','=', $id)
+             ->first();
+        
+        $filename='images.image_uplode/'.$imageName->$colum;//.DB::table('featured_projects')->where('id', '=', $id) ->pluck('image');
+        File::delete($filename);
+        $quary= DB::table('commercial_properties')
+            ->where('id', $id)
+            ->update([$colum => null]);
+
+            $imageFetch=DB::table('commercial_properties')
+            ->select('image1','image2','image3','image4')
+            ->where('id','=', $id)
+            ->first();
+            //-----------rearage images----------------
+            $image=array($imageFetch->image1,$imageFetch->image2,$imageFetch->image3,$imageFetch->image4);
+            rsort( $image );
+          
+            $updateDetails = [
+                'image1' => $image[0],
+                'image2' => $image[1],
+                'image3' => $image[2],
+                'image4' => $image[3],
+            ];
+            $quary2= DB::table('commercial_properties')
+            ->where('id', $id)
+            ->update($updateDetails);  
+            
+            //-----------------------------------------
+        echo $quary;
+    }
+
+
+    public function storeUpdateImage(Request $request)
+    {
+        //
+
+        $file = Input::file('file');
+        $id=$request->id;
+       
+         if($request->hasFile('file')){
+
+            $success="";
+            $error="";
+
+            $imageFetch=DB::table('commercial_properties')
+            ->select('image1','image2','image3','image4')
+            ->where('id','=', $id)
+            ->first();
+
+            for($i=0;$i<sizeof($file);$i++){
+                if($imageFetch->image1==null){
+                     //-----------store image----------------
+                    $imageName[$i] = $file[$i]->getClientOriginalExtension();
+                    $imageName[$i] = uniqid().'_'.time().'.'.$file[$i]->getClientOriginalExtension();
+                    $file[$i]->move(public_path('images.image_uplode'), $imageName[$i]);
+                    $quary= DB::table('commercial_properties')
+                    ->where('id', $id)
+                    ->update(['image1' => $imageName[$i]]);
+                    $success="sucess";
+                    //--------------------------------------
+
+                }elseif($imageFetch->image2==null){
+                     //-----------store image----------------
+                     $imageName[$i] = $file[$i]->getClientOriginalExtension();
+                     $imageName[$i] = uniqid().'_'.time().'.'.$file[$i]->getClientOriginalExtension();
+                     $file[$i]->move(public_path('images.image_uplode'), $imageName[$i]);
+                     $quary= DB::table('commercial_properties')
+                     ->where('id', $id)
+                     ->update(['image2' => $imageName[$i]]);
+                     $success="sucess";
+                     //--------------------------------------
+                }elseif($imageFetch->image3==null){
+                     //-----------store image----------------
+                     $imageName[$i] = $file[$i]->getClientOriginalExtension();
+                     $imageName[$i] = uniqid().'_'.time().'.'.$file[$i]->getClientOriginalExtension();
+                     $file[$i]->move(public_path('images.image_uplode'), $imageName[$i]);
+                     $quary= DB::table('commercial_properties')
+                     ->where('id', $id)
+                     ->update(['image3' => $imageName[$i]]);
+                     $success="sucess";
+                     //--------------------------------------
+                }elseif($imageFetch->image4==null){
+                     //-----------store image----------------
+                     $imageName[$i] = $file[$i]->getClientOriginalExtension();
+                     $imageName[$i] = uniqid().'_'.time().'.'.$file[$i]->getClientOriginalExtension();
+                     $file[$i]->move(public_path('images.image_uplode'), $imageName[$i]);
+                     $quary= DB::table('commercial_properties')
+                     ->where('id', $id)
+                     ->update(['image4' => $imageName[$i]]);
+                     $success="sucess";
+                     //--------------------------------------
+                }else{
+                    $error="You can only upload 4 images";
+                }
+
+              
+
+
+               
+        }
+        $output=array(
+            'error'=>$error,
+            'sucess'=>$success,
+        );
+            echo json_encode($output);
+
+        }
     }
 
     /**
@@ -140,6 +304,59 @@ class CommercialPropertyRentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validation = Validator::make($request->all(),[
+            'city'=>'required',
+            'town'=>'required',
+            'addTitle'=>'required|max:50',
+            'itemType'=>'required',
+            'size'=>'bail|required|numeric',
+            'rentPerMonth'=>'required|numeric',
+            'detailInfo'=>'required|max:5000',
+            'phone'=>'required|numeric|regex:/^[0-9]{10}$/',
+           
+        ]);
+
+        $error_array=array();
+        $success="";
+
+        if ($validation->fails()) {
+            foreach($validation->messages()->getMessages() as $field_name=>$messages){
+                $error_array[]=$messages;
+            }
+        }else{
+            
+
+            $commercialProperty=CommercialProperty::find($id);
+          
+            $commercialProperty->city=$request->city;
+            $commercialProperty->town=$request->town;
+            $commercialProperty->title=$request->addTitle;
+          
+            $commercialProperty->negotiable=$request->negotiable;
+            $commercialProperty->item_type=$request->itemType;
+            $commercialProperty->size=$request->size;
+               //--------features--------------
+               $commercialProperty->electricity=$request->electricity;
+               $commercialProperty->water_supply_from_main_supply=$request->water_supply_from_main_supply;
+               $commercialProperty->water_supply_from_well=$request->water_supply_from_well;
+               $commercialProperty->seveage_system=$request->seveage_system;
+               $commercialProperty->septic_tank=$request->septic_tank;
+            $commercialProperty->rent_per_month=$request->rentPerMonth;
+            $commercialProperty->address=$request->address;
+            $commercialProperty->description=$request->detailInfo;
+            $commercialProperty->phone=$request->phone;
+
+          
+            $commercialProperty->save(); 
+            $success="sucess";
+        }
+        $output=array(
+            'error'=>$error_array,
+            'sucess'=>$success,
+        );
+
+       echo json_encode($output);
+
     }
 
     /**

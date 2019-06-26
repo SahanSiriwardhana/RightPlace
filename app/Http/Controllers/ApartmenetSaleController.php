@@ -50,7 +50,7 @@ class ApartmenetSaleController extends Controller
             'city'=>'required',
             'town'=>'required',
             'addTitle'=>'required|max:50',
-           
+            'itemType'=>'required',
             'beds'=>'required',
             'baths'=>'required',
             'houseSize'=>'bail|required|numeric',
@@ -90,6 +90,14 @@ class ApartmenetSaleController extends Controller
             $apartment->negotiable=$request->negotiable;
            
             $apartment->house_size=$request->houseSize;
+            $apartment->item_type=$request->itemType;
+               //--------features--------------
+               $apartment->electricity=$request->electricity;
+               $apartment->water_supply_from_main_supply=$request->water_supply_from_main_supply;
+               $apartment->water_supply_from_well=$request->water_supply_from_well;
+               $apartment->seveage_system=$request->seveage_system;
+               $apartment->septic_tank=$request->septic_tank;
+
 
             $apartment->beds=$request->beds;
             $apartment->baths=$request->baths;

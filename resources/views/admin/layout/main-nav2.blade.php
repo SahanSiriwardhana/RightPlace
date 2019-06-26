@@ -278,6 +278,7 @@ myDropzone.on("success", function(file, response){
                                         'Video has uploaded!',
                                         'success'
                                         )
+                                        myDropzone.removeFile(file);    
                                         loadData();   
                 }
                                    

@@ -86,6 +86,12 @@ class CommercialPropertySaleController extends Controller
             $commercialProperty->type=1;//sale
             $commercialProperty->negotiable=$request->negotiable;
             $commercialProperty->item_type=$request->itemType;
+               //--------features--------------
+               $commercialProperty->electricity=$request->electricity;
+               $commercialProperty->water_supply_from_main_supply=$request->water_supply_from_main_supply;
+               $commercialProperty->water_supply_from_well=$request->water_supply_from_well;
+               $commercialProperty->seveage_system=$request->seveage_system;
+               $commercialProperty->septic_tank=$request->septic_tank;
             $commercialProperty->size=$request->size;
             $commercialProperty->rent_per_month=$request->rentPerMonth;
             $commercialProperty->address=$request->address;
