@@ -973,7 +973,7 @@
 	}
 
 	.main-footer{
-		padding-top: 70px;
+		padding-top: 10px;
 	}
 
 
@@ -987,7 +987,7 @@
 	.agents-section,
 	.recent-property-section,
 	.property-section{
-		padding: 70px 0 40px;
+		padding: 10px 0 10px;
 	}
 
 	.agent-detail,
@@ -1003,7 +1003,7 @@
 	.testimonial-section,
 	.popular-places-section,
 	.about-us{
-		padding: 70px 0;
+		padding: 10px 0;
 	}
 
 	.testimonial-page-section{

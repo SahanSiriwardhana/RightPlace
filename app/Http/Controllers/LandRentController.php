@@ -11,6 +11,8 @@ use App\Land;
 use App\District;
 use App\City;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 class LandRentController extends Controller
 {
     /**
@@ -42,10 +44,22 @@ class LandRentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function sendEmailWhen3AdsAttempt($data){
+        Mail::send(
+            'alertMsgAfter3ads',
+            ['data'=>$data],
+            function($message) use ($data){
+                $message->to('rightplaceteam@gmail.com');
+                $message->subject("The user has been published more than 3 ads.");
+            }
+        );
+    }
     public function store(Request $request)
     {
-        //
-
+        $id= Auth::user()->id;
+        $name=Auth::user()->first_name;
+        $email=Auth::user()->email;
+        $phone=Auth::user()->phone;
         $validation = Validator::make($request->all(),[
             'city'=>'required',
             'town'=>'required',
@@ -67,6 +81,24 @@ class LandRentController extends Controller
                 $error_array[]=$messages;
             }
         }else{
+            $commercialProperties =  \DB::table('commercial_properties')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $houses = \DB::table('houses')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $lands =\DB::table('lands')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $apartments =\DB::table('apartments')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $holyday_rentals =\DB::table('holyday_rentals')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $rooms =\DB::table('rooms')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $publishedadcount=$commercialProperties+$houses+$lands+$apartments+$holyday_rentals+$rooms;
+
+            if($publishedadcount>3){
+                $data=[
+                    'name'=>$name,
+                    'email'=>$email,
+                    'phone'=>$phone,
+                    'addCount'=>$publishedadcount
+                ];
+                $this->sendEmailWhen3AdsAttempt($data);
+                // return  redirect()->back()->with(['successFullySentEmail' =>'Our Agents will contact you soon']);;
+            }
             //get the file name from request
             $file = Input::file('file');
            // $destinationPath = public_path() . '/image_uplode/';
@@ -80,7 +112,7 @@ class LandRentController extends Controller
         }
 
             $land=new Land();
-            $land->user_id="1";
+            $land->user_id= $id;
             $land->city=$request->city;
             $land->town=$request->town;
             $land->title=$request->addTitle;
@@ -334,7 +366,6 @@ class LandRentController extends Controller
 
             $land=Land::find($id);
 
-            $land->user_id="1";
             $land->city=$request->city;
             $land->town=$request->town;
             $land->title=$request->addTitle;

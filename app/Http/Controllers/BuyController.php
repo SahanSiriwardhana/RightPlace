@@ -29,6 +29,49 @@ class BuyController extends Controller
         return view('buy-properties',['ads'=>$ads,'cities'=>$data,'districts'=>$district,'landCount'=>$landsCount,'housesCount'=>$housesCount,'apartmentsCount'=>$apartmentsCount,'commercialPropertiesCount'=>$commercialPropertiesCount,'resentLands'=>$adsResent,'addCategory'=>'All','priceCategory'=>'All','category'=>'All']);
     }
 
+    public function apartmentFetch()
+    {
+        //
+        $data=City::all();
+        $district=District::all();
+        $landsCount=DB::table('lands')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $housesCount=DB::table('houses')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $apartmentsCount=DB::table('apartments')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $commercialPropertiesCount=DB::table('commercial_properties')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $ads=DB::select("SELECT id,title,updated_at,'Apartments' as 'type',town,city,rent_per_month,image1,add_status,'apartments' as tableName from apartments WHERE add_status='published' ORDER BY updated_at DESC");
+        $adsResent=DB::select("(SELECT id,title,updated_at,'Commercial Properties' as 'type',town,city,rent_per_month,image1,add_status,'commercial_properties' as tableName from commercial_properties WHERE add_status='published' AND type=1) union (select id,title,updated_at,'House',town,city,rent_per_month,image1,add_status,'houses' from houses WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Land',town,city,rent_per_month,image1,add_status,'lands' from lands WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Apartment',town,city,rent_per_month,image1,add_status,'apartments' from apartments WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Holyday Rental',town,city,rent_per_month,image1,add_status,'holyday_rentals' from holyday_rentals WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Room',town,city,rent_per_month,image1,add_status,'rooms' from rooms WHERE add_status='published' AND type=1) order by updated_at DESC,rand() LIMIT 4");
+        return view('buy-properties',['ads'=>$ads,'cities'=>$data,'districts'=>$district,'landCount'=>$landsCount,'housesCount'=>$housesCount,'apartmentsCount'=>$apartmentsCount,'commercialPropertiesCount'=>$commercialPropertiesCount,'resentLands'=>$adsResent,'addCategory'=>'All','priceCategory'=>'All','category'=>'All','category1'=>'Apartments']);
+    }
+
+    public function holydayFetch()
+    {
+        //
+        $data=City::all();
+        $district=District::all();
+        $landsCount=DB::table('lands')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $housesCount=DB::table('houses')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $apartmentsCount=DB::table('apartments')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $commercialPropertiesCount=DB::table('commercial_properties')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $ads=DB::select("SELECT id,title,updated_at,'Holyday Rental' as 'type',town,city,rent_per_month,image1,add_status,'holyday_rentals' as tableName from holyday_rentals WHERE add_status='published' ORDER BY updated_at DESC");
+        $adsResent=DB::select("(SELECT id,title,updated_at,'Commercial Properties' as 'type',town,city,rent_per_month,image1,add_status,'commercial_properties' as tableName from commercial_properties WHERE add_status='published' AND type=1) union (select id,title,updated_at,'House',town,city,rent_per_month,image1,add_status,'houses' from houses WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Land',town,city,rent_per_month,image1,add_status,'lands' from lands WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Apartment',town,city,rent_per_month,image1,add_status,'apartments' from apartments WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Holyday Rental',town,city,rent_per_month,image1,add_status,'holyday_rentals' from holyday_rentals WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Room',town,city,rent_per_month,image1,add_status,'rooms' from rooms WHERE add_status='published' AND type=1) order by updated_at DESC,rand() LIMIT 4");
+        return view('buy-properties',['ads'=>$ads,'cities'=>$data,'districts'=>$district,'landCount'=>$landsCount,'housesCount'=>$housesCount,'apartmentsCount'=>$apartmentsCount,'commercialPropertiesCount'=>$commercialPropertiesCount,'resentLands'=>$adsResent,'addCategory'=>'All','priceCategory'=>'All','category'=>'Apartment','category1'=>'Holyday Rental']);
+    }
+    public function houseFetch()
+    {
+        //
+        $data=City::all();
+        $district=District::all();
+        $landsCount=DB::table('lands')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $housesCount=DB::table('houses')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $apartmentsCount=DB::table('apartments')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $commercialPropertiesCount=DB::table('commercial_properties')->where([['add_status', '=', 'published'],['type','=','1']])->count();
+        $ads=DB::select("SELECT id,title,updated_at,'House' as 'type',town,city,rent_per_month,image1,add_status,'houses' as tableName from houses WHERE add_status='published' ORDER BY updated_at DESC");
+        $adsResent=DB::select("(SELECT id,title,updated_at,'Commercial Properties' as 'type',town,city,rent_per_month,image1,add_status,'commercial_properties' as tableName from commercial_properties WHERE add_status='published' AND type=1) union (select id,title,updated_at,'House',town,city,rent_per_month,image1,add_status,'houses' from houses WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Land',town,city,rent_per_month,image1,add_status,'lands' from lands WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Apartment',town,city,rent_per_month,image1,add_status,'apartments' from apartments WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Holyday Rental',town,city,rent_per_month,image1,add_status,'holyday_rentals' from holyday_rentals WHERE add_status='published' AND type=1) union (select id,title,updated_at,'Room',town,city,rent_per_month,image1,add_status,'rooms' from rooms WHERE add_status='published' AND type=1) order by updated_at DESC,rand() LIMIT 4");
+        return view('buy-properties',['ads'=>$ads,'cities'=>$data,'districts'=>$district,'landCount'=>$landsCount,'housesCount'=>$housesCount,'apartmentsCount'=>$apartmentsCount,'commercialPropertiesCount'=>$commercialPropertiesCount,'resentLands'=>$adsResent,'addCategory'=>'All','priceCategory'=>'All','category'=>'House','category1'=>'Houses']);
+    }
+
+
+
    
     public function loadProperty($id){
         $data=City::all();

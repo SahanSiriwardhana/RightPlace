@@ -4,7 +4,7 @@
 <!-- Mirrored from expert-themes.com/html/willies/admin/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 11:30:35 GMT -->
 <head>
 <meta charset="utf-8">
-<title>RightPlace.lk | My Property</title>
+<title>RightPlace.lk | Dashboard</title>
 <!-- Stylesheets -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
@@ -84,22 +84,31 @@ color: black;
 
             <!-- Upper Right-->
             <div class="upper-right">
-                <ul class="clearfix">
-                    <li class="dropdown option-box">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="images/resource/thumb-1.jpg" alt="avatar" class="thumb">My Account</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="dashboard.html">My Account</a>
-                            <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
-                         
-                            <a class="dropdown-item" href="../index-2.html">Logout</a>
-                        </div>
-                    </li>
-                    <li class="submit-property">
-                    	<a href="/dashboard/add-type" class="theme-btn btn-style-one">Submit Property <i class="pe-7s-up-arrow"></i></a>
-                    </li>
-                   
-                </ul>
-            </div>
+                    <ul class="clearfix">
+                      
+                        <li class="dropdown option-box">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
+                                <span style="font-size:150%">
+                                <i class="fas fa-user-circle"></i>
+                                {{-- <img src="images/resource/user-circle-solid.png" alt="avatar" class="thumb"> --}}
+                                {{Auth::user()->first_name}}
+                               </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/dashboard/my-account">My Account</a>
+                                <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
+                                @can('isAdmin')
+                                <a class="dropdown-item" href="/dashboard/approve-panel">Approve ads</a>
+                                @endcan
+                            <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                            </div>
+                        </li>
+                        <li class="submit-property">
+                            <a href="/dashboard/add-type" class="theme-btn btn-style-one">Submit Property <i class="pe-7s-up-arrow"></i></a>
+                        </li>
+                       
+                    </ul>
+                </div>
         </div>
         <!--End Header Lower-->
     </header>

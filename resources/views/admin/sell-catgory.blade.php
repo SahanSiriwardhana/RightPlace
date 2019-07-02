@@ -67,13 +67,22 @@
             <!-- Upper Right-->
             <div class="upper-right">
                 <ul class="clearfix">
+                  
                     <li class="dropdown option-box">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="images/resource/thumb-1.jpg" alt="avatar" class="thumb">My Account</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
+                            <span style="font-size:150%">
+                            <i class="fas fa-user-circle"></i>
+                            {{-- <img src="images/resource/user-circle-solid.png" alt="avatar" class="thumb"> --}}
+                            {{Auth::user()->first_name}}
+                           </span>
+                        </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="dashboard.html">My Account</a>
+                            <a class="dropdown-item" href="/dashboard/my-account">My Account</a>
                             <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
-                         
-                            <a class="dropdown-item" href="../index-2.html">Logout</a>
+                            @can('isAdmin')
+                            <a class="dropdown-item" href="/dashboard/approve-panel">Approve ads</a>
+                            @endcan
+                        <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
                         </div>
                     </li>
                     <li class="submit-property">

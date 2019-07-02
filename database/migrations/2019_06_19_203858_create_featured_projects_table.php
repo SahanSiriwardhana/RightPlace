@@ -29,6 +29,6 @@ class CreateFeaturedProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('featured_projects');
+        //Schema::dropIfExists('featured_projects');
     }
 }

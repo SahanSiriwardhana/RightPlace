@@ -5,7 +5,7 @@
     <!-- Hidden Bar -->
    
     <!--End Hidden Bar -->
-
+	
     <div class="dashboard">
 	    <div class="container-fluid">
 	        <div class="content-area">
@@ -39,8 +39,8 @@
 			                            <form method="post" action="/save-house-sale" enctype="multipart/form-data" id="formData">
 											{{ csrf_field() }}
 											<div class="title"><h3>Location Info</h3></div>
-											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Enter Location Information" data-trigger="hover">
-			                                <div class="row">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Enter your location information" rel="popover" data-placement="right" data-original-title="Where are you?" data-trigger="hover">
+												<div class="row">
 			                                	
 												
 			                                    <!-- Form Group -->
@@ -78,8 +78,8 @@
 											</div>
 											
 											<div class="title"><h3>Property Gallery</h3></div>
-											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
-			                                <div class="row">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Images must be JPG or PNG format (max 5 MB)" rel="popover" data-placement="right" data-original-title="Add more photos to get more responses" data-trigger="hover">
+												<div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12">
 			                                        <div id="myDropZone1" class="dropzone dropzone-design" name="">
@@ -89,8 +89,8 @@
 											</div>
 											</div>
 											<div class="title"><h3>Basic Info</h3></div>
-											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
-			                                <div class="row">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Enter basic information about your property with smart price" rel="popover" data-placement="right" data-original-title="Basic information" data-trigger="hover">
+												<div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12 col-md-6 col-sm-12">
 			                                        <label>Title For Your Add*</label>
@@ -197,8 +197,9 @@
 			                                </div>
 											</div>
 											<div class="title"><h3>Features </h3></div>
-											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
-											<div class="row">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Select multiple features
+											" rel="popover" data-placement="right" data-original-title="Features" data-trigger="hover">
+										<div class="row">
 													<div class="form-group col-lg-3 col-md-6 col-sm-12 ">
 															<div class="check-box">
 																<input type="checkbox" name="electricity" id="service-20" value="1"> 
@@ -240,8 +241,11 @@
 
 			                                
 											<div class="title"><h3>Detailed Information</h3></div>
-											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
-											<div class="row">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Enter detailed information of your property 
+											Mentioning other features, why you selling, other benefits and etc.
+											(max 5000 characters)
+											" rel="popover" data-placement="right" data-original-title="Add good description" data-trigger="hover">
+									<div class="row">
 			                                	<!-- Form Group -->
 			                                    <div class="form-group col-lg-12">
 			                                    	<textarea name="detailInfo" placeholder="Detailed Information*" required value="{{old('detailInfo')}}" onkeyup="countChar(this)"></textarea>
@@ -250,8 +254,8 @@
 											</div>
 											</div>
 											<div class="title"><h3>Contact Info</h3></div>
-											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Popover with data-trigger" rel="popover" data-placement="right" data-original-title="Title" data-trigger="hover">
-			                                <div class="row">
+											<div class="col-lg-12 popoverDat"  class="btn" href="#" data-content="Working phone number is the most valuable asset of your advertisement." rel="popover" data-placement="right" data-original-title="Add phone number" data-trigger="hover">
+												<div class="row">
 			                                	
 
 			                                    <!-- Form Group -->

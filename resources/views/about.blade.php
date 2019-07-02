@@ -21,7 +21,7 @@
 
     <!-- About Us -->
     <section class="about-us style-two">
-        <div class="auto-container" style="margin-top:-40px;margin-bottom: -40px;">
+        <div class="auto-container" >
             <div class="row">
                 <!-- Info Column -->
                 <div class="info-column col-lg-6 col-md-12 col-sm-12">
@@ -52,7 +52,7 @@
     <!-- About Us -->
 <section class="services-section" style="background: #f4f4f5; ">
     <div class="auto-container">
-    <div class="row features" style="margin-top:-80px;margin-bottom: -40px;">
+    <div class="row features" >
         <!-- Feature Block -->
         <div class="feature-block col-lg-3 col-md-6 col-sm-12">
             <div class="inner-box">

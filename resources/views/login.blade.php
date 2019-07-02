@@ -25,6 +25,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+<style>
+@media (max-width:601px) {
+
+
+.fbButton{
+    
+}
+}
+</style>
 </head>
 
 <body>
@@ -214,7 +223,7 @@
                                                 <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                             </div>
                                             <div align="left"><a href='resetPwForm'}><small ><u>Forgot Password?</u></small></a></div>
-                                            <button type="submit" style="margin-left:54% ;width:46%" class="btn btn-warning btn-lg">Login</button>
+                                            <button type="submit"  class="btn btn-primary btn-lg " style=" margin-left:54% ;width:46%;border-radius:0px">Login</button>
 
                                             {{csrf_field()}}
                                             
@@ -266,7 +275,7 @@
                                         {{-- {!! $errors->first('cpassword', '<span class="text-danger">:message</span>') !!} --}}
                                         </div>
 
-                                        <button type="submit" style="margin-left:54% ;width:46%" class="btn btn-warning btn-lg">Register</button>
+                                        <button type="submit" style="margin-left:54% ;width:46%;border-radius:0px" class="btn btn-primary btn-lg">Register</button>
                                         <div align="right"><small >By login you agree to Terms-Conditions and Privacy-Policy</small></div>
                                         {{csrf_field()}}
                                         </form>

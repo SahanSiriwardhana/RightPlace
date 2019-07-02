@@ -51,6 +51,18 @@
 .approveAdd , .approveAddCom , .approveAddHouse , .approveAddApartment , .approveAddRoom , .approveAddHolyday{
     background-color: red;
 }
+@media only screen and (max-width: 800px) {
+    .header-container1 {
+ display: none;
+  }
+  .main-slider{
+      display: block;
+  }
+  .property-section-two{
+    margin-top: 0;
+  }
+ 
+}
 </style>
 </head>
 
@@ -69,8 +81,8 @@
                     <div class="top-left">
                         <ul class="contact-list clearfix">
                             <li><i class="la la-phone"></i> (+94)70 399 8877</li>
-                            <li><i class="la la-map-marker"></i> 51/1, Colombo Road, 10290 Boralesgomuwa, Sri Lanka</li>
-                           <li><i class="la la-envelope-o"></i><a href="#">Supportyou@Interiores.com</a></li>
+                            <li><i class="la la-map-marker"></i> 5/1/1, Colombo Road, 10290 Boralesgomuwa, Sri Lanka</li>
+                           <li><i class="la la-envelope-o"></i><a href="#">RightPlaceteam@gmail.com</a></li>
                         </ul>
                     </div>
                     <div class="top-right">
@@ -102,14 +114,9 @@
                         <div class="nav-outer">
                             <!-- Main Menu -->
                             <nav class="main-menu navbar-expand-md navbar-light">
-                                <div class="navbar-header">
-                                    <!-- Toggle Button -->      
-                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="icon flaticon-menu"></span>
-                                    </button>
-                                </div>
                                 
-                                <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
+                                
+                                <div class="collapse show navbar-collapse clearfix" id="navbarSupportedContent">
                                     <ul class="navigation clearfix">
                                     <li ><a href="/what-we-do">What we do</a></li>
                                         <li ><a href="/buy">Buy</a></li>
@@ -131,23 +138,7 @@
                             <!-- Main Menu End-->
                             <div class="outer-box clearfix">
                                 <!--Search Box-->
-                                <div class="search-box-outer">
-                                    <div class="dropdown">
-                                        <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="la la-search"></span></button>
-                                        <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                            <li class="panel-outer">
-                                                <div class="form-container">
-                                                    <form method="post" action="http://expert-themes.com/html/willies/blog.html">
-                                                        <div class="form-group">
-                                                            <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                            <button type="submit" class="search-btn"><span class="la la-search"></span></button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -248,7 +239,7 @@
                                             <li><span class="la la-map-marker"></span> 51/1, Colombo Road, <br>
                                                 10290 Boralesgomuwa, Sri Lanka</li>
                                             <li><span class="la la-phone"></span> (+94)70 399 8877</li>
-                                            <li><span class="la la-envelope"></span><a href="#">info@benaa.com</a></li>
+                                            <li><span class="la la-envelope"></span><a href="#">RightPlaceteam@gmail.com</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -265,22 +256,18 @@
                             <div class="footer-column col-xl-8 col-lg-6 col-md-6 col-sm-12">
                                 <!--Footer Column-->
                                 <div class="footer-widget popular-posts">
-                                    <h2 class="widget-title">Popular Posts</h2>
-                                     <!--Footer Column-->
-                                    <div class="widget-content">
-                                        <div class="post">
-                                            <div class="thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a></div>
-                                            <h4><a href="blog-detail.html">Modern Design Building </a></h4>
-                                            <span class="date">1 October, 2017</span>
-                                        </div>
-
-                                        <div class="post">
-                                            <div class="thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-2.jpg" alt=""></a></div>
-                                            <h4><a href="blog-detail.html">Real Eatate Expo 2018</a></h4>
-                                            <span class="date">10 October, 2017</span>
+                                        <h2 class="widget-title">Real Estate News</h2>
+                                         <!--Footer Column-->
+                                        <div class="widget-content">
+                                            <div class="post">
+                                                <div class="thumb"><a href="blog-detail.html"><img src="images/resource/post-thumb-1.jpg" alt=""></a></div>
+                                                <h4><a href="blog-detail.html">Modern Design Building </a></h4>
+                                                <span class="date">1 October, 2019</span>
+                                            </div>
+    
+                                           
                                         </div>
                                     </div>
-                                </div>
                             </div>
 
                             <!--Footer Column-->

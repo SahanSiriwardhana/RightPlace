@@ -4,7 +4,7 @@
 <!-- Mirrored from expert-themes.com/html/willies/admin/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 11:30:35 GMT -->
 <head>
 <meta charset="utf-8">
-<title>RightPlace.lk | My Property</title>
+<title>RightPlace.lk | Dashboard</title>
 <!-- Stylesheets -->
 <link href="{{ URL::asset('dashboard/css/bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{ URL::asset('dashboard/css/style.css')}}" rel="stylesheet">
@@ -22,6 +22,30 @@
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 <style>
+    #loadingDiv{
+    position:fixed;
+  top:0px;
+  right:0px;
+  width:100%;
+  height:100%;
+  background-color:#666;
+  background-image:url('ajax-loader.gif');
+  background-repeat:no-repeat;
+  background-position:center;
+  z-index:10000000;
+  opacity: 0.4;
+  filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  
+  
+
+}
 .list-group{
 	border-radius: 0px
 }
@@ -66,7 +90,12 @@ color: black;
 </head>
 
 <body>
-
+        <div id="loadingDiv" style="display: none">
+                <div>
+                        <img src="{{ URL::asset('dashboard/images/loading.gif')}}" alt="" title="" class="center">
+                    <h6>Please wait...</h6>
+                </div>
+            </div>
 <div class="page-wrapper">
 
     <!-- Preloader -->
@@ -85,22 +114,31 @@ color: black;
 
             <!-- Upper Right-->
             <div class="upper-right">
-                <ul class="clearfix">
-                    <li class="dropdown option-box">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="{{ URL::asset('dashboard/images/resource/thumb-1.jpg')}}" alt="avatar" class="thumb">My Account</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="dashboard.html">My Account</a>
-                            <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
-                         
-                            <a class="dropdown-item" href="../index-2.html">Logout</a>
-                        </div>
-                    </li>
-                    <li class="submit-property">
-                    	<a href="/dashboard/add-type" class="theme-btn btn-style-one">Submit Property <i class="pe-7s-up-arrow"></i></a>
-                    </li>
-                   
-                </ul>
-            </div>
+                    <ul class="clearfix">
+                      
+                        <li class="dropdown option-box">
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> 
+                                <span style="font-size:150%">
+                                <i class="fas fa-user-circle"></i>
+                                {{-- <img src="images/resource/user-circle-solid.png" alt="avatar" class="thumb"> --}}
+                                {{Auth::user()->first_name}}
+                               </span>
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/dashboard/my-account">My Account</a>
+                                <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
+                                @can('isAdmin')
+                                <a class="dropdown-item" href="/dashboard/approve-panel">Approve ads</a>
+                                @endcan
+                            <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                            </div>
+                        </li>
+                        <li class="submit-property">
+                            <a href="/dashboard/add-type" class="theme-btn btn-style-one">Submit Property <i class="pe-7s-up-arrow"></i></a>
+                        </li>
+                       
+                    </ul>
+                </div>
         </div>
        
         <!--End Header Lower-->
@@ -188,7 +226,7 @@ color: black;
       };
 
         $(document).ready(function(){
-           
+            $( "#loading" ).show();
             //-----delete function confirmation
             $('.deleteBtn').click(function(e) {
                 e.preventDefault();
@@ -238,6 +276,9 @@ color: black;
 
     // Submit Button Event on click
     $('#formData').submit( function(e) {
+        
+        $( "#loadingDiv" ).show();
+       
         e.preventDefault();
     // Serialize Form
         var form = $('#formData').serialize();
@@ -254,6 +295,7 @@ color: black;
             data: form,
             dataType:"json",
             success: function(data){
+                $( "#loadingDiv" ).hide();
                 //check the validatins
                 if(data.error.length>0){
                         var error_html='';
@@ -267,7 +309,7 @@ color: black;
                             title: 'Error!',
                             html: error_html,
                             type: 'error',
-                            confirmButtonText: 'Cool'
+                            confirmButtonText: 'Ok'
                             })
                     }else{
                         // if dropzone has no files store item without images
@@ -321,7 +363,7 @@ color: black;
      // on success redirect
      myDropzone.on("success", function(file, response){
         var data = jQuery.parseJSON(response); 
-       
+        $( "#loadingDiv" ).hide();
        //check the validatins
        if(data.error.length>0){
                         var error_html='';

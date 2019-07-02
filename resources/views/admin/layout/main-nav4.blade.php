@@ -4,7 +4,7 @@
 <!-- Mirrored from expert-themes.com/html/willies/admin/submit-property.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 11:30:35 GMT -->
 <head>
 <meta charset="utf-8">
-<title>RightPlace.lk | My Property</title>
+<title>RightPlace.lk | Dashboard</title>
 <!-- Stylesheets -->
 <link href="{{ URL::asset('dashboard/css/bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{ URL::asset('dashboard/css/style.css')}}" rel="stylesheet">
@@ -87,11 +87,13 @@ color: black;
             <div class="upper-right">
                 <ul class="clearfix">
                     <li class="dropdown option-box">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="{{ URL::asset('dashboard/images/resource/thumb-1.jpg')}}" alt="avatar" class="thumb">My Account</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <img src="{{ URL::asset('dashboard/images/resource/thumb-1.jpg')}}" alt="avatar" class="thumb"> {{Auth::user()->first_name}}</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="dashboard.html">My Account</a>
                             <a class="dropdown-item" href="/dashboard/my-add">My ads</a>
-                         
+                            @can('isAdmin')
+                            <a class="dropdown-item" href="/dashboard/approve-panel">Approve ads</a>
+                            @endcan
                             <a class="dropdown-item" href="../index-2.html">Logout</a>
                         </div>
                     </li>
@@ -658,7 +660,7 @@ console.log("It failed");
     Dropzone.options.myDropZone1 = {
         autoProcessQueue: true,
         uploadMultiple: true,
-        parallelUploads: 20,
+        parallelUploads: 1,
         maxFiles: 4,
        
         acceptedFiles: "image/*",

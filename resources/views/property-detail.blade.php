@@ -138,11 +138,16 @@
                             <p style="font-size: 18px;"><strong style="text-transform: capitalize"> {{$user->first_name}}</strong><br><small style="font-size: 10px;padding-top: -150px;">Verified User &nbsp;<i class="la la-check-circle-o"></i> </small></p>
 
                             </div>
-                            <div class="row" style="padding-left: 10%;padding-bottom: 10px;">
-                            <button type="button" class="btn-box theme-btn btn-style-four btn-3 col-md-5"><i class="la la-phone-square"></i> {{substr($land->phone, 0,3) }} - {{substr($land->phone, 3,3) }} -{{substr($land->phone, 6,4) }} </button>
-                            <button type="button" class="btn-box theme-btn btn-style-four btn-3 col-md-5" style="margin-left: 10px;"><i class="la la-envelope"></i> Mail to Friend</button>
+                            <div class="row" style="padding-left: 8%;padding-bottom: 10px;">
+                                <span class="btn-3 col-md-8">
+                                    <i class="la la-phone-square"></i> {{substr($land->phone, 0,3) }} - {{substr($land->phone, 3,3) }} -{{substr($land->phone, 6,4) }} <br>
+                                    <div style="margin-top: 5%;"> 
+                                        <i class="la la-envelope"><strong style="font-size:80%;text-transform: capitalize"> {{$user->email}}</strong></i> 
+                                    </div>
+                                </span>
                             </div>
                         </div>
+                        @can('isAdmin')
                         <div class="row">
                             @if ($land->add_status=='pending')
                             <div class="form-group">
@@ -151,7 +156,7 @@
                             @endif
                             
                         </div>
-                       
+                       @endcan
 
                         
 

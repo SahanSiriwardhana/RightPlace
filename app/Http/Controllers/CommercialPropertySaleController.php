@@ -10,6 +10,8 @@ use App\CommercialProperty;
 use App\District;
 use App\City;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CommercialPropertySaleController extends Controller
 {
@@ -42,9 +44,25 @@ class CommercialPropertySaleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function sendEmailWhen3AdsAttempt($data){
+        Mail::send(
+            'alertMsgAfter3ads',
+            ['data'=>$data],
+            function($message) use ($data){
+                $message->to('rightplaceteam@gmail.com');
+                $message->subject("The user has been published more than 3 ads.");
+            }
+        );
+    }
     public function store(Request $request)
     {
+        $id= Auth::user()->id;
+        $name=Auth::user()->first_name;
+        $email=Auth::user()->email;
+        $phone=Auth::user()->phone;
         //
+        
         $validation = Validator::make($request->all(),[
             'city'=>'required',
             'town'=>'required',
@@ -65,6 +83,26 @@ class CommercialPropertySaleController extends Controller
                 $error_array[]=$messages;
             }
         }else{
+
+            $commercialProperties =  \DB::table('commercial_properties')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $houses = \DB::table('houses')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $lands =\DB::table('lands')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $apartments =\DB::table('apartments')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $holyday_rentals =\DB::table('holyday_rentals')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $rooms =\DB::table('rooms')->where([['add_status','=','published'],['user_id','=',$id]])->count();
+            $publishedadcount=$commercialProperties+$houses+$lands+$apartments+$holyday_rentals+$rooms;
+
+            if($publishedadcount>3){
+                $data=[
+                    'name'=>$name,
+                    'email'=>$email,
+                    'phone'=>$phone,
+                    'addCount'=>$publishedadcount
+                ];
+                $this->sendEmailWhen3AdsAttempt($data);
+                // return  redirect()->back()->with(['successFullySentEmail' =>'Our Agents will contact you soon']);;
+            }
+
             //get the file name from request
             $file = Input::file('file');
            // $destinationPath = public_path() . '/image_uplode/';
@@ -75,10 +113,10 @@ class CommercialPropertySaleController extends Controller
                 $imageName[$i] = uniqid().'_'.time().'.'.$file[$i]->getClientOriginalExtension();
                 $file[$i]->move(public_path('images.image_uplode'), $imageName[$i]);
             }
-        }
+            }
 
             $commercialProperty=new CommercialProperty();
-            $commercialProperty->user_id="1";
+            $commercialProperty->user_id=$id;
             $commercialProperty->city=$request->city;
             $commercialProperty->town=$request->town;
             $commercialProperty->title=$request->addTitle;
@@ -86,12 +124,12 @@ class CommercialPropertySaleController extends Controller
             $commercialProperty->type=1;//sale
             $commercialProperty->negotiable=$request->negotiable;
             $commercialProperty->item_type=$request->itemType;
-               //--------features--------------
-               $commercialProperty->electricity=$request->electricity;
-               $commercialProperty->water_supply_from_main_supply=$request->water_supply_from_main_supply;
-               $commercialProperty->water_supply_from_well=$request->water_supply_from_well;
-               $commercialProperty->seveage_system=$request->seveage_system;
-               $commercialProperty->septic_tank=$request->septic_tank;
+            //--------features--------------
+            $commercialProperty->electricity=$request->electricity;
+            $commercialProperty->water_supply_from_main_supply=$request->water_supply_from_main_supply;
+            $commercialProperty->water_supply_from_well=$request->water_supply_from_well;
+            $commercialProperty->seveage_system=$request->seveage_system;
+            $commercialProperty->septic_tank=$request->septic_tank;
             $commercialProperty->size=$request->size;
             $commercialProperty->rent_per_month=$request->rentPerMonth;
             $commercialProperty->address=$request->address;

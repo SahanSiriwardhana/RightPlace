@@ -10,10 +10,13 @@ use DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
-
+use Illuminate\Auth\Access\Gate;
+use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 class UserController extends Controller
 {
-
+    public function showLoginForm(){
+        return view('login');
+    }
 
     public function RegisterUser(Request $request){
 
@@ -35,6 +38,7 @@ class UserController extends Controller
         $table->city = null;
         $table->phone= null;
         $table->gender=null;
+        $table->user_type='user';
         $table->email = $request->input('email');
         $table->password = bcrypt($request->input('password'));
 
@@ -43,7 +47,7 @@ class UserController extends Controller
         $credentials = $request->only('email','password');
         
         if (Auth::attempt($credentials)) {
-            return redirect()->route('myAds')->with('message','Registered successfull');
+            return redirect('dashboard/add-type')->with('message','Registered successfull');
         }
       
         // return redirect()->route('myAds')->with('message','Registered successfull');
@@ -76,6 +80,7 @@ class UserController extends Controller
             $table->city = null;
             $table->phone= null;
             $table->gender=null;
+            $table->user_type='user';
             $table->email = $googleemail;
             $table->password = bcrypt($name);
     
@@ -86,7 +91,7 @@ class UserController extends Controller
 
     
      
-        return redirect()->route('myAds')->with('message','Registered successfull');
+        return redirect('dashboard/add-type')->with('message','Registered successfull');
 
     }
 
@@ -137,6 +142,7 @@ public function handleProviderCallbackFacebook()
         $table->city = null;
         $table->phone= null;
         $table->gender=null;
+        $table->user_type='user';
         $table->email = $fbmail;
         $table->password = bcrypt($name);
 
@@ -147,14 +153,14 @@ public function handleProviderCallbackFacebook()
 
 
  
-    return redirect()->route('myAds')->with('message','Registered successfull');
+    return redirect('dashboard/add-type')->with('message','Registered successfull');
 
 }
 
     public function LoginUser(Request $request){
         $data = $request->only('email','password');
         if(Auth::attempt($data)){
-            return redirect()->route('myAds')->with('message','Logged In Successfull');
+            return redirect('dashboard/add-type')->with('message','Logged In Successfull');
         }
         return redirect()->back()->with('message','INVALID Login');
     }
@@ -201,6 +207,7 @@ public function handleProviderCallbackFacebook()
             }
         );
     }
+    
 
     public function LogOut(){
 
@@ -214,6 +221,48 @@ public function handleProviderCallbackFacebook()
     public function getMyAds(){
         return view('my-ads');
     }
+
+    //Update user Details -----------
+    //View update form
+
+    public function myAccount(){
+        $id=Auth::user()->id;
+        $user=User::find($id);
+        return view('admin/my-account',['user'=>$user]);
+    }
+
+    //Update User Details through form
+    public function updateUserDetails($id,Request $request){
+        $first_name = $request->input('first');
+        $last_name = $request->input('last');
+        $city = $request->input('city');
+        $phone = $request->input('phone');
+        $gender = $request->input('gender');
+
+        DB::update('update users set first_name = ?,last_name=?,city=?,phone=?,gender=? where id = ?',[$first_name,$last_name,$city,$phone,$gender,$id]);
+        //return $request;
+
+        return redirect()->back()->with('message','User details updated successfull');
+    }
+
+    //All Users
+    
+
+    public function allUsers(){
+        // if(!Gate::allows('isAdmin')){
+        //     abort(404,'Sorry you cant do this');
+        // }
+        $users = User::all();
+        return view('admin/all-users',['users'=>$users]);
+    }
+
+    //Delete Users
+
+    public function deleteUser($id){
+        DB::delete('delete from users where id = ?',[$id]);
+        return redirect()->back()->with('message','User Deleted successfull');
+    }
+
 
 
 }

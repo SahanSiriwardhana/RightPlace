@@ -5,7 +5,10 @@
     <section class="page-title" style="background-image:url({{ URL::asset('images/background/16.png')}});">
         <div class="auto-container">
             <div class="inner-container clearfix">
-                <h1>Buy Properties</h1>
+               
+                    <h1>Buy Properties</h1>
+                
+                
                 <ul class="bread-crumb clearfix">
                     <li><a href="/">Home</a></li>
                     <li>Buy Properties</li>
@@ -140,17 +143,17 @@
                                     @foreach ($resentLands as $resentLand)
                                     <!-- Post -->
                                     <a href="/{{$resentLand->tableName}}/{{$resentLand->id}}">
-                                    <article class="post">
+                                    <article class="post" style="cursor: pointer;" onclick="window.location='/{{$resentLand->tableName}}/{{$resentLand->id}}';">
                                         <div class="post-thumb">
                                             <a href="/{{$resentLand->tableName}}/{{$resentLand->id}}">
                                            @if ($resentLand->image1!=null)
-                                           <img src="{{ URL::asset('images.image_uplode/'.$resentLand->image1.'')}}" alt="">
+                                           <img src="{{ URL::asset('images.image_uplode/'.$resentLand->image1.'')}}" alt="" >
                                             
                                             <span class="status">Sale</span>
     
                                            
                                                                                  @else
-                                          <img src="{{ URL::asset('images.image_uplode/land_image.jpg')}}" alt="">
+                                          <img src="{{ URL::asset('images.image_uplode/land_image.jpg')}}" alt="" >
                                        
                                             <span class="status">Sale</span>
     
@@ -230,16 +233,16 @@
                         
                        <a href="/{{$add->tableName}}/{{$add->id}}" class="prop">
                         <!-- Property Block -->
-                        <div class="property-block-three">
+                        <div class="property-block-three" style="cursor: pointer;" onclick="window.location='/{{$add->tableName}}/{{$add->id}}';">
                             <div class="inner-box">
                                 <div class="row clearfix">
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="column col-xl-4 col-lg-12 col-md-12 col-sm-12">
                                         <div class="image-box">
                                             <figure class="image">
                                                 @if ($add->image1 != null)
-														<img src="/images.image_uplode/{{$add->image1}}" alt="">
+														<img src="/images.image_uplode/{{$add->image1}}" alt="" style="">
 													@else
-														<img src="/images.image_uplode/land_image.jpg" alt="">
+														<img src="/images.image_uplode/land_image.jpg" alt="" style="">
 													@endif
                                             </figure>
                                             <span class="for">FOR SALE</span>
@@ -258,12 +261,12 @@
                                                 <li><a href="#"><i class="la la-retweet"></i></a></li>
                                             </ul>
                                             <ul class="info clearfix">
-                                                <li><a href="#"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
+                                             
                                             </ul>
                                         </div>
                                     </div>
 
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="column col-xl-8 col-lg-12 col-md-12 col-sm-12">
                                         <div class="lower-content">
                                             
                                           
@@ -280,17 +283,16 @@
                                                 @endif
                                                  
                                                 @endforeach
-                                            
-                                            </div>
-                                            <ul class="property-info clearfix">
-                                                <li><i class="flaticon-clock-1"></i> {{$add->updated_at}}</li>
-                                                <li><i class="la la-tag la-2x"></i>  {{$add->type}}</li>
                                                 
-                                            </ul>
-                                            <div class="property-price clearfix">
-                                                <div class="read-more"><a href="/{{$add->tableName}}/{{$add->id}}" class="theme-btn">More Detail</a></div>
-                                                <div class="price">Rs {{$add->rent_per_month}}.00</div>
+                                            | <i class="flaticon-clock-1"></i> {{date('d M Y ,g:ia', strtotime($add->updated_at))}}
+                                            |<i class="la la-tag la-2x"></i>  {{$add->type}}</li>
                                             </div>
+                                          <span style="font-size: 20px;color: #0074D9">Rs {{$add->rent_per_month}}.00</span>   
+                                            
+                                            {{-- <div class="property-price clearfix">
+                                                <div class="read-more"><a href="/{{$add->tableName}}/{{$add->id}}" class="theme-btn">More Detail</a></div>
+                                                
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -304,7 +306,7 @@
                        
                         
                         <!-- Pagination -->
-                        <div class="styled-pagination">
+                        {{-- <div class="styled-pagination">
                             <ul class="clearfix">
                                 <li class="prev"><a href="#"><span>Prev</span></a></li>
                                 <li><a href="#"><span>1</span></a></li>
@@ -313,7 +315,7 @@
                                 <li><a href="#"><span>4</span></a></li>
                                 <li class="next"><a href="#"><span>Next</span></a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

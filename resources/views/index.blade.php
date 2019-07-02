@@ -126,6 +126,74 @@
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+.header-container1{
+    width: 100%;
+    height: 400px;
+    border-left: none;
+    border-right: none;
+    position: relative;
+    
+
+}
+.video-container{
+    position: absolute;
+   /* margin-top: -20%; */
+    
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+video{
+    position: absolute;
+    z-index: -1;
+    opacity: 0.78;
+    width: 100%;
+    object-fit: fill;
+
+}
+#wrapper{
+position: relative;
+height: 100hv;
+}
+
+#slider-area{
+    position: absolute;
+    height: 100hv;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+}
+#slider-area .owl-item div{
+    height: 100hv;
+    width: 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size:cover;
+    background-size: cover;
+    background-position: 50% 50%;
+
+}
+.main-slider{
+      display: none;
+  }
+  .property-section-two{
+    margin-top: -4%;
+  }
+@media only screen and (max-width: 800px) {
+    .header-container1 {
+ display: none;
+  }
+  .main-slider{
+      display: block;
+  }
+  .property-section-two{
+    margin-top: 0;
+  }
+ 
+}
+
+
     </style>
     {{-- <script type="text/javascript">
         $(window).on('load',function(){
@@ -253,7 +321,7 @@
                         <ul class="contact-list clearfix">
                             <li><i class="la la-phone"></i> (+94)70 399 8877</li>
                             <li><i class="la la-map-marker"></i> 5/1/1, Colombo Rad, 10290 Boralesgamuwa, Sri Lanka</li>
-                            <li><i class="la la-envelope-o"></i><a href="#">Supportyou@Interiores.com</a></li>
+                            <li><i class="la la-envelope-o"></i><a href="#">RightPlaceteam@gmail.com</a></li>
                         </ul>
                     </div>
                     <div class="top-right">
@@ -285,14 +353,9 @@
                         <div class="nav-outer">
                             <!-- Main Menu -->
                             <nav class="main-menu navbar-expand-md navbar-light">
-                                <div class="navbar-header">
-                                    <!-- Toggle Button -->      
-                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                        <span class="icon flaticon-menu"></span>
-                                    </button>
-                                </div>
+             
                                 
-                                <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
+                                <div class="collapse show navbar-collapse clearfix" id="navbarSupportedContent">
                                     <ul class="navigation clearfix">
                                     <li ><a href="/what-we-do">What we do</a></li>
                                         <li ><a href="/buy">Buy</a></li>
@@ -313,24 +376,7 @@
                                 
                             <!-- Main Menu End-->
                             <div class="outer-box clearfix">
-                                <!--Search Box-->
-                                <div class="search-box-outer">
-                                    <div class="dropdown">
-                                        <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="la la-search"></span></button>
-                                        <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
-                                            <li class="panel-outer">
-                                                <div class="form-container">
-                                                    <form method="post" action="http://expert-themes.com/html/willies/blog.html">
-                                                        <div class="form-group">
-                                                            <input type="search" name="field-name" value="" placeholder="Search Here" required>
-                                                            <button type="submit" class="search-btn"><span class="la la-search"></span></button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                              
                             </div>
                         </div>
                     </div>
@@ -377,32 +423,77 @@
     </header>
     
     <!--Main Slider-->
-    <section class="main-slider">
+    <section class="main-slider" >
         <div class="rev_slider_wrapper fullwidthbanner-container"  id="rev_slider_one_wrapper" data-source="gallery">
             <div class="rev_slider fullwidthabanner" id="rev_slider_one" data-version="5.4.1">
                 <ul>
                     <!-- Slide 1 -->
                     <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1689" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/main-slider/image-2.jpg" data-title="Slide Title" data-transition="parallaxvertical">
                         
-                       <div class="myVideo">
-                        <video playsinline autoplay muted loop id="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120">
-                            <source src="video/home_video/Real Estate Promotion Video.mp4" type="video/mp4">
-                            Your browser does not support HTML5 video.
-                        </video>
-                    </div>
+                        <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat" data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" src="images/main-slider/image-1.jpg"> 
+
+                        <div class="tp-caption" 
+                        data-paddingbottom="[0,0,0,0]"
+                        data-paddingleft="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]"
+                        data-paddingtop="[0,0,0,0]"
+                        data-responsive_offset="on"
+                        data-type="text"
+                        data-height="none"
+                        data-whitespace="nowrap"
+                        data-width="auto"
+                        data-text-align="center"
+                        data-hoffset="['10','50','0','0']"
+                        data-voffset="['-20','-20','-20','-20']"
+                        data-x="['right','right','center','center']"
+                        data-y="['middle','middle','middle','middle']"
+                        data-frames='[{"delay":1500,"speed":1000,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"x:50px;opacity:0;","ease":"Power3.easeInOut"}]'>
+                            
+                        </div>
                     </li>
 
-                   
-                  
-                   
+                    <!-- Slide 1 -->
+                    <li data-description="Slide Description" data-easein="default" data-easeout="default" data-fsmasterspeed="1500" data-fsslotamount="7" data-fstransition="fade" data-hideafterloop="0" data-hideslideonmobile="off" data-index="rs-1690" data-masterspeed="default" data-param1="" data-param10="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-rotate="0" data-saveperformance="off" data-slotamount="default" data-thumb="images/main-slider/image-2.jpg" data-title="Slide Title" data-transition="parallaxvertical">
+                        
+                        <img alt="" class="rev-slidebg" data-bgfit="cover" data-bgparallax="10" data-bgposition="center center" data-bgrepeat="no-repeat"  data-kenburns="on" data-duration="10000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="120" src="images/main-slider/image-2.jpg"> 
+
+                        <div class="tp-caption" 
+                        data-paddingbottom="[0,0,0,0]"
+                        data-paddingleft="[0,0,0,0]"
+                        data-paddingright="[0,0,0,0]"
+                        data-paddingtop="[0,0,0,0]"
+                        data-responsive_offset="on"
+                        data-type="text"
+                        data-height="none"
+                        data-whitespace="nowrap"
+                        data-width="auto"
+                        data-text-align="center"
+                        data-hoffset="['10','50','0','0']"
+                        data-voffset="['-20','-20','-20','-20']"
+                        data-x="['right','right','center','center']"
+                        data-y="['middle','middle','middle','middle']"
+                        data-frames='[{"delay":1500,"speed":1000,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"x:50px;opacity:0;","ease":"Power3.easeInOut"}]'>
+                          
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
     </section>
+    <div class="header-container1">
+        <div class="video-container">
+            <video playsinline autoplay muted loop id="" style="height: 80%;width:100%">
+                <source src="video/home_video/rightplace5.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+    </div>
+
+   
     <!--End Main Slider-->
 
      <!-- Property Section Two -->
-     <section class="property-section-two" style="margin-top: -130px;">
+     <section class="property-section-two"  style="">
     	<div class="auto-container">
     		<div class="sec-title">
     			<span class="title">Find Your Right Place</span>
@@ -428,7 +519,7 @@
     			
                 
             </div>
-            <hr>
+           
     	</div>
     </section>
     <!--End Property Section Two -->
@@ -436,7 +527,7 @@
 
 
     <!-- Recent Section -->
-    <section class="property-section" style="margin-top: -12%">
+    <section class="property-section" style="">
         <div class="auto-container">
               
             <div class="sec-title">
@@ -582,7 +673,7 @@
             
         </div>
     </section>
-    <!-- About Us -->T
+    <!-- About Us -->
 
     <!--Popular Places Section-->
     <section class="popular-places-section">
@@ -599,9 +690,9 @@
                         <figure class="image"><img src="images/gallery/1-1.jpg" alt=""></figure>
                         <div class="info-box">
                            
-                            <h3 class="place"><a href="#">Apartment</a></h3>
+                            <h3 class="place"><a href="/apartment ">Apartment</a></h3>
                             <div class="properties"><a href="#">7 Properties</a></div>
-                            <div class="view-all"><a href="#">View All</a></div>
+                            <div class="view-all"><a href="/apartment">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -612,9 +703,9 @@
                         <figure class="image"><img src="images/gallery/1-2.jpg" alt=""></figure>
                         <div class="info-box">
                             
-                            <h3 class="place"><a href="#">Hotels</a></h3>
+                            <h3 class="place"><a href="/holyday-and-short-tearm">Hotels</a></h3>
                             <div class="properties"><a href="#">9 Properties</a></div>
-                            <div class="view-all"><a href="#">View All</a></div>
+                            <div class="view-all"><a href="/holyday-and-short-tearm">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -638,9 +729,9 @@
                         <figure class="image"><img src="images/gallery/1-4.jpg" alt=""></figure>
                         <div class="info-box">
                            
-                            <h3 class="place"><a href="#">House in Projects</a></h3>
+                            <h3 class="place"><a href="/house">House in Projects</a></h3>
                             <div class="properties"><a href="#">12 Properties</a></div>
-                            <div class="view-all"><a href="#">View All</a></div>
+                            <div class="view-all"><a href="/house">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -652,9 +743,9 @@
                         <figure class="image"><img src="images/gallery/1-5.jpg" alt=""></figure>
                         <div class="info-box">
                             
-                            <h3 class="place"><a href="#">New Development</a></h3>
+                            <h3 class="place"><a href="/real-estate-news">New Development</a></h3>
                             <div class="properties"><a href="#">6 Properties</a></div>
-                            <div class="view-all"><a href="#">View All</a></div>
+                            <div class="view-all"><a href="/real-estate-news">View All</a></div>
                         </div>
                     </div>
                 </div>
@@ -695,13 +786,15 @@
                         <span class="title">Right Place</span>
                         <h2>Our Strategic Partners</h2>
                     </div>
-            <div class="sponsors-outer">
+            <div class="">
                 <!--Sponsors Carousel-->
                 <ul class="sponsors-carousel owl-carousel owl-theme">
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/297EFC38-9419-463C-A216-EEFF11BA2FAE.jpeg" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/sample 1.jpg" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/use-logo.jpg" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/Trustus.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2-1.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/4.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/5.jpg" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/6.jpg" alt=""></a></figure></li>
                 </ul>
             </div>
         </div>
@@ -720,19 +813,21 @@
                     <!-- Upper column -->
                     <div class="upper-column col-lg-3 col-md-12 col-sm-12">
                         <div class="footer-logo">
-                            <figure class="image"><a href="/"><img src="images/png2.png" alt=""></a></figure>
+                            <figure class="image"><a href="/"><img src="images/logo_right.png" alt=""></a></figure>
                         </div>
                     </div>
 
                     <!-- Upper column -->
                     <div class="upper-column col-lg-6 col-md-12 col-sm-12">
                         <div class="subscribe-form">
-                            <form method="post" action="http://expert-themes.com/html/willies/blog.html">
+                        <form method="post" action="{{route('contactFormSubmit')}}">
                                 <div class="form-group">
                                     <input type="email" name="email" value="" placeholder="Enter Your Email" required="">
                                     <button type="submit" class="theme-btn btn-style-four"><i class="icon la la-paper-plane"></i></button>
                                 </div>
-                            </form>
+
+                        </form>
+
                         </div>
                     </div>
 
@@ -764,7 +859,7 @@
                                         <ul class="contact-list">
                                             <li><span class="la la-map-marker"></span> 5/1/1, Colombo Rad, 10290 Boralesgamuwa,<br/> Sri Lanka</li>
                                             <li><span class="la la-phone"></span> (+94)70 399 8877</li>
-                                            <li><span class="la la-envelope"></span><a href="#">info@benaa.com</a></li>
+                                            <li><span class="la la-envelope"></span><a href="#">RightPlaceteam@benaa.com</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -851,6 +946,7 @@
 <script src="plugins/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
 <script src="plugins/revolution/js/extensions/revolution.extension.video.min.js"></script>
 <script src="js/main-slider-script.js"></script>
+
 <!--End Revolution Slider-->
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery.fancybox.js"></script>
@@ -859,8 +955,32 @@
 <script src="js/isotope.js"></script>
 <script src="js/appear.js"></script>
 <script src="js/script.js"></script>
+
+
 <!-- Color Setting -->
 <script src="js/color-settings.js"></script>
+<script>
+$('.owl-carousel1').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:5,
+            nav:true,
+            loop:false
+        }
+    }
+})
+</script>
 </body>
 
 </html>

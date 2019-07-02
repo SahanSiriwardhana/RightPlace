@@ -151,7 +151,7 @@
                                     @foreach ($resentLands as $resentLand)
                                     <!-- Post -->
                                     <a href="/{{$resentLand->tableName}}/{{$resentLand->id}}">
-                                    <article class="post">
+                                    <article class="post" style="cursor: pointer;" onclick="window.location='/{{$resentLand->tableName}}/{{$resentLand->id}}';">
                                         <div class="post-thumb">
                                             <a href="/{{$resentLand->tableName}}/{{$resentLand->id}}">
                                            @if ($resentLand->image1!=null)
@@ -243,83 +243,79 @@
                                 </span> 
                         @foreach ($ads as $add)
                         
-                       <a href="/{{$add->tableName}}/{{$add->id}}" class="prop">
-                        <!-- Property Block -->
-                        <div class="property-block-three">
-                            <div class="inner-box">
-                                <div class="row clearfix">
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="image-box">
-                                            <figure class="image">
-                                                @if ($add->image1 != null)
-														<img src="/images.image_uplode/{{$add->image1}}" alt="">
-													@else
-														<img src="/images.image_uplode/land_image.jpg" alt="">
-													@endif
-                                            </figure>
-                                            <span class="for">FOR RENT</span>
-                                            
-                                            <ul class="option-box">
-                                                <li><a 
+                        <a href="/{{$add->tableName}}/{{$add->id}}" class="prop">
+                            <!-- Property Block -->
+                            <div class="property-block-three" style="cursor: pointer;" onclick="window.location='/{{$add->tableName}}/{{$add->id}}';">
+                                <div class="inner-box">
+                                    <div class="row clearfix">
+                                        <div class="column col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                                            <div class="image-box">
+                                                <figure class="image">
                                                     @if ($add->image1 != null)
-                                                    href="/images.image_uplode/{{$add->image1}}"
-													@else
-                                                    href="/images.image_uplode/land_image.jpg"
-													@endif
-                                                     
-                                                    
-                                                    class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
-                                                <li><a href="#"><i class="la la-heart"></i></a></li>
-                                                <li><a href="#"><i class="la la-retweet"></i></a></li>
-                                            </ul>
-                                            <ul class="info clearfix">
-                                                <li><a href="#"><i class="la la-calendar-minus-o"></i>2 Years Ago</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="column col-xl-6 col-lg-12 col-md-12 col-sm-12">
-                                        <div class="lower-content">
-                                            
-                                          
-                                            <h3><a href="/{{$add->tableName}}/{{$add->id}}">{{$add->title}}</a></h3>
-                                            <div class="lucation"><i class="la la-map-marker"></i> @foreach ($cities as $city)
-                                                @if ($city->cid==$add->town)
-                                                    {{$city->cname}}	
-                                                @endif
-                                                 
-                                                @endforeach ,
-                                                @foreach ($districts as $district)
-                                                @if ($district->did==$add->city)
-                                                    {{$district->dname}}	
-                                                @endif
-                                                 
-                                                @endforeach
-                                            
-                                            </div>
-                                            <ul class="property-info clearfix">
-                                                <li><i class="flaticon-clock-1"></i> {{$add->updated_at}}</li>
-                                                <li><i class="la la-tag la-2x"></i>  {{$add->type}}</li>
+                                                            <img src="/images.image_uplode/{{$add->image1}}" alt="" style="">
+                                                        @else
+                                                            <img src="/images.image_uplode/land_image.jpg" alt="" style="">
+                                                        @endif
+                                                </figure>
+                                                <span class="for">FOR SALE</span>
                                                 
-                                            </ul>
-                                            <div class="property-price clearfix">
-                                                <div class="read-more"><a href="/{{$add->tableName}}/{{$add->id}}" class="theme-btn">More Detail</a></div>
-                                                <div class="price">Rs {{$add->rent_per_month}}.00</div>
+                                                <ul class="option-box">
+                                                    <li><a 
+                                                        @if ($add->image1 != null)
+                                                        href="/images.image_uplode/{{$add->image1}}"
+                                                        @else
+                                                        href="/images.image_uplode/land_image.jpg"
+                                                        @endif
+                                                         
+                                                        
+                                                        class="lightbox-image" data-fancybox="property"><i class="la la-camera"></i></a></li>
+                                                    <li><a href="#"><i class="la la-heart"></i></a></li>
+                                                    <li><a href="#"><i class="la la-retweet"></i></a></li>
+                                                </ul>
+                                                <ul class="info clearfix">
+                                                 
+                                                </ul>
+                                            </div>
+                                        </div>
+    
+                                        <div class="column col-xl-8 col-lg-12 col-md-12 col-sm-12">
+                                            <div class="lower-content">
+                                                
+                                              
+                                                <h3><a href="/{{$add->tableName}}/{{$add->id}}">{{$add->title}}</a></h3>
+                                                <div class="lucation"><i class="la la-map-marker"></i> @foreach ($cities as $city)
+                                                    @if ($city->cid==$add->town)
+                                                        {{$city->cname}}	
+                                                    @endif
+                                                     
+                                                    @endforeach ,
+                                                    @foreach ($districts as $district)
+                                                    @if ($district->did==$add->city)
+                                                        {{$district->dname}}	
+                                                    @endif
+                                                     
+                                                    @endforeach
+                                                | <i class="flaticon-clock-1"></i> {{$add->updated_at}} |<i class="la la-tag la-2x"></i>  {{$add->type}}</li>
+                                                </div>
+                                              <span style="font-size: 20px;color: #0074D9">Rs {{$add->rent_per_month}}.00</span>   
+                                                
+                                                {{-- <div class="property-price clearfix">
+                                                    <div class="read-more"><a href="/{{$add->tableName}}/{{$add->id}}" class="theme-btn">More Detail</a></div>
+                                                    
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                        @endforeach
+                        </a>  @endforeach
                         </div>
                        
                        
                        
                         
                         <!-- Pagination -->
-                        <div class="styled-pagination">
+                        {{-- <div class="styled-pagination">
                             <ul class="clearfix">
                                 <li class="prev"><a href="#"><span>Prev</span></a></li>
                                 <li><a href="#"><span>1</span></a></li>
@@ -328,7 +324,7 @@
                                 <li><a href="#"><span>4</span></a></li>
                                 <li class="next"><a href="#"><span>Next</span></a></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
